@@ -28,6 +28,7 @@ app.on('ready', function() {
 });
 
 function startApp() {
+  // @TODO Tmp dir cleanup
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 }
 
