@@ -27,13 +27,6 @@ function renderApp() {
   // "Run code" button click
   $("#run").click(function(){
     code = editor.getValue();
-    // fs.writeFile("tmp_code.php", code, function(err) {
-    //   if(err) {
-    //       // @TODO Do something!
-    //       return console.log(err);
-    //   }
-    //   runCode();
-    // });
     tmp_file = "tmpcode"+(count++)
     fs.writeFileSync(tmp_file, code);
     runCode();
@@ -46,7 +39,7 @@ function runCode() {
     if (err) {
       return console.log(err);
     }
-    
+
     $("#console").html(out);
     fs.unlink(tmp_file);
   });

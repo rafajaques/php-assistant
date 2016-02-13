@@ -56,8 +56,8 @@ function phpFound(path) {
     }
     checkWrite("Done!",1);
     checkWrite("Starting app...");
-    // Wait for 2 seconds, just in the first run
-    setTimeout('window.location = "index.html"', 2000);
+    // Wait for 1.5 second, just in the first run
+    setTimeout('window.location = "index.html"', 1500);
   });
 }
 
