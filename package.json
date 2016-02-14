@@ -1,5 +1,19 @@
 {
-  "name":    "helloworld",
+  "name": "php-assistant",
   "version": "0.0.1",
-  "main":    "main.js"
+  "main": "main.js",
+  "description": "A cross-platform desktop PHP runner (proof-of-concept)",
+  "author": "Rafa Jaques <rafael@phpit.com.br>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafajaques/php-assistant"
+  },
+  "bugs": {
+    "url": "https://github.com/rafajaques/php-assistant/issues"
+  },
+  "dependencies": {
+    "exec-php": "*",
+    "configstore": "*"
+  },
+  "license": "MIT"
 }

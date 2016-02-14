@@ -1,4 +1,8 @@
+// Configuration check routine
 var fs = require('fs');
+const Configstore = require('configstore');
+const pkg = require('./package.json');
+const conf = new Configstore(pkg.name)
 
 var unix_paths = ["/usr/bin/php", "/usr/sbin/php", "/etc/php", "/usr/lib/php", "/usr/share/php"]
 
@@ -48,17 +52,12 @@ function checkPhpPath(list, index) {
 
 function phpFound(path) {
   checkWrite("Found! ("+path+")", 1);
-  checkWrite("Storing data...", 1);
-  fs.writeFile("php_path", path, function(err) {
-    if(err) {
-        // Do something!
-        return console.log(err);
-    }
-    checkWrite("Done!",1);
-    checkWrite("Starting app...");
-    // Wait for 1.5 second, just in the first run
-    setTimeout('window.location = "index.html"', 1500);
-  });
+  checkWrite("Storing data...", 0);
+  conf.set("php_path", path);
+  checkWrite("Done!",1);
+  checkWrite("Starting app...");
+  // Wait for 1.5 second, just in the first run
+  setTimeout('window.location = "index.html"', 1500);
 }
 
 function phpNotFound() {

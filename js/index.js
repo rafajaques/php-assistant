@@ -1,6 +1,10 @@
 // PHP Exec
 var execPhp = require('exec-php');
 var fs = require('fs');
+const Configstore = require('configstore');
+const pkg = require('./package.json');
+const conf = new Configstore(pkg.name)
+
 var php_path;
 
 // PHP-exec cache bypass (temporary workaround)
@@ -11,14 +15,8 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.getSession().setMode("ace/mode/php");
 
-fs.readFile('php_path', 'utf8', function(err,path) {
-  if (err) {
-    // @TODO Implement
-  } else {
-    php_path = path;
-    renderApp();
-  }
-});
+php_path = conf.get("php_path");
+renderApp();
 
 function renderApp() {
   // @TODO Do a "wait" screen
@@ -27,7 +25,7 @@ function renderApp() {
   // "Run code" button click
   $("#run").click(function(){
     code = editor.getValue();
-    tmp_file = "tmpcode"+(count++)
+    tmp_file = __dirname + "/tmpcode"+(count++)
     fs.writeFileSync(tmp_file, code);
     runCode();
   });
@@ -38,7 +36,6 @@ function renderApp() {
 }
 
 function runCode() {
-
   setStatus("Running...");
 
   execPhp(tmp_file, php_path, function(err, php, out)

@@ -2,8 +2,10 @@
 
 var app = require('app');
 var BrowserWindow = require('browser-window');
-var fs = require('fs');
 
+const Configstore = require('configstore');
+const pkg = require('./package.json');
+const conf = new Configstore(pkg.name);
 var php_path;
 
 var mainWindow = null;
@@ -16,19 +18,16 @@ app.on('ready', function() {
   });
 
   // Check if php_path is already known
-  fs.exists('php_path', function(exists) {
-    if (exists) {
-      // Yes! I know where PHP is!
-      startApp();
-    } else {
-      // Nope! Go and find it!
-      mainWindow.loadURL('file://' + __dirname + '/check.html');
-    }
-  });
+  if (conf.get("php_path")) {
+    // Yes! I know where PHP is!
+    startApp();
+  } else {
+    // Nope! Go and find it!
+    mainWindow.loadURL('file://' + __dirname + '/check.html');
+  }
 });
 
 function startApp() {
-  // @TODO Tmp dir cleanup
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 }
 
