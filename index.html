@@ -15,14 +15,15 @@
     <div class="container-fluid">
       <div class="row">
         <!-- Left pane -->
-        <div class="col-sm-2">
-          <button id="run">&#9658; Run code</button>
+        <div class="col-sm-2 left">
+          <button id="run" class="btn btn-primary"><i class="glyphicon glyphicon-play"></i> Run code</button>
+          <button id="clear" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Clear</button>
         </div>
         <!-- Right pane -->
         <div class="col-sm-10">
           <!-- Editor container -->
           <div id="editor-container">
-            <div id="editor" class="editor-rounded">&lt;?php
+            <div id="editor" class="rounded">&lt;?php
 </div>
           </div>
         </div>
@@ -31,6 +32,9 @@
       <div class="row">
         <div id="console">
 
+        </div>
+        <div id="status">
+          Done.
         </div>
       </div>
     </div>

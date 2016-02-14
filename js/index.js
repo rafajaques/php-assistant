@@ -31,16 +31,31 @@ function renderApp() {
     fs.writeFileSync(tmp_file, code);
     runCode();
   });
+
+  $("#clear").click(function(){
+    editor.setValue("<?php\n");
+  });
 }
 
 function runCode() {
+
+  setStatus("Running...");
+
   execPhp(tmp_file, php_path, function(err, php, out)
   {
     if (err) {
       return console.log(err);
     }
-
-    $("#console").html(out);
     fs.unlink(tmp_file);
+    setOutput(out);
+    setStatus("Done.")
   });
+}
+
+function setOutput(text) {
+  $("#console").html(text);
+}
+
+function setStatus(text) {
+  $("#status").html(text);
 }
