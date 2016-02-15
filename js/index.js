@@ -1,6 +1,11 @@
 // PHP Exec
 var execPhp = require('exec-php');
 var fs = require('fs');
+
+// Output mode
+var mode = "raw";
+
+// Config stuff
 const Configstore = require('configstore');
 const pkg = require('./package.json');
 const conf = new Configstore(pkg.name)
@@ -23,19 +28,20 @@ function renderApp() {
   $("body").css("visibility", "visible");
 
   // "Run code" button click
-  $("#run").click(function(){
-    code = editor.getValue();
-    tmp_file = __dirname + "/tmpcode"+(count++)
-    fs.writeFileSync(tmp_file, code);
-    runCode();
-  });
+  $("#run").click(runCode); // Invoke runCode()
 
-  $("#clear").click(function(){
-    editor.setValue("<?php\n");
-  });
+  // "Toggle mode" button click
+  $("#toggle-mode").click(toggleMode); // Invoke toggleMode()
+
+  // "Clear" button click
+  $("#clear").click(clear); // Invoke clear()
 }
 
 function runCode() {
+  code = editor.getValue();
+  tmp_file = __dirname + "/tmpcode"+(count++)
+  fs.writeFileSync(tmp_file, code);
+
   setStatus("Running...");
 
   execPhp(tmp_file, php_path, function(err, php, out)
@@ -49,10 +55,34 @@ function runCode() {
   });
 }
 
+function toggleMode() {
+  btn = $("#toggle-mode");
+  btn.toggleClass("btn-primary btn-success");
+  if (mode == "raw") {
+    btn.html("HTML mode");
+    mode = "html";
+    $("#console").css("display", "none");
+    $("#console-html").css("display", "block");
+  } else {
+    btn.html("RAW mode");
+    mode = "raw";
+    $("#console").css("display", "block");
+    $("#console-html").css("display", "none");
+  }
+}
+
+function clear() {
+  editor.setValue("<?php\n");
+}
+
 function setOutput(text) {
-  $("#console").html(text);
+  // Raw version
+  $("#console").html($('<div/>').text(text).html());
+
+  // HTML Version
+  $("#console-html").html(text);
 }
 
 function setStatus(text) {
-  $("#status").html(text);
+  $("#status-message").html(text);
 }

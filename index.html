@@ -30,11 +30,14 @@
       </div>
       <!-- Console output -->
       <div class="row">
-        <div id="console">
+        <!-- Two types of console -->
+        <div id="console" class="console console-raw"></div>
+        <div id="console-html" class="console console-html"></div>
 
-        </div>
-        <div id="status">
-          Done.
+        <!-- Status bar -->
+        <div id="status-bar">
+          <div id="status-message">Done.</div>
+          <div id="status-mode"><button id="toggle-mode" class="btn btn-default btn-xs btn-primary">RAW mode</button></div>
         </div>
       </div>
     </div>
