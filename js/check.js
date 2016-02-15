@@ -61,7 +61,8 @@ function phpFound(path) {
 }
 
 function phpNotFound() {
-  // @TODO Implement
+  // @TODO Implement instructions and possibility to search for PHP binary
+  checkWrite("Not found. Install PHP and try again.");
 }
 
 function checkWrite(text, br) {
