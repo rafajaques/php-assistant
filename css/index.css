@@ -28,8 +28,9 @@ body{
   background-color: #21252B;
   color: #ccc;
   float: left;
+  cursor: default;
 }
-#sidebar span{
+#sidebar span.glyphicon{
   font-size:30px;
   display: block;
   margin-bottom: 10px;
@@ -46,13 +47,15 @@ body{
 #sidebar ul li:hover{
   background-color: #494E57;
 }
-
 #sidebar .mode{
   position: absolute;
   margin-bottom:10px;
   bottom: 0;
   text-align: center;
   width: 100px;
+}
+#toggle-mode{
+  cursor: default;
 }
 
 /**

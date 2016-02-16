@@ -1,15 +1,18 @@
-// PHP Exec
-var execPhp = require('exec-php');
-var fs = require('fs');
+// Imports
+var execPhp = require("exec-php");
+var fs = require("fs");
+var express = require("express")
+var i18n = require("i18n");
 
 // Output mode
 var mode = "raw";
 
 // Config stuff
-const Configstore = require('configstore');
-const pkg = require('./package.json');
+const Configstore = require("configstore");
+const pkg = require("./package.json");
 const conf = new Configstore(pkg.name)
 
+// Editor
 var php_path = conf.get("php_path");
 var editor = ace.edit("editor");
 
@@ -17,6 +20,10 @@ var editor = ace.edit("editor");
 var count = 0;
 var tmp_file;
 
+// Localization (i18n)
+localize();
+
+// Everything setup! Let's render the app!
 renderApp();
 
 function renderApp() {
@@ -38,6 +45,9 @@ function renderApp() {
         editor.resize();
       }
   });
+
+  // Set translations
+  translateInterface();
 
   // "Run code" button click
   $("#sidebar-run").click(runCode); // Invoke runCode()
@@ -74,12 +84,12 @@ function toggleMode() {
   btn = $("#toggle-mode");
   btn.toggleClass("btn-primary btn-success");
   if (mode == "raw") {
-    btn.html("HTML mode");
+    btn.html(i18n.__("HTML mode"));
     mode = "html";
     $("#console").css("display", "none");
     $("#console-html").css("display", "block");
   } else {
-    btn.html("RAW mode");
+    btn.html(i18n.__("RAW mode"));
     mode = "raw";
     $("#console").css("display", "block");
     $("#console-html").css("display", "none");
@@ -104,4 +114,24 @@ function setBusy(set) {
   } else {
     $("#busy").css("visibility", "hidden");
   }
+}
+
+// I've researched a lot and this looked one of the best solutions.
+// Any improvements will be very welcome!
+function translateInterface() {
+  $('*[data-string]').each(function(index) {
+    $(this).html(i18n.__($(this).attr('data-string')));
+  });
+}
+
+function localize() {
+  if (!conf.get("locale"))
+    conf.set("locale", window.navigator.userLanguage || window.navigator.language)
+
+  i18n.configure({
+      locales:["en", "pt-BR", "fr"],
+      directory: __dirname + "/locales"
+  });
+
+  i18n.setLocale(conf.get("locale"));
 }

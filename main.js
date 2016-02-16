@@ -14,7 +14,8 @@ app.on('ready', function() {
   // Creates window
   mainWindow = new BrowserWindow({
       height: 600,
-      width: 800
+      width: 800,
+      icon: __dirname + '/gfx/app-icon.png',
   });
 
   // Check if php_path is already known

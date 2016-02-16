@@ -18,7 +18,15 @@ var win_paths = [
   "C:\\xampp\\php\\php.exe"
 ]
 
+var locale = window.navigator.userLanguage || window.navigator.language;
+
 $(function() {
+
+  // Save locale
+  if (locale)
+    conf.set("locale", locale);
+  else
+    conf.set("locale", "en");
 
   // Check OS
   checkWrite("Detecting system... ",0);
