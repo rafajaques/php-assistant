@@ -1,30 +1,87 @@
+html,body{height:100%;}
 body{
-  margin:10px;
   visibility: hidden;
-  background-color: #444;
+  background-color: #fff;
 }
-#menu{
-  width: 100%;
-  height: 60px;
+#busy{
+  visibility: hidden;
+}
+.loader-inner{
+  position: absolute;
+  top:50%;
+  left:50%;
+  z-index:1000;
+}
+.ball-scale-ripple-multiple > div {
+  background: #494E57;
+}
+/**
+ * Sidebar stuff
+ */
+#sidebar{
+  height:100%;
+  width:100px;
+  background-color: #21252B;
+  color: #ccc;
+  float: left;
+}
+#sidebar span{
+  font-size:30px;
+  display: block;
+  margin-bottom: 10px;
+}
+#sidebar ul{
+  list-style: none;
+  padding:0;
   text-align: center;
 }
-#editor-container{
-  height: 250px;
-  width: 100%;
+#sidebar ul li{
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
 }
-#editor {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    font-size: 18px;
+#sidebar ul li:hover{
+  background-color: #494E57;
+}
+
+#sidebar .mode{
+  position: absolute;
+  margin-bottom:10px;
+  bottom: 0;
+  text-align: center;
+  width: 100px;
+}
+
+/**
+ * Content - The main space
+ */
+#content{
+  height: 100%;
+  margin-left: 100px;
+}
+#my-divider{
+  top:400px;
+}
+#top-component{
+  height:400px;
+}
+#bottom-component{
+  top:400px;
+}
+
+/**
+ * Editor and output
+ */
+#editor{
+  height: 100%;
 }
 .console{
-  width: 100%;
-  height: 250px;
-  overflow:scroll;
-  border-top-left-radius: 10px;
+  /*width: 100%;
+  height: 250px;*/
+  overflow-y: scroll;
+  height:100%;
+  /*border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  margin-top: 20px;
+  margin-top: 20px;*/
 }
 .console-raw{
   padding-left: 10px;
@@ -39,29 +96,34 @@ body{
   display:none;
   background-color: #fff;
 }
-#status-bar{
-  background-color:#ccc;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding: 0 10px;
-  min-height: 32px;
-  padding-top: 5px;
+#status{
+  bottom: 0;
+  position: absolute;
+  padding-left: 5px;
+  width: 100%;
+  border:1px solid red;
 }
-#status-message{
-  width: 45%;
+
+/**
+ * Split pane
+ */
+.gutter {
+ background-color: #eee;
+ background-repeat: no-repeat;
+ background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+ background-image: url('../gfx/grips/vertical.png');
+ cursor: ew-resize;
+}
+
+.gutter.gutter-vertical {
+ background-image: url('../gfx/grips/horizontal.png');
+ cursor: ns-resize;
+}
+
+split, .gutter.gutter-horizontal {
+  height: 100%;
   float: left;
-}
-#status-mode{
-  width: 45%;
-  float: right;
-  text-align: right;
-}
-.rounded{
-  border-radius:10px;
-}
-.left{
-  text-align: center;
-}
-.left button{
-  margin-bottom:10px;
 }

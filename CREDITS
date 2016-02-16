@@ -1,0 +1,21 @@
+CREDITS
+
+This application relies in the work of many.
+To be fair, here are the credits to those who helped me
+getting this application to work.
+
+[Special thanks to]
+germanocorrea
+
+[NPM]
+exec-php https://www.npmjs.com/package/exec-php
+configstore https://www.npmjs.com/package/configstore
+
+[Technologies]
+Atom Electron
+NodeJS
+
+[HTML/CSS/JS]
+Twitter Bootstrap
+Split.js https://github.com/nathancahill/Split.js
+Loaders.css https://github.com/ConnorAtherton/loaders.css

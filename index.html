@@ -7,41 +7,40 @@
     <title>PHP Assistant</title>
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="css/index.css" type="text/css" rel="stylesheet">
+    <link href="css/loader.css" type="text/css" rel="stylesheet">
     <script>window.$ = window.jQuery = require('./js/jquery.js');</script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
   </head>
   <body>
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <!-- Menu -->
+      <ul>
+        <li id="sidebar-run"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Run code</li>
+        <li id="sidebar-clear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear code</li>
+        <li id="sidebar-import"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> Import file</li>
+        <li id="sidebar-settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</li>
+        <li id="sidebar-about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</li>
+        <li id="sidebar-quit"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Quit</li>
+      </ul>
+      <!-- Toggle mode -->
+      <div class="mode"><button id="toggle-mode" class="btn btn-default btn-xs btn-primary">RAW mode</button></div>
+    </div>
+    <div id="content">
+      <div id="editor"></div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <!-- Left pane -->
-        <div class="col-sm-2 left">
-          <button id="run" class="btn btn-primary"><i class="glyphicon glyphicon-play"></i> Run code</button>
-          <button id="clear" class="btn btn-danger"><i class="glyphicon glyphicon-erase"></i> Clear</button>
-        </div>
-        <!-- Right pane -->
-        <div class="col-sm-10">
-          <!-- Editor container -->
-          <div id="editor-container">
-            <div id="editor" class="rounded">&lt;?php
-</div>
-          </div>
-        </div>
-      </div>
       <!-- Console output -->
-      <div class="row">
+      <div id="output">
+        <!-- Busy animation -->
+        <div id="busy" class="loader-inner ball-scale-ripple-multiple"><div></div><div></div><div></div></div>
         <!-- Two types of console -->
         <div id="console" class="console console-raw"></div>
         <div id="console-html" class="console console-html"></div>
-
-        <!-- Status bar -->
-        <div id="status-bar">
-          <div id="status-message">Done.</div>
-          <div id="status-mode"><button id="toggle-mode" class="btn btn-default btn-xs btn-primary">RAW mode</button></div>
-        </div>
       </div>
     </div>
+
   </body>
+  <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/split.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 </html>
