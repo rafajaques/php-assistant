@@ -3,14 +3,25 @@ var fs = require('fs');
 const Configstore = require('configstore');
 const pkg = require('./package.json');
 const conf = new Configstore(pkg.name)
+var os;
 
-var unix_paths = ["/usr/bin/php", "/usr/sbin/php", "/etc/php", "/usr/lib/php", "/usr/share/php"]
+var unix_paths = [
+  "/usr/bin/php",
+  "/usr/sbin/php",
+  "/etc/php",
+  "/usr/lib/php",
+  "/usr/share/php"
+]
+
+var win_paths = [
+  "C:\\php\\php.exe",
+  "C:\\xampp\\php\\php.exe"
+]
 
 $(function() {
 
   // Check OS
   checkWrite("Detecting system... ",0);
-  var os;
 
   if (process.platform == "win32") {
     os = "win";
@@ -31,7 +42,10 @@ $(function() {
     case "osx":
     case "linux":
       checkPhpPath(unix_paths, 0);
-      // @TODO Implement Windows
+      break;
+    case "win":
+      checkPhpPath(win_paths, 0);
+      break;
   }
 
 });
