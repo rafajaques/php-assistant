@@ -19,7 +19,7 @@ app.on('ready', function() {
   });
 
   // Check if php_path is already known
-  if (conf.get("php_path")) {
+  if (conf.get("php.path")) {
     // Yes! I know where PHP is!
     startApp();
   } else {

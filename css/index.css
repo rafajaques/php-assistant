@@ -112,6 +112,17 @@ body{
 }
 
 /**
+ * Settings
+ */
+.modal-body{
+  height: 380px;
+  overflow-y: scroll;
+}
+.tab-pane{
+  padding-top: 20px;
+}
+
+/**
  * Split pane
  */
 .gutter {

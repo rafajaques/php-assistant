@@ -24,9 +24,9 @@ $(function() {
 
   // Save locale
   if (locale)
-    conf.set("locale", locale);
+    conf.set("general.locale", locale);
   else
-    conf.set("locale", "en");
+    conf.set("general.locale", "en");
 
   // Check OS
   checkWrite("Detecting system... ",0);
@@ -75,7 +75,7 @@ function checkPhpPath(list, index) {
 function phpFound(path) {
   checkWrite("Found! ("+path+")", 1);
   checkWrite("Storing data...", 0);
-  conf.set("php_path", path);
+  conf.set("php.path", path);
   checkWrite("Done!",1);
   checkWrite("Starting app...");
   // Wait for 1.5 second, just in the first run
