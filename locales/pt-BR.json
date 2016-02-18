@@ -7,13 +7,13 @@
 	"Quit": "Sair",
 	"RAW mode": "Modo RAW",
 	"HTML mode": "Modo HTML",
-	"General": "General",
+	"Save": "Salvar",
+	"Cancel": "Cancelar",
+	"General": "Geral",
 	"Editor": "Editor",
 	"PHP": "PHP",
-	"Language": "Language",
-	"Font size": "Font size",
-	"Theme": "Theme",
-	"Binary path": "Binary path",
-	"Cancel": "Cancel",
-	"Save": "Save"
+	"Language": "Idioma",
+	"Font size": "Tamanho da fonte",
+	"Binary path": "Caminho para o binário",
+	"Theme": "Tema"
 }

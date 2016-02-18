@@ -6,5 +6,14 @@
 	"About": "À propos",
 	"Quit": "Quitter",
 	"RAW mode": "Mode RAW",
-	"HTML mode": "Mode HTML"
+	"HTML mode": "Mode HTML",
+	"Save": "Sauvegarder",
+	"Cancel": "Annuler",
+	"General": "Général",
+	"Editor": "Éditeur",
+	"PHP": "PHP",
+	"Language": "Langue",
+	"Font size": "Taille de police",
+	"Binary path": "Chemin vers le binaire",
+	"Theme": "Thème"
 }
