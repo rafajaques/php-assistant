@@ -1,10 +1,9 @@
 {
 	"Run code": "Executar",
 	"Clear": "Limpar",
-	"Import file": "Importar arquivo",
+	"Import from file": "Importar do arquivo",
 	"Settings": "Configurações",
 	"About": "Sobre",
-	"Quit": "Sair",
 	"RAW mode": "Modo RAW",
 	"HTML mode": "Modo HTML",
 	"Save": "Salvar",
@@ -15,5 +14,13 @@
 	"Language": "Idioma",
 	"Font size": "Tamanho da fonte",
 	"Binary path": "Caminho para o binário",
-	"Theme": "Tema"
+	"Theme": "Tema",
+	"Error": "Erro",
+	"Could not import from file.": "Não foi possível importar do arquivo.",
+	"An error has ocurred.": "Um erro ocorreu.",
+	"Word Wrapping": "Quebra de linha",
+	"Yes": "Sim",
+	"No": "Não",
+	"Highlight active line": "Destacar linha ativa",
+	"Word wrapping": "Word wrapping"
 }

@@ -1,10 +1,9 @@
 {
 	"Run code": "Exécuter du code",
 	"Clear": "Effacer",
-	"Import file": "Importer un fichier",
+	"Import from file": "Importer depuis un fichier",
 	"Settings": "Réglages",
 	"About": "À propos",
-	"Quit": "Quitter",
 	"RAW mode": "Mode RAW",
 	"HTML mode": "Mode HTML",
 	"Save": "Sauvegarder",
@@ -15,5 +14,13 @@
 	"Language": "Langue",
 	"Font size": "Taille de police",
 	"Binary path": "Chemin vers le binaire",
-	"Theme": "Thème"
+	"Theme": "Thème",
+	"Import from file": "Import from file",
+	"Error": "Error",
+	"Could not import from file.": "Could not import from file.",
+	"An error has ocurred.": "An error has ocurred.",
+	"Word wrapping": "Retour à la ligne",
+	"Yes": "Oui",
+	"No": "Non",
+	"Highlight active line": "Highlight active line"
 }

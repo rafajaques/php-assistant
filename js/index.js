@@ -1,3 +1,5 @@
+'use strict';
+
 // Imports
 var execPhp = require("exec-php");
 var fs = require("fs");
@@ -6,6 +8,9 @@ var i18n = require("i18n");
 
 // Output mode
 var mode = "raw";
+
+// Dialog for importing files
+const dialog = require("remote").dialog;
 
 // Config stuff
 const Configstore = require("configstore");
@@ -17,12 +22,15 @@ const settings_default = {
   // Defaults
   "general.locale": "en",
   "editor.font-size": "16",
-  "editor.theme": "monokai"
+  "editor.theme": "monokai",
+  "editor.wordwrap": "true",
+  "editor.highlight-line": "true"
 }
 
 // Editor
 var php_path = conf.get("php.path");
 var editor = ace.edit("editor");
+editor.$blockScrolling = Infinity
 
 // PHP-exec cache bypass (temporary workaround)
 var count = 0;
@@ -45,6 +53,8 @@ function renderApp(refresh) {
   editor.setShowPrintMargin(false);
   editor.getSession().setMode("ace/mode/php");
   $("#editor").css("font-size", conf.get("editor.font-size") + "px");
+  editor.setHighlightActiveLine($.parseJSON(conf.get("editor.highlight-line")));
+  editor.getSession().setUseWrapMode($.parseJSON(conf.get("editor.wordwrap")));
 
   // Localization (i18n) - Prepare to translate
   localize();
@@ -59,8 +69,8 @@ function renderApp(refresh) {
 
     // Split pane behavior
     Split(['#editor', '#output'], {
-        sizes: [75, 25],
-        direction: 'vertical',
+        "sizes": [75, 25],
+        "direction": "vertical",
         onDragEnd: function() {
           editor.resize();
         }
@@ -70,11 +80,14 @@ function renderApp(refresh) {
     // "Run code" button click
     $("#sidebar-run").click(runCode); // Invoke runCode()
 
-    // "Toggle mode" button click
-    $("#toggle-mode").click(toggleMode); // Invoke toggleMode()
-
     // "Clear" button click
     $("#sidebar-clear").click(clear); // Invoke clear()
+
+    // "Import from file" button click
+    $("#sidebar-import").click(importFromFile); // Invoke toggleMode()
+
+    // "Toggle mode" button click
+    $("#toggle-mode").click(toggleMode); // Invoke toggleMode()
 
     // Settings modal
     // "Save" button click
@@ -84,6 +97,9 @@ function renderApp(refresh) {
     $("body").css("visibility", "visible");
   }
 
+  // Back to the editor...
+  editor.focus();
+
 }
 
 /**
@@ -91,18 +107,20 @@ function renderApp(refresh) {
  */
 // Sends code to PHP
 function runCode() {
-  code = editor.getValue();
-  tmp_file = __dirname + "/tmpcode"+(count++)
-  fs.writeFileSync(tmp_file, code);
-
   setBusy(true);
+  editor.focus();
+
+  var code = editor.getValue();
+  var tmp_file = __dirname + "/tmpcode"+(count++)
+  fs.writeFileSync(tmp_file, code);
 
   execPhp(tmp_file, php_path, function(err, php, out)
   {
-    if (err) {
-      return console.log(err);
-    }
     fs.unlink(tmp_file);
+    if (err) {
+      setBusy(false);
+      return dialog.showErrorBox(i18n.__("Error"), i18n.__("An error has ocurred."));
+    }
     setOutput(out);
     setBusy(false);
   });
@@ -110,7 +128,7 @@ function runCode() {
 
 // Toggle RAW and HTML modes
 function toggleMode() {
-  btn = $("#toggle-mode");
+  var btn = $("#toggle-mode");
   btn.toggleClass("btn-primary btn-success");
   if (mode == "raw") {
     btn.html(i18n.__("HTML mode"));
@@ -123,10 +141,13 @@ function toggleMode() {
     $("#console").css("display", "block");
     $("#console-html").css("display", "none");
   }
+
+  editor.focus();
 }
 
 function clear() {
-  editor.setValue("<?php\n");
+  // 1 = Cursor at the end
+  editor.setValue("<?php\n", 1);
 }
 
 function setOutput(text) {
@@ -135,6 +156,8 @@ function setOutput(text) {
 
   // HTML Version
   $("#console-html").html(text);
+
+  editor.focus();
 }
 
 function setBusy(set) {
@@ -170,12 +193,40 @@ function localize() {
 }
 
 /**
+ * Import from file stuff
+ */
+
+function importFromFile() {
+  var file = dialog.showOpenDialog({
+    "title": i18n.__("Import from file"),
+    "filters": [{
+      "name": 'PHP files',
+      "extensions": ['php', 'phtml', 'tpl', 'ctp']
+    }],
+  });
+
+  if (file) {
+    fs.readFile(file[0], "utf8", importReady);
+  }
+}
+
+function importReady(err, data) {
+  if (err) {
+    return dialog.showErrorBox(i18n.__("Error"), i18n.__("Could not import from file."));
+  }
+
+  // Set value and moves the cursor to the start
+  editor.setValue(data, -1);
+  editor.focus();
+}
+
+/**
  * Settings stuff
  */
 // Reload config on modal open
 $('#settings').on('show.bs.modal', function () {
   // Let's load the options!
-  for (s in settings_default) {
+  for (var s in settings_default) {
     $("*[data-settings='"+s+"']").val(conf.get(s));
   }
 });
@@ -192,7 +243,7 @@ function saveSettings() {
 // Restore settings to default
 function settingsDefault(missing) {
   // missing = only missing options
-  for (s in settings_default) {
+  for (var s in settings_default) {
     // Check if it's not null (to not change things that are not intended to be)
     if ( settings_default[s] && (!missing || !conf.get(s)) ) {
       conf.set(s, settings_default[s]);

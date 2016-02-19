@@ -2,6 +2,7 @@
 
 var app = require('app');
 var BrowserWindow = require('browser-window');
+const dialog = require('dialog');
 
 const Configstore = require('configstore');
 const pkg = require('./package.json');
@@ -14,7 +15,7 @@ app.on('ready', function() {
   // Creates window
   mainWindow = new BrowserWindow({
       height: 600,
-      width: 800,
+      width: 900,
       icon: __dirname + '/gfx/app-icon.png',
   });
 

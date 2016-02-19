@@ -4,7 +4,6 @@
 	"Import file": "Import file",
 	"Settings": "Settings",
 	"About": "About",
-	"Quit": "Quit",
 	"RAW mode": "RAW mode",
 	"HTML mode": "HTML mode",
 	"Save": "Save",
@@ -15,5 +14,13 @@
 	"Language": "Language",
 	"Font size": "Font size",
 	"Binary path": "Binary path",
-	"Theme": "Theme"
+	"Theme": "Theme",
+	"Import from file": "Import from file",
+	"Error": "Error",
+	"Could not import from file.": "Could not import from file.",
+	"An error has ocurred.": "An error has ocurred.",
+	"Word wrapping": "Word wrapping",
+	"Yes": "Yes",
+	"No": "No",
+	"Highlight active line": "Highlight active line"
 }
