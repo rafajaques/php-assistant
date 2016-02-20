@@ -20,7 +20,7 @@
         <li id="sidebar-clear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> <span data-string="Clear"></span></li>
         <li id="sidebar-import"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> <span data-string="Import from file"></span></li>
         <li id="sidebar-settings" data-toggle="modal" data-target="#settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span data-string="Settings"></span></li>
-        <li id="sidebar-about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <span data-string="About"></span></li>
+        <li id="sidebar-about" data-toggle="modal" data-target="#about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <span data-string="About"></span></li>
       </ul>
       <!-- Toggle mode -->
       <div class="mode"><button id="toggle-mode" class="btn btn-default btn-xs btn-primary" data-string="RAW mode"></button></div>
@@ -181,6 +181,27 @@
 
       </div>
     </div>
+    <!-- / Settings Modal -->
+
+    <!-- About Modal -->
+    <div id="about" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="text-center"><img src="./gfx/app-icon.png" height="160"></p>
+            <h2 class="text-center">PHP Assistant <span id="version"></span></h2>
+            <p class="text-center" data-string="This software is free and open source."></p>
+            <p class="text-center"><span data-string="The source is available at"></span> <a href="https://github.com/rafajaques/php-assistant">GitHub</a>.</p>
+            <br>
+            <p class="text-center"><span data-string="Created by Rafael Jaques (rafael@phpit.com.br) with"></span> <a href="http://electron.atom.io/">Electron</a>.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" data-string="Close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / About Modal -->
 
   </body>
   <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>

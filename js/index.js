@@ -3,19 +3,17 @@
 // Imports
 var execPhp = require("exec-php");
 var fs = require("fs");
-var express = require("express")
 var i18n = require("i18n");
+const shell = require('electron').shell;
+const dialog = require("remote").dialog;
 
 // Output mode
 var mode = "raw";
 
-// Dialog for importing files
-const dialog = require("remote").dialog;
-
 // Config stuff
 const Configstore = require("configstore");
-const pkg = require("./package.json");
-const conf = new Configstore(pkg.name)
+const package_info = require('./package.json');
+const conf = new Configstore(package_info.name);
 const settings_default = {
   // php.path doesn't matter, because it's responsability of check.js
   "php.path": null,
@@ -66,6 +64,12 @@ function renderApp(refresh) {
   if (!refresh) {
     // Prepares the editor
     clear();
+
+    // Links to open in OS default
+    preventLinkDefault();
+
+    // Set version on "about" modal
+    $("#version").html(package_info.version);
 
     // Split pane behavior
     Split(['#editor', '#output'], {
@@ -119,7 +123,7 @@ function runCode() {
     fs.unlink(tmp_file);
     if (err) {
       setBusy(false);
-      return dialog.showErrorBox(i18n.__("Error"), i18n.__("An error has ocurred."));
+      return dialog.showErrorBox(i18n.__("Error"), i18n.__("An error has occurred."));
     }
     setOutput(out);
     setBusy(false);
@@ -249,4 +253,14 @@ function settingsDefault(missing) {
       conf.set(s, settings_default[s]);
     }
   }
+}
+
+/**
+ * Prevent link default action
+ */
+function preventLinkDefault() {
+  $("a").click(function(e){
+    e.preventDefault();
+    shell.openExternal($(this).attr("href"));
+  });
 }

@@ -1,7 +1,7 @@
 {
 	"Run code": "Executar",
 	"Clear": "Limpar",
-	"Import from file": "Importar do arquivo",
+	"Import from file": "Import from file",
 	"Settings": "Configurações",
 	"About": "Sobre",
 	"RAW mode": "Modo RAW",
@@ -17,10 +17,13 @@
 	"Theme": "Tema",
 	"Error": "Erro",
 	"Could not import from file.": "Não foi possível importar do arquivo.",
-	"An error has ocurred.": "Um erro ocorreu.",
-	"Word Wrapping": "Quebra de linha",
+	"An error has occurred.": "Um erro ocorreu.",
+	"Word wrapping": "Quebra de linha",
 	"Yes": "Sim",
 	"No": "Não",
 	"Highlight active line": "Destacar linha ativa",
-	"Word wrapping": "Word wrapping"
+	"Close": "Fechar",
+	"This software is free and open source.": "Este software é gratuito e seu código é livre.",
+	"The source is available at": "Código-fonte disponível no",
+	"Created by Rafael Jaques (rafael@phpit.com.br) with": "Criado por Rafael Jaques (rafael@phpit.com.br) com",
 }

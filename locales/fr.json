@@ -15,12 +15,16 @@
 	"Font size": "Taille de police",
 	"Binary path": "Chemin vers le binaire",
 	"Theme": "Thème",
-	"Import from file": "Import from file",
-	"Error": "Error",
-	"Could not import from file.": "Could not import from file.",
-	"An error has ocurred.": "An error has ocurred.",
+	"Import from file": "Importer depuis un fichier",
+	"Error": "Erreur",
+	"Could not import from file.": "Impossible d'importer depuis un fichier.",
+	"An error has occurred.": "An error has occurred.",
 	"Word wrapping": "Retour à la ligne",
 	"Yes": "Oui",
 	"No": "Non",
-	"Highlight active line": "Highlight active line"
+	"Highlight active line": "Ligne active en surbrillance",
+	"Close": "Fermer",
+	"This software is free and open source.": "Ce logiciel est gratuit et open source.",
+	"The source is available at": "La source est disponible au",
+	"Created by Rafael Jaques (rafael@phpit.com.br) with": "Créé par Rafael Jaques (rafael@phpit.com.br) avec"
 }
