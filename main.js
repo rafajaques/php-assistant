@@ -2,12 +2,16 @@
 
 var app = require('app');
 var BrowserWindow = require('browser-window');
+var Tray = require('tray');
+var Menu = require('menu');
 const dialog = require('dialog');
 
 const Configstore = require('configstore');
 const pkg = require('./package.json');
 const conf = new Configstore(pkg.name);
-var php_path;
+
+var appIcon = null;
+const trayIcon = __dirname + '/gfx/tray.png';
 
 var mainWindow = null;
 
@@ -25,23 +29,41 @@ app.on('ready', function() {
     startApp();
   } else {
     // Nope! Go and find it!
-    mainWindow.loadURL('file://' + __dirname + '/check.html');
+    runCheck();
   }
 });
 
 function startApp() {
   mainWindow.loadURL('file://' + __dirname + '/index.html');
+
+  // Set tray icon
+  appIcon = new Tray(trayIcon);
+  // var contextMenu = Menu.buildFromTemplate([
+  //   {
+  //     label: 'Show assistant'
+  //   },
+  //   { label: 'Quit',
+  //     selector: 'terminate:',
+  //   }
+  // ]);
+  appIcon.setToolTip('PHP Assistant');
+  appIcon.on('click', focusBehavior);
+}
+
+function runCheck() {
+  mainWindow.loadURL('file://' + __dirname + '/check.html');
+}
+
+function focusBehavior() {
+  if (!mainWindow.isFocused())
+    mainWindow.show();
+  else
+    mainWindow.hide();
 }
 
 // OS X Bug Fixer
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
     app.quit();
-  }
-});
-
-app.on('activate', function () {
-  if (mainWindow === null) {
-    createWindow();
   }
 });

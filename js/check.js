@@ -1,3 +1,5 @@
+'use strict';
+
 // Configuration check routine
 var fs = require('fs');
 const Configstore = require('configstore');
@@ -43,6 +45,8 @@ $(function() {
     os = "linux";
     checkWrite("Linux",1);
   }
+
+  conf.set("system.os", os);
 
   // Searching for PHP binary
   checkWrite("Trying to find PHP binary... ",0);

@@ -4,7 +4,7 @@
 var execPhp = require("exec-php");
 var fs = require("fs");
 var i18n = require("i18n");
-const shell = require('electron').shell;
+const shell = require("electron").shell;
 const dialog = require("remote").dialog;
 
 // Output mode
@@ -89,6 +89,9 @@ function renderApp(refresh) {
 
     // "Import from file" button click
     $("#sidebar-import").click(importFromFile); // Invoke toggleMode()
+
+    // "Quit" butotn click
+    $("#sidebar-quit").click(quit); // Invoke quit();
 
     // "Toggle mode" button click
     $("#toggle-mode").click(toggleMode); // Invoke toggleMode()
@@ -253,6 +256,13 @@ function settingsDefault(missing) {
       conf.set(s, settings_default[s]);
     }
   }
+}
+
+/**
+ * Quit
+ */
+function quit() {
+  require("remote").app.quit();
 }
 
 /**
