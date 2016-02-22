@@ -1,7 +1,6 @@
 {
 	"Run code": "Executar",
 	"Clear": "Limpar",
-	"Import from file": "Import from file",
 	"Settings": "Configurações",
 	"About": "Sobre",
 	"RAW mode": "Modo RAW",
@@ -15,6 +14,7 @@
 	"Font size": "Tamanho da fonte",
 	"Binary path": "Caminho para o binário",
 	"Theme": "Tema",
+	"Import from file": "Importar do arquivo",
 	"Error": "Erro",
 	"Could not import from file.": "Não foi possível importar do arquivo.",
 	"An error has occurred.": "Um erro ocorreu.",
