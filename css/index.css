@@ -57,6 +57,11 @@ body{
 #toggle-mode{
   cursor: default;
 }
+#sidebar span[data-string]{
+  padding: 2px;
+  display: block;
+  font-size: 13px;
+}
 
 /**
  * Content - The main space
