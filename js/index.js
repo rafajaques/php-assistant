@@ -4,6 +4,7 @@
 var execPhp = require("exec-php");
 var fs = require("fs");
 var i18n = require("i18n");
+var Path = require("path")
 const shell = require("electron").shell;
 const dialog = require("remote").dialog;
 
@@ -12,7 +13,7 @@ var mode = "raw";
 
 // Config stuff
 const Configstore = require("configstore");
-const package_info = require('./package.json');
+const package_info = require(Path.join(__dirname, 'package.json'));
 const conf = new Configstore(package_info.name);
 const settings_default = {
   // php.path doesn't matter, because it's responsability of check.js
@@ -47,7 +48,7 @@ function renderApp(refresh) {
   // @TODO Do a "wait" screen with a progress bar or something
 
   // Render editor
-  editor.setTheme("ace/theme/" + conf.get("editor.theme"));
+  editor.setTheme(Path.join("ace", "theme", conf.get("editor.theme")));
   editor.setShowPrintMargin(false);
   editor.getSession().setMode("ace/mode/php");
   $("#editor").css("font-size", conf.get("editor.font-size") + "px");
@@ -118,7 +119,7 @@ function runCode() {
   editor.focus();
 
   var code = editor.getValue();
-  var tmp_file = __dirname + "/tmpcode"+(count++)
+  var tmp_file = Path.join(__dirname, "tmpcode"+(count++));
   fs.writeFileSync(tmp_file, code);
 
   execPhp(tmp_file, php_path, function(err, php, out)
@@ -193,7 +194,7 @@ function localize() {
 
   i18n.configure({
       locales:["en", "pt-BR", "fr"],
-      directory: __dirname + "/locales"
+      directory: Path.join(__dirname , "locales")
   });
 
   i18n.setLocale(conf.get("general.locale"));

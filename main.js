@@ -1,17 +1,17 @@
 'use strict';
 
-var app = require('app');
-var BrowserWindow = require('browser-window');
-var Tray = require('tray');
-var Menu = require('menu');
-const dialog = require('dialog');
+var app = require("app");
+var BrowserWindow = require("browser-window");
+var Tray = require("tray");
+var Menu = require("menu");
+var Path = require("path")
+const dialog = require("dialog");
 
 const Configstore = require('configstore');
-const pkg = require('./package.json');
+const pkg = require(Path.join(__dirname, 'package.json'));
 const conf = new Configstore(pkg.name);
 
 var appIcon = null;
-const trayIcon = __dirname + '/gfx/tray.png';
 
 var mainWindow = null;
 
@@ -20,7 +20,7 @@ app.on('ready', function() {
   mainWindow = new BrowserWindow({
       height: 600,
       width: 900,
-      icon: __dirname + '/gfx/app-icon.png',
+      icon: Path.join(__dirname, 'gfx', 'app-icon.png'),
   });
 
   // Check if php_path is already known
@@ -34,9 +34,16 @@ app.on('ready', function() {
 });
 
 function startApp() {
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + Path.join(__dirname, 'index.html'));
 
   // Set tray icon
+  var trayIcon = Path.join(__dirname, 'gfx');
+  if (process.platform !== 'darwin') {
+    trayIcon = Path.join(trayIcon, 'tray.png');
+  } else {
+    trayIcon = Path.join(trayIcon, 'tray-black.png');
+  }
+
   appIcon = new Tray(trayIcon);
   // var contextMenu = Menu.buildFromTemplate([
   //   {
@@ -51,7 +58,7 @@ function startApp() {
 }
 
 function runCheck() {
-  mainWindow.loadURL('file://' + __dirname + '/check.html');
+  mainWindow.loadURL('file://' + Path.join(__dirname, 'check.html'));
 }
 
 function focusBehavior() {
