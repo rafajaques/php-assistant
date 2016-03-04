@@ -119,7 +119,7 @@ function runCode() {
   editor.focus();
 
   var code = editor.getValue();
-  var tmp_file = Path.join(__dirname, "tmpcode"+(count++));
+  var tmp_file = Path.join(__dirname, "tmp", "tmpcode"+(count++));
   fs.writeFileSync(tmp_file, code);
 
   execPhp(tmp_file, php_path, function(err, php, out)
@@ -127,6 +127,7 @@ function runCode() {
     fs.unlink(tmp_file);
     if (err) {
       setBusy(false);
+      console.log(err);
       return dialog.showErrorBox(i18n.__("Error"), i18n.__("An error has occurred."));
     }
     setOutput(out);
