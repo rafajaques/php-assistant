@@ -38,11 +38,10 @@ function startApp() {
 
   // Set tray icon
   var trayIcon = Path.join(__dirname, 'gfx');
-  if (process.platform !== 'darwin') {
+  if (process.platform !== 'darwin')
     trayIcon = Path.join(trayIcon, 'tray.png');
-  } else {
+  else
     trayIcon = Path.join(trayIcon, 'tray-black.png');
-  }
 
   appIcon = new Tray(trayIcon);
   // var contextMenu = Menu.buildFromTemplate([

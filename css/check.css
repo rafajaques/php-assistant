@@ -1,6 +1,24 @@
 body{
-  background: #000;
-  color: #fff;
-  font-family: monospace;
-  font-size: 14px;
+  background: #fff;
+  margin-top: 50px;
+}
+#output{
+  margin-top: 30px;
+  font-size: 40px;
+  text-align: center;
+  border-radius: 0;
+  border-left: none;
+}
+#find-or-quit{
+  margin-top:40px;
+  text-align: center;
+  visibility: hidden;
+}
+#find-or-quit div{
+  margin-bottom: 10px;
+}
+#type-input{
+  width: 500px;
+  margin: 0 auto;
+  display: none;
 }

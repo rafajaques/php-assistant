@@ -89,7 +89,7 @@ function renderApp(refresh) {
     $("#sidebar-clear").click(clear); // Invoke clear()
 
     // "Import from file" button click
-    $("#sidebar-import").click(importFromFile); // Invoke toggleMode()
+    $("#sidebar-import").click(importFromFile); // Invoke importFromFile()
 
     // "Quit" butotn click
     $("#sidebar-quit").click(quit); // Invoke quit();

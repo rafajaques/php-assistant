@@ -3,12 +3,37 @@
   <head>
     <meta charset="UTF-8">
     <title>PHP Assistant: First run check...</title>
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="css/check.css" type="text/css" rel="stylesheet">
     <script>window.$ = window.jQuery = require('./js/jquery.js');</script>
     <script src="js/check.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    First run...
-    <br>
+    <div>
+      <p class="text-center"><img src="./gfx/app-icon.png" height="160"></p>
+    </div>
+    <div id="output" class="alert alert-danger">
+      Preparing to start app for the first time...
+    </div>
+    <div id="find-or-quit">
+      <!-- Browse button-->
+      <div><button id="browse" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i> &nbsp;Browse to PHP binary</button></div>
+
+      <!-- Type button -->
+      <div><button id="type" class="btn btn-lg btn-info"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i> &nbsp;Type PHP binary location</button></div>
+      <div class="row" id="type-input">
+        <div class="col-lg-6">
+          <form><div class="input-group input-group-lg">
+            <input id="path" type="text" placeholder="Type PHP binary location" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-success" id="type-done">Done</button>
+            </span>
+          </div></form>
+        </div>
+      </div>
+
+      <!-- Quit button -->
+      <div><button id="quit" class="btn btn-lg btn-default"><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i> Quit</button></div>
+    </div>
   </body>
 </html>

@@ -4,7 +4,8 @@
 var fs = require('fs');
 const Configstore = require('configstore');
 const pkg = require('./package.json');
-const conf = new Configstore(pkg.name)
+const conf = new Configstore(pkg.name);
+const dialog = require("remote").dialog;
 var os;
 
 var unix_paths = [
@@ -13,17 +14,23 @@ var unix_paths = [
   "/etc/php",
   "/usr/lib/php",
   "/usr/share/php"
-]
+];
 
 var win_paths = [
   "C:\\php\\php.exe",
   "C:\\xampp\\php\\php.exe"
-]
+];
 
 var locale = window.navigator.userLanguage || window.navigator.language;
 
 $(function() {
+  // Buttons actions
+  $("#browse").click(browse); // Invoke browse();
+  $("#type").click(type); // Invoke type();
+  $("#type-done").click(typeDone); // Invoke typeDone();
+  $("#quit").click(function(){ require("remote").app.quit(); });
 
+  // Startup routines
   // Save locale
   if (locale)
     conf.set("general.locale", locale);
@@ -31,25 +38,25 @@ $(function() {
     conf.set("general.locale", "en");
 
   // Check OS
-  checkWrite("Detecting system... ",0);
+  console.log("Detecting system... ");
 
   if (process.platform == "win32") {
     os = "win";
-    checkWrite("Windows",1);
+    console.log("Windows");
   }
   else if (process.platform == 'darwin') {
     os = "osx";
-    checkWrite("Mac OSX",1);
+    console.log("Mac OSX");
   }
   else {
     os = "linux";
-    checkWrite("Linux",1);
+    console.log("Linux");
   }
 
   conf.set("system.os", os);
 
   // Searching for PHP binary
-  checkWrite("Trying to find PHP binary... ",0);
+  console.log("Trying to find PHP binary... ");
   switch (os) {
     case "osx":
     case "linux":
@@ -77,23 +84,58 @@ function checkPhpPath(list, index) {
 }
 
 function phpFound(path) {
-  checkWrite("Found! ("+path+")", 1);
-  checkWrite("Storing data...", 0);
+  $("#output").toggleClass("alert-danger alert-success");
+  console.log("Found! ("+path+")");
+  console.log("Storing data...");
   conf.set("php.path", path);
-  checkWrite("Done!",1);
-  checkWrite("Starting app...");
-  // Wait for 1.5 second, just in the first run
-  setTimeout('window.location = "index.html"', 1500);
+  console.log("Done!");
+  console.log("Starting app...");
+
+  checkWrite("PHP binary found! ("+path+")<br>Starting app...");
+  // Wait for 2 seconds, just in the first run
+  setTimeout('window.location = "index.html"', 2000);
 }
 
 function phpNotFound() {
-  // @TODO Implement instructions and possibility to search for PHP binary
-  checkWrite("Not found. Install PHP and try again.");
+  console.log("Not found. Install PHP and try again.");
+
+  checkWrite("Could not find PHP binary!");
+  phpSearchOptions(true);
 }
 
-function checkWrite(text, br) {
-  if (br)
-    $("body").append(text + "<br>");
+function checkWrite(text) {
+    $("#output").html(text);
+}
+
+function browse() {
+  var file = dialog.showOpenDialog({
+    "title": "Find PHP binary"
+  });
+
+  if (file) {
+    phpSearchOptions(false);
+    phpFound(file);
+  }
+}
+
+function type() {
+  $("#type").css("display", "none");
+  $("#type-input").css("display", "block");
+  $("form").on("submit", function() { return false; }); // Prevents form default
+  $("#path").focus();
+}
+
+function typeDone() {
+  var tPath = $("#path").val();
+  if (fs.lstatSync(tPath).isFile())
+    phpFound(tPath);
   else
-    $("body").append(text);
+    $("#output").html("Oops! Invalid binary or the file doesn't exists.");
+}
+
+function phpSearchOptions(show) {
+  if (show)
+    $("#find-or-quit").css("visibility", "visible");
+  else
+    $("#find-or-quit").css("visibility", "hidden");
 }
