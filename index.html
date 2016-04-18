@@ -12,6 +12,9 @@
   </head>
   <body>
 
+    <!-- Pre-release warning -->
+    <div style="color:#f00;background-color:#fff;font-weight:bold;position:fixed;right:0;bottom:0;z-index:1000;padding:5px;border-top-left-radius:5px;opacity:0.4">Pre-release</div>
+
     <!-- Sidebar -->
     <div id="sidebar">
       <!-- Menu -->
@@ -77,6 +80,19 @@
                       </select>
                     </div>
                   </div>
+
+                  <!-- Mode -->
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Mode"></label>
+                    <div class="col-sm-9">
+                      <select class="form-control" data-settings="general.mode">
+						<option value="regular" data-string="Regular application"></option>
+                        <option value="tray" data-string="Tray only"></option>
+                        <option value="both" data-string="Regular + Tray"></option>
+                      </select>
+                    </div>
+                  </div>
+
                 </form>
               </div>
 

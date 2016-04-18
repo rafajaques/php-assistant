@@ -18,9 +18,10 @@ var mainWindow = null;
 app.on('ready', function() {
   // Creates window
   mainWindow = new BrowserWindow({
-      height: 600,
-      width: 900,
-      icon: Path.join(__dirname, 'gfx', 'app-icon.png'),
+      "height": 600,
+      "width": 900,
+      "icon": Path.join(__dirname, "gfx", "app-icon.png"),
+      "skip-taskbar": conf.get("general.mode") == "tray" ? true : false
   });
 
   // Check if php_path is already known
@@ -31,29 +32,46 @@ app.on('ready', function() {
     // Nope! Go and find it!
     runCheck();
   }
+
 });
 
 function startApp() {
-  mainWindow.loadURL('file://' + Path.join(__dirname, 'index.html'));
+  // Loading main HTML
+  mainWindow.loadURL("file://" + Path.join(__dirname, 'index.html'));
 
+  // Checks app mode (regular, tray, both)
+  var mode = conf.get("general.mode");
+  if (!mode) mode = "both"
+
+  switch (mode) {
+    case "both":
+      createTrayIcon();
+      break;
+    case "tray":
+      createTrayIcon();
+      hideAppIcon();
+      break;
+  }
+}
+
+function createTrayIcon() {
   // Set tray icon
-  var trayIcon = Path.join(__dirname, 'gfx');
-  if (process.platform !== 'darwin')
-    trayIcon = Path.join(trayIcon, 'tray.png');
+  var trayIcon = Path.join(__dirname, "gfx");
+  if (process.platform !== "darwin")
+    trayIcon = Path.join(trayIcon, "tray.png");
   else
-    trayIcon = Path.join(trayIcon, 'tray-black.png');
+    trayIcon = Path.join(trayIcon, "tray-black.png");
 
   appIcon = new Tray(trayIcon);
-  // var contextMenu = Menu.buildFromTemplate([
-  //   {
-  //     label: 'Show assistant'
-  //   },
-  //   { label: 'Quit',
-  //     selector: 'terminate:',
-  //   }
-  // ]);
-  appIcon.setToolTip('PHP Assistant');
-  appIcon.on('click', focusBehavior);
+
+  appIcon.setToolTip("PHP Assistant");
+  appIcon.on("click", focusBehavior);
+}
+
+// Hides app from taskbar/dock
+function hideAppIcon() {
+  if (app.dock)
+    app.dock.hide();
 }
 
 function runCheck() {

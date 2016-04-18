@@ -20,6 +20,7 @@ const settings_default = {
   "php.path": null,
   // Defaults
   "general.locale": "en",
+  "general.mode": "both",
   "editor.font-size": "16",
   "editor.theme": "monokai",
   "editor.wordwrap": "true",
@@ -48,7 +49,7 @@ function renderApp(refresh) {
   // @TODO Do a "wait" screen with a progress bar or something
 
   // Render editor
-  editor.setTheme(Path.join("ace", "theme", conf.get("editor.theme")));
+  editor.setTheme("ace/theme/" + conf.get("editor.theme")); // This is not a path
   editor.setShowPrintMargin(false);
   editor.getSession().setMode("ace/mode/php");
   $("#editor").css("font-size", conf.get("editor.font-size") + "px");
