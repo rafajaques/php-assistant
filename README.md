@@ -1,5 +1,5 @@
 <p align="center">
-![PHP Assistant Logo](https://raw.githubusercontent.com/rafajaques/php-assistant/master/gfx/readme/logo.png)
+  <img src="https://raw.githubusercontent.com/rafajaques/php-assistant/master/gfx/readme/logo.png" alt="PHP Assistant Logo"/>
 </p>
 
 PHP Assistant is a cross-platform desktop app for testing PHP snippets.
@@ -7,7 +7,7 @@ Built with Electron, Node.js and HTML5/CSS/JS.
 The main goal is to have a simple app to test small pieces of code without having to search for a sandbox, creating a file or opening the terminal.
 
 <p align="center">
-![ScreenShot](https://raw.githubusercontent.com/rafajaques/php-assistant/master/gfx/readme/screenshot.png)
+  <img src="https://raw.githubusercontent.com/rafajaques/php-assistant/master/gfx/readme/screenshot.png" alt="ScreenShot"/>
 </p>
 
 ## Download
