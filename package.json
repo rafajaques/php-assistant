@@ -1,6 +1,6 @@
 {
   "name": "php-assistant",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "main.js",
   "description": "A cross-platform desktop PHP runner",
   "author": "Rafael Jaques <rafael@phpit.com.br>",
