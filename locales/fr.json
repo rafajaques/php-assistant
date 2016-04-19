@@ -30,5 +30,6 @@
 	"Mode": "Mode",
 	"Regular application": "Application normale",
 	"Tray only": "Seulement tray",
-	"Regular + Tray": "Normale + Tray"
+	"Regular + Tray": "Normale + Tray",
+	"Requires restart": "Redémarrage requis"
 }
