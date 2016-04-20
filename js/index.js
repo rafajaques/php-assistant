@@ -3,10 +3,11 @@
 // Imports
 var execPhp = require("exec-php");
 var fs = require("fs");
-var i18n = require("i18n");
+var remote = require('electron').remote;
 var Path = require("path")
+var i18n = remote.getGlobal('i18n');
 const shell = require("electron").shell;
-const dialog = require("remote").dialog;
+const dialog = remote.dialog;
 
 // Output mode
 var mode = "raw";
@@ -30,7 +31,9 @@ const settings_default = {
 // Editor
 var php_path = conf.get("php.path");
 var editor = ace.edit("editor");
-editor.$blockScrolling = Infinity
+editor.$blockScrolling = Infinity;
+// Prevents ACE bindings
+editor.keyBinding.setDefaultHandler(null);
 
 // PHP-exec cache bypass (temporary workaround)
 var count = 0;
@@ -56,10 +59,9 @@ function renderApp(refresh) {
   editor.setHighlightActiveLine($.parseJSON(conf.get("editor.highlight-line")));
   editor.getSession().setUseWrapMode($.parseJSON(conf.get("editor.wordwrap")));
 
-  // Localization (i18n) - Prepare to translate
-  localize();
-
   // Set translations
+  if (refresh)
+    i18n.setLocale(conf.get("general.locale")); // Set new locale
   translateInterface();
 
   // First run
@@ -187,19 +189,6 @@ function translateInterface() {
   $('*[data-string]').each(function(index) {
     $(this).html(i18n.__($(this).attr('data-string')));
   });
-}
-
-// Get translations
-function localize() {
-  if (!conf.get("general.locale"))
-    conf.set("general.locale", window.navigator.userLanguage || window.navigator.language)
-
-  i18n.configure({
-      locales:["en", "pt-BR", "fr"],
-      directory: Path.join(__dirname , "locales")
-  });
-
-  i18n.setLocale(conf.get("general.locale"));
 }
 
 /**
