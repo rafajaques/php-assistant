@@ -53,5 +53,15 @@
 	"Bring All to Front": "Trazer todas para frente",
 	"Toggle mode": "Alternar modo",
 	"Preferences": "Preferências",
-	"Actions": "Ações"
+	"Actions": "Ações",
+	"PHP binary found!": "Binário do PHP encontrado!",
+	"Starting app...": "Inicializando aplicação...",
+	"PHP Assistant: First run check...": "PHP Assistant: Checagem da primeira inicialização...",
+	"Preparing to start app for the first time...": "Preparando para inicializar aplicação pela primeira vez...",
+	"Type PHP binary location": "Digite a localização do binário do PHP",
+	"Browse to PHP binary": "Navegar até o binário do PHP",
+	"Done": "Pronto",
+	"Could not find PHP binary!": "Não foi possível encontrar o binário do PHP!",
+	"Find PHP binary": "Encontrar binário do PHP",
+	"Oops! Invalid binary or the file doesn't exists.": "Ops! Binário inválido ou o arquivo não existe."
 }

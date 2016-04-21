@@ -21,8 +21,6 @@ var win_paths = [
   "C:\\xampp\\php\\php.exe"
 ];
 
-var locale = window.navigator.userLanguage || window.navigator.language;
-
 $(function() {
   // Buttons actions
   $("#browse").click(browse); // Invoke browse();
@@ -31,11 +29,9 @@ $(function() {
   $("#quit").click(function(){ require("remote").app.quit(); });
 
   // Startup routines
-  // Save locale
-  if (locale)
-    conf.set("general.locale", locale);
-  else
-    conf.set("general.locale", "en");
+
+  // Translate interface
+  translateInterface();
 
   // Check OS
   console.log("Detecting system... ");
@@ -91,7 +87,7 @@ function phpFound(path) {
   console.log("Done!");
   console.log("Starting app...");
 
-  checkWrite("PHP binary found! ("+path+")<br>Starting app...");
+  checkWrite(i18n.__("PHP binary found!") + " ("+path+")<br>"+i18n.__("Starting app..."));
   // Wait for 2 seconds, just in the first run
   setTimeout('window.location = "index.html"', 2000);
 }
@@ -99,7 +95,7 @@ function phpFound(path) {
 function phpNotFound() {
   console.log("Not found. Install PHP and try again.");
 
-  checkWrite("Could not find PHP binary!");
+  checkWrite(i18n.__("Could not find PHP binary!"));
   phpSearchOptions(true);
 }
 
@@ -109,7 +105,7 @@ function checkWrite(text) {
 
 function browse() {
   var file = dialog.showOpenDialog({
-    "title": "Find PHP binary"
+    "title": i18n.__("Find PHP binary")
   });
 
   if (file) {
@@ -130,7 +126,7 @@ function typeDone() {
   if (fs.lstatSync(tPath).isFile())
     phpFound(tPath);
   else
-    $("#output").html("Oops! Invalid binary or the file doesn't exists.");
+    $("#output").html(i18n.__("Oops! Invalid binary or the file doesn't exists."));
 }
 
 function phpSearchOptions(show) {

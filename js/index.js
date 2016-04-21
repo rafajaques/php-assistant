@@ -5,7 +5,6 @@ var execPhp = require("exec-php");
 var fs = require("fs");
 var remote = require('electron').remote;
 var Path = require("path")
-var i18n = remote.getGlobal('i18n');
 const shell = require("electron").shell;
 const dialog = remote.dialog;
 
@@ -178,17 +177,6 @@ function setBusy(set) {
   } else {
     $("#busy").css("visibility", "hidden");
   }
-}
-
-/**
- * Translation stuff
- */
-// I've researched a lot and this looked one of the best solutions.
-// Any improvements will be very welcome!
-function translateInterface() {
-  $('*[data-string]').each(function(index) {
-    $(this).html(i18n.__($(this).attr('data-string')));
-  });
 }
 
 /**

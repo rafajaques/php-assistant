@@ -25,6 +25,9 @@ app.on('ready', function() {
   // Localize (prepares i18n)
   localize();
 
+  // Set menu
+  createMenu();
+
   // Creates window
   mainWindow = new BrowserWindow({
       "title": appName,
@@ -38,7 +41,6 @@ app.on('ready', function() {
   if (conf.get("php.path")) {
     // Yes! I know where PHP is!
     startApp();
-    createMenu();
   } else {
     // Nope! Go and find it!
     runCheck();
@@ -92,7 +94,7 @@ function runCheck() {
 // Get translations
 function localize() {
   if (!conf.get("general.locale"))
-    conf.set("general.locale", window.navigator.userLanguage || window.navigator.language)
+    conf.set("general.locale", app.getLocale());
 
   i18n.configure({
       locales:["en", "pt-BR", "fr"],
