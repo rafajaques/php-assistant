@@ -125,15 +125,10 @@ function runCode() {
   var tmp_file = Path.join(__dirname, "tmp", "tmpcode"+(count++));
   fs.writeFileSync(tmp_file, code);
 
-  runner.exec(php_path + " -d'error_reporting=E_ALL' -d'display_errors=On' '" + tmp_file + "'", function(err, phpResponse, stderr) {
+  runner.exec(php_path + ' -d"error_reporting=E_ALL" -d"display_errors=On" "' + tmp_file + '"', function(err, phpResponse, stderr) {
     fs.unlink(tmp_file);
-    if (err) {
-      setBusy(false);
-      // User doesn't need to know where the file is
-      setOutput(phpResponse.replace(' in ' + tmp_file, ''));
-      return false;
-    }
-    setOutput(phpResponse);
+    // User doesn't need to know where the file is
+    setOutput(phpResponse.replace(' in ' + tmp_file, ''));
     setBusy(false);
   });
 }
