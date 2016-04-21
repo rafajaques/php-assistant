@@ -1,0 +1,6 @@
+{
+  "name": "PHP Assistant",
+  "tagline": "A cross-platform desktop app for testing PHP snippets",
+  "body": "<p align=\"center\">\r\n  <img src=\"https://raw.githubusercontent.com/rafajaques/php-assistant/master/gfx/readme/logo.png\" alt=\"PHP Assistant Logo\"/>\r\n</p>\r\n\r\nPHP Assistant is a cross-platform desktop app for testing PHP snippets.\r\nBuilt with Electron, Node.js and HTML5/CSS/JS.\r\nThe main goal is to have a simple app to test small pieces of code without having to search for a sandbox, creating a file or opening the terminal.\r\n\r\n<p align=\"center\">\r\n  <img src=\"https://raw.githubusercontent.com/rafajaques/php-assistant/master/gfx/readme/screenshot.png\" alt=\"ScreenShot\"/>\r\n</p>\r\n\r\n## Download\r\n\r\nGet the most recent release at [releases](https://github.com/rafajaques/php-assistant/releases).\r\n\r\n## Issues\r\n\r\nIf you have any problems with the app or if you have any suggestions, just open an [issue](https://github.com/rafajaques/php-assistant/issues).\r\n\r\n## Translation\r\n\r\nSo far, I have the app in English, Brazilian Portuguese and French. Any help to translate is appreciated.\r\n\r\n## Author\r\n\r\nFeel free to text me on Twitter: [@rafajaques](https://twitter.com/rafajaques)\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
