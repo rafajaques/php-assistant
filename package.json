@@ -1,6 +1,6 @@
 {
   "name": "php-assistant",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "main.js",
   "description": "A cross-platform desktop PHP runner",
   "author": "Rafael Jaques <rafael@phpit.com.br>",
@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "configstore": "*",
-    "exec-php": "*",
     "express": "^4.13.4",
     "i18n": "^0.7.0"
   },

@@ -1,12 +1,14 @@
 'use strict';
 
 // Imports
-var execPhp = require("exec-php");
 var fs = require("fs");
 var remote = require('electron').remote;
 var Path = require("path")
 const shell = require("electron").shell;
 const dialog = remote.dialog;
+
+// ######
+var runner = require("child_process");
 
 // Output mode
 var mode = "raw";
@@ -31,8 +33,7 @@ const settings_default = {
 var php_path = conf.get("php.path");
 var editor = ace.edit("editor");
 editor.$blockScrolling = Infinity;
-// Prevents ACE bindings
-editor.keyBinding.setDefaultHandler(null);
+editor.commands.removeCommand("showSettingsMenu"); // Prevents ACE bindings at Cmd + ,
 
 // PHP-exec cache bypass (temporary workaround)
 var count = 0;
@@ -124,15 +125,15 @@ function runCode() {
   var tmp_file = Path.join(__dirname, "tmp", "tmpcode"+(count++));
   fs.writeFileSync(tmp_file, code);
 
-  execPhp(tmp_file, php_path, function(err, php, out)
-  {
+  runner.exec(php_path + " -d'error_reporting=E_ALL' -d'display_errors=On' '" + tmp_file + "'", function(err, phpResponse, stderr) {
     fs.unlink(tmp_file);
     if (err) {
       setBusy(false);
-      setOutput("Debug: " + err);
-      return dialog.showErrorBox(i18n.__("Error"), i18n.__("An error has occurred."));
+      // User doesn't need to know where the file is
+      setOutput(phpResponse.replace(' in ' + tmp_file, ''));
+      return false;
     }
-    setOutput(out);
+    setOutput(phpResponse);
     setBusy(false);
   });
 }

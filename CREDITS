@@ -8,7 +8,6 @@ getting this application to work.
 germanocorrea
 
 [NPM]
-exec-php https://www.npmjs.com/package/exec-php
 configstore https://www.npmjs.com/package/configstore
 i18n-node https://www.npmjs.com/package/i18n-node
 
