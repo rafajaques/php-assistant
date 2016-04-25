@@ -5,6 +5,7 @@ var fs = require("fs");
 var remote = require("electron").remote;
 var Path = require("path")
 var runner = require("child_process");
+const ipc = require('electron').ipcRenderer;
 const shell = require("electron").shell;
 const dialog = remote.dialog;
 
@@ -240,7 +241,7 @@ function settingsDefault(missing) {
  * Quit
  */
 function quit() {
-  require("remote").app.quit();
+  ipc.send("asynchronous-message", "force-quit");
 }
 
 /**

@@ -6,6 +6,8 @@ var Tray = require("tray");
 var Menu = require("menu");
 var Path = require("path");
 var BrowserWindow = require("browser-window");
+var shortcuts = require("global-shortcut");
+const ipc = require('electron').ipcMain;
 const dialog = require("dialog");
 
 // Config stuff
@@ -21,6 +23,12 @@ var mainWindow = null;
 // Translation
 global.i18n = require("i18n");
 
+// Force quit variable (quitting  deppends on app mode)
+var forceQuit = false;
+
+/**
+ * Starting app
+ */
 app.on('ready', function() {
   // Localize (prepares i18n)
   localize();
@@ -35,6 +43,18 @@ app.on('ready', function() {
       "width": 900,
       "icon": Path.join(__dirname, "gfx", "app-icon.png"),
       "skipTaskbar": conf.get("general.mode") == "tray" ? true : false
+  });
+
+  // Close behavior
+  mainWindow.on('close', function(e) {
+    // Clicking "X" should quit application only in "regular" mode
+    if (conf.get("general.mode") == "regular") {
+      app.quit();
+    } else {
+      if (!forceQuit)
+        e.preventDefault();
+      this.hide();
+    }
   });
 
   // Check if php_path is already known
@@ -87,10 +107,42 @@ function hideAppIcon() {
     app.dock.hide();
 }
 
+// Behavior when clicking tray icon
+function focusBehavior() {
+  if (!mainWindow.isFocused())
+    mainWindow.show();
+  else
+    mainWindow.hide();
+}
+
+// Runs JS code on window main window
+function runOnApp(func) {
+  mainWindow.webContents.executeJavaScript(func);
+}
+
+// First run check
 function runCheck() {
   mainWindow.loadURL('file://' + Path.join(__dirname, 'check.html'));
 }
 
+/**
+ * Quitting app
+ */
+// Force quit behavior
+ipc.on('asynchronous-message', function(event, arg) {
+  if (arg == "force-quit")
+    terminateApp();
+});
+
+// Forces the quit
+function terminateApp() {
+  forceQuit = true;
+  app.quit();
+}
+
+/**
+ * Localization
+ */
 // Get translations
 function localize() {
   if (!conf.get("general.locale"))
@@ -104,24 +156,9 @@ function localize() {
   i18n.setLocale(conf.get("general.locale"));
 }
 
-function focusBehavior() {
-  if (!mainWindow.isFocused())
-    mainWindow.show();
-  else
-    mainWindow.hide();
-}
-
-// OS X Bug Fixer
-app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
-
-// Runs JS code on window
-function runOnApp(func) {
-  mainWindow.webContents.executeJavaScript(func);
-}
+/**
+ * Menu... A long, long menu...
+ */
 
 // Creates app menu
 function createMenu() {
