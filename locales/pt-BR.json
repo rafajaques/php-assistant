@@ -63,5 +63,6 @@
 	"Done": "Pronto",
 	"Could not find PHP binary!": "Não foi possível encontrar o binário do PHP!",
 	"Find PHP binary": "Encontrar binário do PHP",
-	"Oops! Invalid binary or the file doesn't exists.": "Ops! Binário inválido ou o arquivo não existe."
+	"Oops! Invalid binary or the file doesn't exists.": "Ops! Binário inválido ou o arquivo não existe.",
+	"Auto run code": "Executar código automaticamente"
 }

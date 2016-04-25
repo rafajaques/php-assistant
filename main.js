@@ -34,7 +34,7 @@ app.on('ready', function() {
       "height": 600,
       "width": 900,
       "icon": Path.join(__dirname, "gfx", "app-icon.png"),
-      "skip-taskbar": conf.get("general.mode") == "tray" ? true : false
+      "skipTaskbar": conf.get("general.mode") == "tray" ? true : false
   });
 
   // Check if php_path is already known

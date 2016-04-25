@@ -2,13 +2,14 @@
 
 // Imports
 var fs = require("fs");
-var remote = require('electron').remote;
+var remote = require("electron").remote;
 var Path = require("path")
+var runner = require("child_process");
 const shell = require("electron").shell;
 const dialog = remote.dialog;
 
-// ######
-var runner = require("child_process");
+// Need a dev tools? :)
+// require('remote').getCurrentWindow().toggleDevTools();
 
 // Output mode
 var mode = "raw";
@@ -23,6 +24,7 @@ const settings_default = {
   // Defaults
   "general.locale": "en",
   "general.mode": "both",
+  "general.autorun": "false",
   "editor.font-size": "16",
   "editor.theme": "monokai",
   "editor.wordwrap": "true",
