@@ -1,0 +1,36 @@
+#presentation-sidebar:hover{
+  width: 38px;
+  overflow: visible;
+}
+
+#presentation-sidebar{
+  background: #6A7073;
+  position: absolute;
+  padding: 10px;
+  top: 40px;
+  height: 320px;
+  right:0;
+  width:0;
+  overflow: hidden;
+  transition: width .3s linear;
+  z-index: 100;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+#presentation-sidebar span.glyphicon{
+  font-size:20px;
+  display: block;
+  margin-bottom: 10px;
+}
+#presentation-sidebar ul{
+  list-style: none;
+  padding:0;
+  /*text-align: center;*/
+}
+#presentation-sidebar ul li{
+  padding: 10px 0;
+}
+#presentation-sidebar ul li:hover{
+  color: #494E57;
+}

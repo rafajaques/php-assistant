@@ -7,6 +7,7 @@
     <title>PHP Assistant</title>
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="css/index.css" type="text/css" rel="stylesheet">
+    <link href="css/presentation.css" type="text/css" rel="stylesheet">
     <link href="css/loader.css" type="text/css" rel="stylesheet">
     <script>window.$ = window.jQuery = require('./js/jquery.js');</script>
   </head>
@@ -19,12 +20,13 @@
     <div id="sidebar">
       <!-- Menu -->
       <ul>
-        <li id="sidebar-run"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> <span data-string="Run code"></span></li>
-        <li id="sidebar-clear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> <span data-string="Clear"></span></li>
-        <li id="sidebar-import"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> <span data-string="Import from file"></span></li>
-        <li id="sidebar-settings" data-toggle="modal" data-target="#settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span data-string="Settings"></span></li>
-        <li id="sidebar-about" data-toggle="modal" data-target="#about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <span data-string="About"></span></li>
-        <li id="sidebar-quit"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> <span data-string="Quit"></span></li>
+        <li data-event="sidebar-run"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> <span data-string="Run code"></span></li>
+        <li data-event="sidebar-clear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> <span data-string="Clear"></span></li>
+        <li data-event="sidebar-import"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> <span data-string="Import from file"></span></li>
+        <li data-event="sidebar-presentation" data-toggle="modal" data-target="#presentation"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> <span data-string="Presentation mode"></span></li>
+        <li data-event="sidebar-settings" data-toggle="modal" data-target="#settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span data-string="Settings"></span></li>
+        <li data-event="sidebar-about" data-toggle="modal" data-target="#about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <span data-string="About"></span></li>
+        <li data-event="sidebar-quit"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> <span data-string="Quit"></span></li>
       </ul>
       <!-- Toggle mode -->
       <div class="mode"><button id="toggle-mode" class="btn btn-default btn-xs btn-primary" data-string="RAW mode"></button></div>
@@ -41,6 +43,18 @@
         <div id="console-html" class="console console-html"></div>
       </div>
     </div>
+
+    <!-- Presentation sidebar -->
+    <nav id="presentation-sidebar">
+      <ul>
+        <li data-event="sidebar-run"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> </li>
+        <li data-event="sidebar-clear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> </li>
+        <li data-event="sidebar-import"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> </li>
+        <li data-event="sidebar-settings" data-toggle="modal" data-target="#settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> </li>
+        <li data-event="sidebar-fullscreen"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span></li>
+        <li data-event="sidebar-presentation-off"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> </li>
+      </ul>
+    </nav>
 
     <!-- Settings Modal -->
     <div id="settings" class="modal fade" role="dialog">
@@ -232,11 +246,28 @@
     </div>
     <!-- / About Modal -->
 
+    <!-- Presentation Mode Modal -->
+    <div id="presentation" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button onclick="presentationSingle();">Single</button>
+            <button onclick="presentationMulti();">Multi</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" data-string="Close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / About Modal -->
+
   </body>
   <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/split.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/translate.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/presentation.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/autorun.js" type="text/javascript" charset="utf-8"></script>
 </html>

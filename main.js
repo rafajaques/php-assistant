@@ -39,8 +39,9 @@ app.on('ready', function() {
   // Creates window
   mainWindow = new BrowserWindow({
       "title": appName,
-      "height": 600,
+      "height": 700,
       "width": 900,
+      "center": true,
       "icon": Path.join(__dirname, "gfx", "app-icon.png"),
       "skipTaskbar": conf.get("general.mode") == "tray" ? true : false
   });

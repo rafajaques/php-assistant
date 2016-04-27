@@ -79,6 +79,9 @@ body{
 #bottom-component{
   top:400px;
 }
+#content.full{
+  margin-left:0;
+}
 
 /**
  * Editor and output

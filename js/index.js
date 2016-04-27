@@ -89,19 +89,23 @@ function renderApp(refresh) {
 
     // Sidebar
     // "Run code" button click
-    $("#sidebar-run").click(runCode); // Invoke runCode()
+    $("*[data-event='sidebar-run']").click(runCode); // Invoke runCode()
 
     // "Clear" button click
-    $("#sidebar-clear").click(clear); // Invoke clear()
+    $("*[data-event='sidebar-clear']").click(clear); // Invoke clear()
 
     // "Import from file" button click
-    $("#sidebar-import").click(importFromFile); // Invoke importFromFile()
+    $("*[data-event='sidebar-import']").click(importFromFile); // Invoke importFromFile()
 
     // "Quit" butotn click
-    $("#sidebar-quit").click(quit); // Invoke quit();
+    $("*[data-event='sidebar-quit']").click(quit); // Invoke quit();
 
     // "Toggle mode" button click
     $("#toggle-mode").click(toggleMode); // Invoke toggleMode()
+
+    // Presentation mode
+    $("*[data-event='sidebar-fullscreen']").click(toggleFullscreen); // Invoke quit();
+    $("*[data-event='sidebar-presentation-off']").click(presentationSingle); // Invoke quit();
 
     // Settings modal
     // "Save" button click
@@ -181,7 +185,6 @@ function setBusy(set) {
 /**
  * Import from file stuff
  */
-
 function importFromFile() {
   var file = dialog.showOpenDialog({
     "title": i18n.__("Import from file"),
@@ -238,7 +241,19 @@ function settingsDefault(missing) {
 }
 
 /**
- * Quit
+ * Full screen stuff
+ */
+function toggleFullscreen() {
+  var currWin = require('remote').getCurrentWindow();
+  currWin.setFullScreen(!currWin.isFullScreen());
+}
+
+function goFullScreen(full) {
+  require('remote').getCurrentWindow().setFullScreen(full);
+}
+
+/**
+ * Quit stuff
  */
 function quit() {
   ipc.send("asynchronous-message", "force-quit");
