@@ -1,0 +1,39 @@
+<!-- Detached output window -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHP Assistant: Output</title>
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <link href="css/loader.css" type="text/css" rel="stylesheet">
+    <script>
+      window.$ = window.jQuery = require('./js/jquery.js');
+      var isMainWindow = false;
+    </script>
+  </head>
+  <body>
+
+    <div id="content">
+      <div id="editor"></div>
+
+      <!-- Console output -->
+      <div id="output">
+        <!-- Busy animation -->
+        <div id="busy" class="loader-inner ball-scale-ripple-multiple"><div></div><div></div><div></div></div>
+        <!-- Two types of console -->
+        <div id="console" class="console console-raw"></div>
+        <div id="console-html" class="console console-html"></div>
+      </div>
+    </div>
+
+  </body>
+  <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/split.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="js/presentation.output.js" type="text/javascript" charset="utf-8"></script>
+</html>

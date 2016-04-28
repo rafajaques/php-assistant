@@ -1,5 +1,8 @@
 'use strict';
 
+// Need a dev tools? :)
+// require('remote').getCurrentWindow().toggleDevTools();
+
 // Imports
 var fs = require("fs");
 var remote = require("electron").remote;
@@ -8,9 +11,6 @@ var runner = require("child_process");
 const ipc = require('electron').ipcRenderer;
 const shell = require("electron").shell;
 const dialog = remote.dialog;
-
-// Need a dev tools? :)
-// require('remote').getCurrentWindow().toggleDevTools();
 
 // Output mode
 var mode = "raw";
@@ -65,7 +65,9 @@ function renderApp(refresh) {
   // Set translations
   if (refresh)
     i18n.setLocale(conf.get("general.locale")); // Set new locale
-  translateInterface();
+
+  if (isMainWindow)
+    translateInterface();
 
   // First run
   if (!refresh) {
@@ -88,28 +90,30 @@ function renderApp(refresh) {
     });
 
     // Sidebar
-    // "Run code" button click
-    $("*[data-event='sidebar-run']").click(runCode); // Invoke runCode()
+    if (isMainWindow) {
+      // "Run code" button click
+      $("*[data-event='sidebar-run']").click(runCode); // Invoke runCode()
 
-    // "Clear" button click
-    $("*[data-event='sidebar-clear']").click(clear); // Invoke clear()
+      // "Clear" button click
+      $("*[data-event='sidebar-clear']").click(clear); // Invoke clear()
 
-    // "Import from file" button click
-    $("*[data-event='sidebar-import']").click(importFromFile); // Invoke importFromFile()
+      // "Import from file" button click
+      $("*[data-event='sidebar-import']").click(importFromFile); // Invoke importFromFile()
 
-    // "Quit" butotn click
-    $("*[data-event='sidebar-quit']").click(quit); // Invoke quit();
+      // "Quit" butotn click
+      $("*[data-event='sidebar-quit']").click(quit); // Invoke quit();
 
-    // "Toggle mode" button click
-    $("#toggle-mode").click(toggleMode); // Invoke toggleMode()
+      // "Toggle mode" button click
+      $("#toggle-mode").click(toggleMode); // Invoke toggleMode()
 
-    // Presentation mode
-    $("*[data-event='sidebar-fullscreen']").click(toggleFullscreen); // Invoke quit();
-    $("*[data-event='sidebar-presentation-off']").click(presentationSingle); // Invoke quit();
+      // Presentation mode
+      $("*[data-event='sidebar-fullscreen']").click(toggleFullscreen); // Invoke quit();
+      $("*[data-event='sidebar-presentation-off']").click(presentationSingle); // Invoke quit();
 
-    // Settings modal
-    // "Save" button click
-    $("#settings-save").click(saveSettings) // Invoke saveSettings()
+      // Settings modal
+      // "Save" button click
+      $("#settings-save").click(saveSettings) // Invoke saveSettings()
+    }
 
     // Shows the app
     $("body").css("visibility", "visible");

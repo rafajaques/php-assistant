@@ -34,3 +34,10 @@
 #presentation-sidebar ul li:hover{
   color: #494E57;
 }
+
+/**
+ * Multi layout
+ */
+li.active{
+  color: #68b7e4;
+}

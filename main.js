@@ -19,6 +19,7 @@ const conf = new Configstore(pkg.name);
 const appName = "PHP Assistant"
 var appIcon = null;
 var mainWindow = null;
+var outputWindow = null;
 
 // Translation
 global.i18n = require("i18n");
@@ -125,6 +126,27 @@ function runOnApp(func) {
 function runCheck() {
   mainWindow.loadURL('file://' + Path.join(__dirname, 'check.html'));
 }
+/**
+ * Output window management
+ */
+ipc.on('asynchronous-message', function(event, arg) {
+
+  // Signal to detach output window
+  if (arg == "detach-output") {
+    outputWindow = new BrowserWindow({
+      "title": "PHP Assistant: " + i18n.__("Output"),
+      "height": 500,
+      "width": 1000,
+      "icon": Path.join(__dirname, "gfx", "app-icon.png"),
+      "skipTaskbar": true
+    });
+
+    outputWindow.loadURL('file://' + Path.join(__dirname, 'output.html'));
+
+    // Debug
+    // outputWindow.toggleDevTools();
+  }
+});
 
 /**
  * Quitting app
