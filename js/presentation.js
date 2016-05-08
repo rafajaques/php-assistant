@@ -61,6 +61,10 @@ function singleLayout() {
 
   // Let's go fullscreen! :)
   goFullScreen(true);
+
+  // Font size
+  $("#editor,#console,#console-html").css("font-size", "30px");
+
 }
 
 function singleLayoutOff() {
@@ -70,6 +74,11 @@ function singleLayoutOff() {
 
   // Let's go back! :)
   goFullScreen(false);
+
+  // Return default sizes
+  $("#editor").css("font-size", conf.get("editor.font-size") + "px");
+  $("#console,#console-html").css("font-size", "");
+
 }
 
 function multiLayout() {
