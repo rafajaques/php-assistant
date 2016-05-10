@@ -214,6 +214,29 @@ function importReady(err, data) {
 }
 
 /**
+ * Change font size stuff
+ */
+function increaseFontSize() {
+  var size = parseInt($("#editor").css("font-size"));
+  size += 2;
+  $("#editor").css("font-size", size);
+
+  var consSize = parseInt($("#console,#console-html").css("font-size"));
+  consSize += 2;
+  $("#console,#console-html").css("font-size", consSize);
+}
+
+function decreaseFontSize() {
+  var size = parseInt($("#editor").css("font-size"));
+  size -= 2;
+  $("#editor").css("font-size", size);
+
+  var consSize = parseInt($("#console,#console-html").css("font-size"));
+  consSize -= 2;
+  $("#console,#console-html").css("font-size", consSize);
+}
+
+/**
  * Settings stuff
  */
 // Reload config on modal open

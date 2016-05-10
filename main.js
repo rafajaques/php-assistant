@@ -259,6 +259,19 @@ function createMenu() {
     label: i18n.__('View'),
     submenu: [
       {
+        label: i18n.__('Inscrease font size'),
+        accelerator: 'CmdOrCtrl+=',
+        click: function() { runOnApp("increaseFontSize();"); }
+      },
+      {
+        label: i18n.__('Decrease font size'),
+        accelerator: 'CmdOrCtrl+-',
+        click: function() { runOnApp("decreaseFontSize();"); }
+      },
+      {
+        type: 'separator'
+      },
+      {
         label: i18n.__('Toggle Full Screen'),
         accelerator: (function() {
           if (process.platform == 'darwin')

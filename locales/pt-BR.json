@@ -66,5 +66,7 @@
 	"Oops! Invalid binary or the file doesn't exists.": "Ops! Binário inválido ou o arquivo não existe.",
 	"Auto run code": "Executar código automaticamente",
 	"Presentation mode": "Modo apresentação",
-	"Output": "Output"
+	"Output": "Output",
+	"Inscrease font size": "Aumentar tamanho da fonte",
+	"Decrease font size": "Diminuir tamanho da fonte"
 }
