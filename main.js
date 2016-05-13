@@ -1,25 +1,25 @@
 'use strict';
 
 // Libraries
-var app = require("app");
-var Tray = require("tray");
-var Menu = require("menu");
-var Path = require("path");
-var BrowserWindow = require("browser-window");
-var shortcuts = require("global-shortcut");
-const ipc = require('electron').ipcMain;
-const dialog = require("dialog");
+const electron = require("electron");
+const app = electron.app;
+const Tray = electron.Tray;
+const Menu = electron.Menu;
+const BrowserWindow = electron.BrowserWindow;
+const ipc = electron.ipcMain;
+const dialog = electron.Dialog;
+const Path = require("path");
 
 // Config stuff
-const Configstore = require('configstore');
+const Configstore = require("configstore");
 const pkg = require(Path.join(__dirname, 'package.json'));
 const conf = new Configstore(pkg.name);
 
 // Icon, window and app name
 const appName = "PHP Assistant"
-var appIcon = null;
-var mainWindow = null;
-var outputWindow = null;
+let appIcon;
+let mainWindow;
+let outputWindow;
 
 // Translation
 global.i18n = require("i18n");
@@ -58,14 +58,16 @@ app.on('ready', function() {
       this.hide();
     }
   });
-
+  mainWindow.toggleDevTools();
   // Check if php_path is already known
   if (conf.get("php.path")) {
     // Yes! I know where PHP is!
     startApp();
+    console.log('Starting');
   } else {
     // Nope! Go and find it!
     runCheck();
+    console.log('Checking');
   }
 
 });
@@ -303,14 +305,14 @@ function createMenu() {
     submenu: [
       {
         label: appName + ' ' + i18n.__('on GitHub'),
-        click: function() { require('electron').shell.openExternal('https://github.com/rafajaques/php-assistant') }
+        click: function() { electron.shell.openExternal('https://github.com/rafajaques/php-assistant') }
       },
       {
         type: 'separator'
       },
       {
         label: i18n.__('Submit an issue'),
-        click: function() { require('electron').shell.openExternal('https://github.com/rafajaques/php-assistant/issues') }
+        click: function() { electron.shell.openExternal('https://github.com/rafajaques/php-assistant/issues') }
       },
     ]
   },

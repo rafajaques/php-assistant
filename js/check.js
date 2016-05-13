@@ -1,12 +1,13 @@
 'use strict';
 
 // Configuration check routine
-var fs = require('fs');
+const electron = require("electron");
 const Configstore = require('configstore');
 const pkg = require('./package.json');
 const conf = new Configstore(pkg.name);
-const dialog = require("remote").dialog;
-var os;
+const dialog = electron.remote.dialog;
+const fs = require("fs");
+let os;
 
 var unix_paths = [
   "/usr/bin/php",

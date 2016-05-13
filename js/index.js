@@ -4,13 +4,14 @@
 // require('remote').getCurrentWindow().toggleDevTools();
 
 // Imports
-var fs = require("fs");
-var remote = require("electron").remote;
-var Path = require("path")
-var runner = require("child_process");
-const ipc = require('electron').ipcRenderer;
-const shell = require("electron").shell;
+const electron = require("electron");
+const remote = electron.remote;
+const ipc = electron.ipcRenderer;
+const shell = electron.shell;
 const dialog = remote.dialog;
+const fs = require("fs");
+const Path = require("path");
+const runner = require("child_process");
 
 // Output mode
 var mode = "raw";

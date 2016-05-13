@@ -2,6 +2,9 @@
   "name": "php-assistant",
   "version": "0.0.4",
   "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
   "description": "A cross-platform desktop PHP runner",
   "author": "Rafael Jaques <rafael@phpit.com.br>",
   "repository": {
@@ -12,9 +15,11 @@
     "url": "https://github.com/rafajaques/php-assistant/issues"
   },
   "dependencies": {
-    "configstore": "*",
-    "express": "^4.13.4",
+    "configstore": "^2.0.0",
     "i18n": "^0.7.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^1.0.2"
   },
   "license": "MIT"
 }

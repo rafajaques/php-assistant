@@ -2,7 +2,7 @@
  * Translation stuff
  */
 
-var i18n = require("remote").getGlobal('i18n');
+var i18n = require("electron").remote.getGlobal('i18n');
 
 // I've researched a lot and this looked one of the best solutions.
 // Any improvements will be very welcome!
