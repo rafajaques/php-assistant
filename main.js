@@ -26,6 +26,13 @@ let outputWindow;
 
 // Translation
 global.i18n = require("i18n");
+let locales = {
+  "da": "Danish",
+  "de": "Deutsch",
+  "en": "English",
+  "fr": "Français",
+  "pt-BR": "Português (Brasil)",
+};
 
 // Force quit variable (quitting  deppends on app mode)
 var forceQuit = false;
@@ -183,9 +190,11 @@ function localize() {
     conf.set("general.locale", app.getLocale());
 
   i18n.configure({
-      locales:["en", "pt-BR", "fr", "de"],
+      locales: Object.keys(locales),
       directory: Path.join(__dirname , "locales")
   });
+
+  i18n.fullLocaleList = locales;
 
   i18n.setLocale(conf.get("general.locale"));
 }

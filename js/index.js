@@ -67,6 +67,12 @@ function renderApp(refresh) {
   if (isMainWindow)
     translateInterface();
 
+  // Populate language list
+  $('#locales-list').empty();
+  $.each(i18n.fullLocaleList, function(i, v) {
+      $('#locales-list').append($('<option>').text(v).attr('value', i));
+  });
+
   // First run
   if (!refresh) {
     // Prepares the editor

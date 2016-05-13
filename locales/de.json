@@ -59,5 +59,10 @@
 	"PHP binary found!": "PHP-Binary gefunden!",
 	"Starting app...": "App wird gestartet...",
 	"Presentation mode": "Präsentations Modus",
-	"Auto run code": "Code automatisch ausführen"
+	"Auto run code": "Code automatisch ausführen",
+	"Services": "Services",
+	"Hide": "Hide",
+	"Hide Others": "Hide Others",
+	"Show All": "Show All",
+	"Bring All to Front": "Bring All to Front"
 }

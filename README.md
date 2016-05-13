@@ -39,7 +39,17 @@ If you have any problems with the app or if you have any suggestions, just open 
 
 ## Translation
 
-So far, I have the app in English, Brazilian Portuguese and French. Any help to translate is appreciated.
+The app was released in English, Brazilian Portuguese and French.
+So far, with community help, we have: French (@Johann-S), Danish (@peterbrinck), German (@ingowalther).
+
+To translate you need to fork master branch.
+
+In the folder `locales` you will find json files with the app strings.
+Copy `en.json` file and rename it as the [language code provided by ISO](http://www.lingoes.net/en/translator/langcode.htm).
+
+Translate the strings (the ones on the right side) and insert a reference into the list (locales variable) in `main.js` file.
+
+After that, just send a pull request. In advance, I say thank you!
 
 ## Author
 
