@@ -183,7 +183,7 @@ function localize() {
     conf.set("general.locale", app.getLocale());
 
   i18n.configure({
-      locales:["en", "pt-BR", "fr"],
+      locales:["en", "pt-BR", "fr", "de"],
       directory: Path.join(__dirname , "locales")
   });
 
