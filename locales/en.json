@@ -57,5 +57,16 @@
 	"Hide": "Hide",
 	"Hide Others": "Hide Others",
 	"Show All": "Show All",
-	"Bring All to Front": "Bring All to Front"
+	"Bring All to Front": "Bring All to Front",
+	"PHP binary found!": "PHP binary found!",
+	"Starting app...": "Starting app...",
+	"PHP Assistant: First run check...": "PHP Assistant: First run check...",
+	"Preparing to start app for the first time...": "Preparing to start app for the first time...",
+	"Type PHP binary location": "Type PHP binary location",
+	"Browse to PHP binary": "Browse to PHP binary",
+	"Done": "Done",
+	"Could not find PHP binary!": "Could not find PHP binary!",
+	"Find PHP binary": "Find PHP binary",
+	"Oops! Invalid binary or the file doesn't exists.": "Oops! Invalid binary or the file doesn't exists.",
+	"Output": "Output"
 }

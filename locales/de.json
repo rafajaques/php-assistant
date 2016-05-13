@@ -64,5 +64,9 @@
 	"Hide": "Hide",
 	"Hide Others": "Hide Others",
 	"Show All": "Show All",
-	"Bring All to Front": "Bring All to Front"
+	"Bring All to Front": "Bring All to Front",
+	"Could not find PHP binary!": "Could not find PHP binary!",
+	"Find PHP binary": "Find PHP binary",
+	"Oops! Invalid binary or the file doesn't exists.": "Oops! Invalid binary or the file doesn't exists.",
+	"Output": "Output"
 }
