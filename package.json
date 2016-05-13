@@ -3,7 +3,8 @@
   "version": "0.0.4",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron .  ",
+    "dev": "electron . --debug"
   },
   "description": "A cross-platform desktop PHP runner",
   "author": "Rafael Jaques <rafael@phpit.com.br>",

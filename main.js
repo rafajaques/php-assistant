@@ -10,6 +10,9 @@ const ipc = electron.ipcMain;
 const dialog = electron.Dialog;
 const Path = require("path");
 
+// Check for debug option
+const debug = /--debug/.test(process.argv[2])
+
 // Config stuff
 const Configstore = require("configstore");
 const pkg = require(Path.join(__dirname, 'package.json'));
@@ -47,6 +50,12 @@ app.on('ready', function() {
       "skipTaskbar": conf.get("general.mode") == "tray" ? true : false
   });
 
+  // Open DevTools and maximize in debug mode
+  if (debug) {
+    mainWindow.openDevTools();
+    mainWindow.maximize();
+  }
+
   // Close behavior
   mainWindow.on('close', function(e) {
     // Clicking "X" should quit application only in "regular" mode
@@ -58,7 +67,7 @@ app.on('ready', function() {
       this.hide();
     }
   });
-  
+
   // Check if php_path is already known
   if (conf.get("php.path")) {
     // Yes! I know where PHP is!

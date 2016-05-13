@@ -1,8 +1,5 @@
 'use strict';
 
-// Need a dev tools? :)
-// require('remote').getCurrentWindow().toggleDevTools();
-
 // Imports
 const electron = require("electron");
 const remote = electron.remote;
