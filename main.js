@@ -58,7 +58,7 @@ app.on('ready', function() {
       this.hide();
     }
   });
-  mainWindow.toggleDevTools();
+  
   // Check if php_path is already known
   if (conf.get("php.path")) {
     // Yes! I know where PHP is!
