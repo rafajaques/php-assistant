@@ -290,8 +290,12 @@ function quit() {
  * Prevent link default action
  */
 function preventLinkDefault() {
-  $("a").click(function(e){
-    e.preventDefault();
-    shell.openExternal($(this).attr("href"));
-  });
+    $('a').on('click', function(e) {
+        e.preventDefault();
+        var target = $(this).attr('href');
+        // Open only if it's not a #ID
+        if (target.indexOf('#') !== 0) {
+            shell.openExternal(target);
+        }
+    });
 }
