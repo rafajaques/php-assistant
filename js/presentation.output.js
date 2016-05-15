@@ -12,6 +12,8 @@ $(function(){
     highlightGutterLine: false // No active line number
   });
   editor.renderer.$cursorLayer.element.style.opacity=0; // No cursor
+  $("#editor").css("font-size", conf.get("presentation.font-size") + "px");
+  $("#console,#console-html").css("font-size", conf.get("presentation.font-size") + "px");
 });
 
 function receiveOutput() {

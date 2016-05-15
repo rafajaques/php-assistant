@@ -23,12 +23,13 @@ const settings_default = {
   // Defaults
   "general.locale": "en",
   "general.mode": "both",
-  "general.autorun": "false",
+  "general.autorun": "true",
   "editor.font-size": "16",
   "editor.theme": "monokai",
   "editor.wordwrap": "true",
   "editor.highlight-line": "true",
   "presentation.font-size": "33",
+  "presentation.try-secondary-display": "true",
 }
 
 // Editor
@@ -114,6 +115,8 @@ function renderApp(refresh) {
       // Presentation mode
       $("*[data-event='sidebar-fullscreen']").click(toggleFullscreen); // Invoke quit();
       $("*[data-event='sidebar-presentation-off']").click(presentationSingle); // Invoke quit();
+
+      $("*[data-event='sidebar-presentation']").click(checkPresentation); // Invoke checkPresentation();
 
       // Settings modal
       // "Save" button click

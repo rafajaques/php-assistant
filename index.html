@@ -26,7 +26,7 @@
         <li data-event="sidebar-run"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> <span data-string="Run code"></span></li>
         <li data-event="sidebar-clear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> <span data-string="Clear"></span></li>
         <li data-event="sidebar-import"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> <span data-string="Import from file"></span></li>
-        <li data-event="sidebar-presentation" data-toggle="modal" data-target="#presentation"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> <span data-string="Presentation mode"></span></li>
+        <li data-event="sidebar-presentation"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> <span data-string="Presentation mode"></span></li>
         <li data-event="sidebar-settings" data-toggle="modal" data-target="#settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span data-string="Settings"></span></li>
         <li data-event="sidebar-about" data-toggle="modal" data-target="#about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <span data-string="About"></span></li>
         <li data-event="sidebar-quit"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> <span data-string="Quit"></span></li>
@@ -89,7 +89,7 @@
                 <form class="form-horizontal">
                   <!-- Language -->
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Language"></label>
+                    <label class="col-sm-3 control-label" data-string="Language"></label>
                     <div class="col-sm-9">
                       <select id="locales-list" class="form-control" data-settings="general.locale">
 
@@ -99,7 +99,7 @@
 
                   <!-- Mode -->
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Mode"></label>
+                    <label class="col-sm-3 control-label" data-string="Mode"></label>
                     <div class="col-sm-9">
                       <select class="form-control" data-settings="general.mode">
 						            <option value="regular" data-string="Regular application"></option>
@@ -112,7 +112,7 @@
 
                   <!-- Auto run code -->
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Auto run code"></label>
+                    <label class="col-sm-3 control-label" data-string="Auto run code"></label>
                     <div class="col-sm-9">
                       <select class="form-control" data-settings="general.autorun">
                         <option value="true" data-string="Yes"></option>
@@ -130,12 +130,23 @@
 
                   <!-- Font size -->
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Font size"></label>
+                    <label class="col-sm-3 control-label" data-string="Font size"></label>
                     <div class="col-sm-9">
                       <div class="input-group">
                         <input type="number" class="form-control" data-settings="presentation.font-size">
                         <div class="input-group-addon">px</div>
                       </div>
+                    </div>
+                  </div>
+
+                  <!-- Auto run code -->
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label" data-string="Try to open secondary window in another display"></label>
+                    <div class="col-sm-9">
+                      <select class="form-control" data-settings="presentation.try-secondary-display">
+                        <option value="true" data-string="Yes"></option>
+                        <option value="false" data-string="No"></option>
+                      </select>
                     </div>
                   </div>
 
@@ -148,7 +159,7 @@
 
                   <!-- Font size -->
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Font size"></label>
+                    <label class="col-sm-3 control-label" data-string="Font size"></label>
                     <div class="col-sm-9">
                       <div class="input-group">
                         <input type="number" class="form-control" data-settings="editor.font-size">
@@ -159,7 +170,7 @@
 
                   <!-- Word wrapping -->
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Word wrapping"></label>
+                    <label class="col-sm-3 control-label" data-string="Word wrapping"></label>
                     <div class="col-sm-9">
                       <select class="form-control" data-settings="editor.wordwrap">
                         <option value="true" data-string="Yes"></option>
@@ -170,7 +181,7 @@
 
                   <!-- Highlight active line -->
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Highlight active line"></label>
+                    <label class="col-sm-3 control-label" data-string="Highlight active line"></label>
                     <div class="col-sm-9">
                       <select class="form-control" data-settings="editor.highlight-line">
                         <option value="true" data-string="Yes"></option>
@@ -181,7 +192,7 @@
 
                   <!-- Theme -->
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Theme"></label>
+                    <label class="col-sm-3 control-label" data-string="Theme"></label>
                     <div class="col-sm-9">
                       <select class="form-control" data-settings="editor.theme">
                         <option value="ambiance">Ambiance</option>
@@ -222,7 +233,7 @@
 
                   <!-- Binary path -->
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Binary path"></label>
+                    <label class="col-sm-3 control-label" data-string="Binary path"></label>
                     <div class="col-sm-9">
                       <input type="text" class="form-control" data-settings="php.path" disabled>
                     </div>

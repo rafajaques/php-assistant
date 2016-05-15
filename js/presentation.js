@@ -1,11 +1,9 @@
 var presentationMode = false;
-var outputDetached = false;
 
 $("#presentation-sidebar").hide();
 
 // Single window mode
 function presentationSingle() {
-
   $('#presentation').modal('hide');
 
   if (presentationMode) {
@@ -14,16 +12,14 @@ function presentationSingle() {
     return;
   }
 
-  presentationMode = true;
+  presentationMode = "single";
 
   // Adjust screen elements
   singleLayout();
-
 }
 
 // Multi window mode
 function presentationMulti() {
-
   $('#presentation').modal('hide');
 
   if (presentationMode) {
@@ -32,7 +28,7 @@ function presentationMulti() {
     return;
   }
 
-  presentationMode = true;
+  presentationMode = "multi";
 
   // Adjust screen elements
   multiLayout();
@@ -40,13 +36,24 @@ function presentationMulti() {
   detachOutput();
 }
 
+function checkPresentation() {
+  if (presentationMode) {
+    presentationEnd();
+  } else {
+    $('#presentation').modal('show');
+  }
+}
+
+function presentationEnd() {
+  if (presentationMode == "single")
+    presentationSingle();
+  else if (presentationMode == "multi")
+    presentationMulti();
+}
+
 /**
  * Output manipulation
  */
-function attachOutput() {
-
-}
-
 function detachOutput() {
   ipc.send("asynchronous-message", "detach-output");
 }
@@ -64,7 +71,6 @@ function singleLayout() {
 
   // Font size
   $("#editor,#console,#console-html").css("font-size", conf.get("presentation.font-size") + "px");
-
 }
 
 function singleLayoutOff() {
@@ -78,7 +84,6 @@ function singleLayoutOff() {
   // Return default sizes
   $("#editor").css("font-size", conf.get("editor.font-size") + "px");
   $("#console,#console-html").css("font-size", "");
-
 }
 
 function multiLayout() {
@@ -86,5 +91,6 @@ function multiLayout() {
 }
 
 function multiLayoutOff() {
-
+  ipc.send("asynchronous-message", "attach-output");
+  $("*[data-event='sidebar-presentation']").removeClass("active");
 }

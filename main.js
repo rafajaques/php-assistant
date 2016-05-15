@@ -165,6 +165,10 @@ ipc.on('asynchronous-message', function(event, arg) {
     if (debug)
       outputWindow.toggleDevTools();
   }
+  // Signal to re-attach output window
+  else if (arg == "attach-output") {
+    outputWindow.destroy();
+  }
 });
 ipc.on('output-channel', function (event, arg) {
   // Is there any output window?
