@@ -179,6 +179,10 @@ function setOutput(text) {
   // HTML Version
   $("#console-html").html(text);
 
+  // Send the text to detached output window (if sent by main window)
+  if (isMainWindow)
+    ipc.send("output-channel", {"code": editor.getValue(), "output": text});
+
   editor.focus();
 }
 

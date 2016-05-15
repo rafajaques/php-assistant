@@ -13,3 +13,11 @@ $(function(){
   });
   editor.renderer.$cursorLayer.element.style.opacity=0; // No cursor
 });
+
+function receiveOutput() {
+  var arg = require("electron").remote.getGlobal('output');
+
+  editor.setValue(arg["code"]);
+  setOutput(arg["output"]);
+  //console.log(arg["output"]);
+}

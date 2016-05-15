@@ -162,7 +162,16 @@ ipc.on('asynchronous-message', function(event, arg) {
     outputWindow.loadURL('file://' + Path.join(__dirname, 'output.html'));
 
     // Debug
-    // outputWindow.toggleDevTools();
+    if (debug)
+      outputWindow.toggleDevTools();
+  }
+});
+ipc.on('output-channel', function (event, arg) {
+  // Is there any output window?
+  if (outputWindow) {
+    // Best way to avoid problems with special characters
+    global.output = arg;
+    outputWindow.webContents.executeJavaScript("receiveOutput()");
   }
 });
 
