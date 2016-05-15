@@ -297,7 +297,7 @@ function createMenu() {
     label: i18n.__('View'),
     submenu: [
       {
-        label: i18n.__('Inscrease font size'),
+        label: i18n.__('Increase font size'),
         accelerator: 'CmdOrCtrl+=',
         click: function() { runOnApp("increaseFontSize();"); }
       },

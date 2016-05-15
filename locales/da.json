@@ -44,7 +44,7 @@
 	"Paste": "Indsæt",
 	"Select All": "Vælg Alt",
 	"View": "Visning",
-	"Inscrease font size": "Øg skrifstørrelsen",
+	"Increase font size": "Øg skrifstørrelsen",
 	"Decrease font size": "Formindsk skrifstørrelsen",
 	"Toggle Full Screen": "Skift til Full Screen",
 	"Window": "Vindue",
@@ -68,5 +68,9 @@
 	"Could not find PHP binary!": "Kunne ikke PHP binary!",
 	"Find PHP binary": "Find PHP binary",
 	"Oops! Invalid binary or the file doesn't exists.": "Uups! Ugyldig binary eller eksistere filen ikke.",
-	"Output": "Output"
+	"Output": "Output",
+	"Presentation": "Presentation",
+	"Try to open secondary window in another display": "Try to open secondary window in another display",
+	"Single Display Mode": "Single Display Mode",
+	"Multi Display Mode": "Multi Display Mode"
 }

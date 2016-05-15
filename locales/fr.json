@@ -67,6 +67,10 @@
 	"Auto run code": "Auto run code",
 	"Presentation mode": "Presentation mode",
 	"Output": "Output",
-	"Inscrease font size": "Inscrease font size",
-	"Decrease font size": "Decrease font size"
+	"Increase font size": "Increase font size",
+	"Decrease font size": "Decrease font size",
+	"Presentation": "Presentation",
+	"Try to open secondary window in another display": "Try to open secondary window in another display",
+	"Single Display Mode": "Single Display Mode",
+	"Multi Display Mode": "Multi Display Mode"
 }

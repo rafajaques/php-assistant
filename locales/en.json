@@ -44,7 +44,7 @@
 	"Paste": "Paste",
 	"Select All": "Select All",
 	"View": "View",
-	"Inscrease font size": "Inscrease font size",
+	"Increase font size": "Increase font size",
 	"Decrease font size": "Decrease font size",
 	"Toggle Full Screen": "Toggle Full Screen",
 	"Window": "Window",
@@ -68,5 +68,9 @@
 	"Could not find PHP binary!": "Could not find PHP binary!",
 	"Find PHP binary": "Find PHP binary",
 	"Oops! Invalid binary or the file doesn't exists.": "Oops! Invalid binary or the file doesn't exists.",
-	"Output": "Output"
+	"Output": "Output",
+	"Presentation": "Presentation",
+	"Try to open secondary window in another display": "Try to open secondary window in another display",
+	"Single Display Mode": "Single Display Mode",
+	"Multi Display Mode": "Multi Display Mode"
 }

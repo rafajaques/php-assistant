@@ -42,7 +42,7 @@
 	"Paste": "Einfügen",
 	"Select All": "Alles auswählen",
 	"View": "Ansicht",
-	"Inscrease font size": "Schrift vergrößern",
+	"Increase font size": "Schrift vergrößern",
 	"Decrease font size": "Schrift verkleinern",
 	"Toggle Full Screen": "Fullscreen umschalten",
 	"Window": "Fenster",
@@ -68,5 +68,9 @@
 	"Could not find PHP binary!": "PHP-Binary konnte nicht gefunden werden!",
 	"Find PHP binary": "PHP-Binary finden",
 	"Oops! Invalid binary or the file doesn't exists.": "Oops! Die PHP-Binary ist invalide oder existiert nicht.",
-	"Output": "Ausgabe"
+	"Output": "Ausgabe",
+	"Presentation": "Presentation",
+	"Try to open secondary window in another display": "Try to open secondary window in another display",
+	"Single Display Mode": "Single Display Mode",
+	"Multi Display Mode": "Multi Display Mode"
 }
