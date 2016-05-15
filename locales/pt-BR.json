@@ -69,6 +69,8 @@
 	"Output": "Output",
 	"Inscrease font size": "Aumentar tamanho da fonte",
 	"Decrease font size": "Diminuir tamanho da fonte",
-	"Presentation": "Presentation",
-	"Try to open secondary window in another display": "Try to open secondary window in another display"
+	"Presentation": "Apresentação",
+	"Try to open secondary window in another display": "Tentar abrir janela secundária em outro monitor",
+	"Single Display Mode": "Modo Monitor Único",
+	"Multi Display Mode": "Modo Múltiplos Monitores"
 }

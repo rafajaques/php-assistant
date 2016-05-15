@@ -161,6 +161,11 @@ ipc.on('asynchronous-message', function(event, arg) {
 
     outputWindow.loadURL('file://' + Path.join(__dirname, 'output.html'));
 
+    // We need to tell main window that output window was closed
+    outputWindow.on('closed', function() {
+      mainWindow.webContents.executeJavaScript('outputClosed();');
+    });
+
     // Debug
     if (debug)
       outputWindow.toggleDevTools();

@@ -84,6 +84,22 @@ body{
 }
 
 /**
+ * Presentation modal
+ */
+.presentation-button{
+  text-align: center;
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.presentation-button:hover{
+  background-color: #f2f2f2;
+}
+.presentation-button img{
+  width: 200px;
+}
+
+/**
  * Editor and output
  */
 #editor{

@@ -282,8 +282,21 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
-            <button onclick="presentationSingle();">Single</button>
-            <button onclick="presentationMulti();">Multi</button>
+
+            <!-- Choose presentation mode -->
+            <div class="container-fluid">
+              <div class="row">
+                <div id="presentation-single-button" class="col-xs-6 presentation-button">
+                  <img src="gfx/presentation/single.png">
+                  <h2 data-string="Single Display Mode"></h2>
+                </div>
+                <div id="presentation-multi-button" class="col-xs-6 presentation-button">
+                  <img src="gfx/presentation/multi.png">
+                  <h2 data-string="Multi Display Mode"></h2>
+                </div>
+              </div>
+            </div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" data-string="Close"></button>

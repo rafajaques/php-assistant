@@ -94,3 +94,8 @@ function multiLayoutOff() {
   ipc.send("asynchronous-message", "attach-output");
   $("*[data-event='sidebar-presentation']").removeClass("active");
 }
+
+// Signal when output window is closed
+function outputClosed() {
+  presentationEnd();
+}

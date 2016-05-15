@@ -118,6 +118,10 @@ function renderApp(refresh) {
 
       $("*[data-event='sidebar-presentation']").click(checkPresentation); // Invoke checkPresentation();
 
+      // Presentation modal
+      $("#presentation-single-button").click(presentationSingle);
+      $("#presentation-multi-button").click(presentationMulti);
+
       // Settings modal
       // "Save" button click
       $("#settings-save").click(saveSettings) // Invoke saveSettings()
