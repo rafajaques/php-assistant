@@ -27,7 +27,8 @@ const settings_default = {
   "editor.font-size": "16",
   "editor.theme": "monokai",
   "editor.wordwrap": "true",
-  "editor.highlight-line": "true"
+  "editor.highlight-line": "true",
+  "presentation.font-size": "33",
 }
 
 // Editor
@@ -279,12 +280,12 @@ function settingsDefault(missing) {
  * Full screen stuff
  */
 function toggleFullscreen() {
-  var currWin = require('remote').getCurrentWindow();
+  var currWin = remote.getCurrentWindow();
   currWin.setFullScreen(!currWin.isFullScreen());
 }
 
 function goFullScreen(full) {
-  require('remote').getCurrentWindow().setFullScreen(full);
+  remote.getCurrentWindow().setFullScreen(full);
 }
 
 /**

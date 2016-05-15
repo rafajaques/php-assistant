@@ -75,9 +75,10 @@
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#settings-general" aria-controls="home" role="tab" data-toggle="tab" data-string="General"></a></li>
-              <li role="presentation"><a href="#settings-editor" aria-controls="profile" role="tab" data-toggle="tab" data-string="Editor"></a></li>
-              <li role="presentation"><a href="#settings-php" aria-controls="messages" role="tab" data-toggle="tab" data-string="PHP"></a></li>
+              <li role="presentation" class="active"><a href="#settings-general" role="tab" data-toggle="tab" data-string="General"></a></li>
+              <li role="presentation"><a href="#settings-presentation" role="tab" data-toggle="tab" data-string="Presentation"></a></li>
+              <li role="presentation"><a href="#settings-editor" role="tab" data-toggle="tab" data-string="Editor"></a></li>
+              <li role="presentation"><a href="#settings-php" role="tab" data-toggle="tab" data-string="PHP"></a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -91,7 +92,7 @@
                     <label for="inputEmail3" class="col-sm-3 control-label" data-string="Language"></label>
                     <div class="col-sm-9">
                       <select id="locales-list" class="form-control" data-settings="general.locale">
-                        
+
                       </select>
                     </div>
                   </div>
@@ -117,6 +118,24 @@
                         <option value="true" data-string="Yes"></option>
                         <option value="false" data-string="No"></option>
                       </select>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+
+              <!-- Settings: Presentation tab -->
+              <div role="tabpanel" class="tab-pane" id="settings-presentation">
+                <form class="form-horizontal">
+
+                  <!-- Font size -->
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label" data-string="Font size"></label>
+                    <div class="col-sm-9">
+                      <div class="input-group">
+                        <input type="number" class="form-control" data-settings="presentation.font-size">
+                        <div class="input-group-addon">px</div>
+                      </div>
                     </div>
                   </div>
 

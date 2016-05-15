@@ -63,7 +63,7 @@ function singleLayout() {
   goFullScreen(true);
 
   // Font size
-  $("#editor,#console,#console-html").css("font-size", "30px");
+  $("#editor,#console,#console-html").css("font-size", conf.get("presentation.font-size") + "px");
 
 }
 
