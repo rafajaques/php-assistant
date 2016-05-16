@@ -76,8 +76,8 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active"><a href="#settings-general" role="tab" data-toggle="tab" data-string="General"></a></li>
-              <li role="presentation"><a href="#settings-presentation" role="tab" data-toggle="tab" data-string="Presentation"></a></li>
               <li role="presentation"><a href="#settings-editor" role="tab" data-toggle="tab" data-string="Editor"></a></li>
+              <li role="presentation"><a href="#settings-presentation" role="tab" data-toggle="tab" data-string="Presentation"></a></li>
               <li role="presentation"><a href="#settings-php" role="tab" data-toggle="tab" data-string="PHP"></a></li>
             </ul>
 
@@ -229,16 +229,24 @@
 
               <!-- Settings: PHP tab -->
               <div role="tabpanel" class="tab-pane" id="settings-php">
-                <form class="form-horizontal">
 
-                  <!-- Binary path -->
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label" data-string="Binary path"></label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" data-settings="php.path" disabled>
-                    </div>
-                  </div>
-                </form>
+                <p class="text-right">
+                  <button id="binary-add" class="btn btn-info"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add binary</button>
+                </p>
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th width="15%" data-string="Version"></th>
+                      <th data-string="Binary path"></th>
+                      <th width="20%">&nbsp;</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="binary-list">
+
+                  </tbody>
+                </table>
               </div>
 
             <!-- / Tab panes -->
@@ -312,6 +320,7 @@
   <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/translate.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/presentation.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/binary.operations.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/autorun.js" type="text/javascript" charset="utf-8"></script>
 </html>

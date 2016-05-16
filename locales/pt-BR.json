@@ -72,5 +72,9 @@
 	"Presentation": "Apresentação",
 	"Try to open secondary window in another display": "Tentar abrir janela secundária em outro monitor",
 	"Single Display Mode": "Modo Monitor Único",
-	"Multi Display Mode": "Modo Múltiplos Monitores"
+	"Multi Display Mode": "Modo Múltiplos Monitores",
+	"Invalid PHP binary": "Binário PHP inválido",
+	"Version": "Versão",
+	"Are you sure?": "Tem certeza?",
+	"Removing {{version}} version. Are you sure?": "Removendo versão {{version}}. Tem certeza?"
 }

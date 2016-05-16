@@ -7,6 +7,7 @@ const pkg = require('./package.json');
 const conf = new Configstore(pkg.name);
 const dialog = electron.remote.dialog;
 const fs = require("fs");
+const runner = require("child_process");
 let os;
 
 var unix_paths = [
@@ -84,7 +85,11 @@ function phpFound(path) {
   $("#output").toggleClass("alert-danger alert-success");
   console.log("Found! ("+path+")");
   console.log("Storing data...");
-  conf.set("php.path", path);
+
+  var ver = binaryGetVersion(path, true);
+  conf.set("php.versions." + ver, path);
+  conf.set("php.default", ver);
+
   console.log("Done!");
   console.log("Starting app...");
 
@@ -94,7 +99,7 @@ function phpFound(path) {
 }
 
 function phpNotFound() {
-  console.log("Not found. Install PHP and try again.");
+  console.log("PHP Not found.");
 
   checkWrite(i18n.__("Could not find PHP binary!"));
   phpSearchOptions(true);

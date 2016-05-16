@@ -18,8 +18,6 @@ const Configstore = require("configstore");
 const package_info = require(Path.join(__dirname, 'package.json'));
 const conf = new Configstore(package_info.name);
 const settings_default = {
-  // php.path doesn't matter, because it's responsability of check.js
-  "php.path": null,
   // Defaults
   "general.locale": "en",
   "general.mode": "both",
@@ -33,7 +31,7 @@ const settings_default = {
 }
 
 // Editor
-var php_path = conf.get("php.path");
+var php_path = conf.get("php.versions." + conf.get("php.default"));
 var editor = ace.edit("editor");
 editor.$blockScrolling = Infinity;
 editor.commands.removeCommand("showSettingsMenu"); // Prevents ACE bindings at Cmd + ,
@@ -95,6 +93,9 @@ function renderApp(refresh) {
         }
     });
 
+    // Fetch binary paths
+    binaryUpdateList();
+
     // Sidebar
     if (isMainWindow) {
       // "Run code" button click
@@ -125,6 +126,9 @@ function renderApp(refresh) {
       // Settings modal
       // "Save" button click
       $("#settings-save").click(saveSettings) // Invoke saveSettings()
+
+      // Binary add
+      $("#binary-add").click(binaryAdd); // Invoke binaryAdd()
     }
 
     // Shows the app
