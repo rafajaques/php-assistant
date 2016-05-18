@@ -76,5 +76,7 @@
 	"Invalid PHP binary": "Binário PHP inválido",
 	"Version": "Versão",
 	"Are you sure?": "Tem certeza?",
-	"Removing {{version}} version. Are you sure?": "Removendo versão {{version}}. Tem certeza?"
+	"Removing {{version}} version. Are you sure?": "Removendo versão {{version}}. Tem certeza?",
+	"OK": "OK",
+	"You don't have any PHP binary. Add one using the settings screen and try again.": "Você não possui nenhum binário PHP. Adicione um na tela de configurações e tente novamente."
 }

@@ -72,5 +72,11 @@
 	"Presentation": "Presentation",
 	"Try to open secondary window in another display": "Try to open secondary window in another display",
 	"Single Display Mode": "Single Display Mode",
-	"Multi Display Mode": "Multi Display Mode"
+	"Multi Display Mode": "Multi Display Mode",
+	"Invalid PHP binary": "Invalid PHP binary",
+	"Version": "Version",
+	"Are you sure?": "Are you sure?",
+	"Removing {{version}} version. Are you sure?": "Removing {{version}} version. Are you sure?",
+	"OK": "OK",
+	"You don't have any PHP binary. Add one using the settings screen and try again.": "You don't have any PHP binary. Add one using the settings screen and try again."
 }

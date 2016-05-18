@@ -31,8 +31,9 @@ const settings_default = {
 }
 
 // Editor
-var php_path = conf.get("php.versions." + conf.get("php.default"));
+var php_path;
 var editor = ace.edit("editor");
+updatePhpPath();
 editor.$blockScrolling = Infinity;
 editor.commands.removeCommand("showSettingsMenu"); // Prevents ACE bindings at Cmd + ,
 
@@ -145,6 +146,13 @@ function renderApp(refresh) {
  */
 // Sends code to PHP
 function runCode() {
+
+  // Is there any PHP for us to work with?
+  if (!php_path) {
+    setOutput(i18n.__("Error") + ": " + i18n.__("You don't have any PHP binary. Add one using the settings screen and try again."));
+    return;
+  }
+
   setBusy(true);
   editor.focus();
 
