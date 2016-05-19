@@ -35,7 +35,7 @@ var php_path;
 var editor = ace.edit("editor");
 updatePhpPath();
 editor.$blockScrolling = Infinity;
-editor.commands.removeCommand("showSettingsMenu"); // Prevents ACE bindings at Cmd + ,
+editorUnbind(["cmd+,", "cmd-,", "ctrl+t", "ctrl+p"]);
 
 // PHP-exec cache bypass (temporary workaround)
 var count = 0;
@@ -312,6 +312,15 @@ function goFullScreen(full) {
  */
 function quit() {
   ipc.send("asynchronous-message", "force-quit");
+}
+
+/**
+ * Unbind shortcuts from editor
+ */
+function editorUnbind(which) {
+  for (var x in which) {
+    editor.commands.commandKeyBinding[which[x]] = null;
+  }
 }
 
 /**
