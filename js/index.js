@@ -35,7 +35,7 @@ var php_path;
 var editor = ace.edit("editor");
 updatePhpPath();
 editor.$blockScrolling = Infinity;
-editorUnbind(["cmd+,", "cmd-,", "ctrl+t", "ctrl+p"]);
+editorUnbind(["cmd+,", "ctrl+t", "ctrl+p"]);
 
 // PHP-exec cache bypass (temporary workaround)
 var count = 0;
@@ -320,6 +320,7 @@ function quit() {
 function editorUnbind(which) {
   for (var x in which) {
     editor.commands.commandKeyBinding[which[x]] = null;
+    editor.commands.commandKeyBinding[which[x].replace(/\+/g, "-")] = null;
   }
 }
 
