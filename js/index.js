@@ -33,9 +33,11 @@ const settings_default = {
 // Editor
 var php_path;
 var editor = ace.edit("editor");
-updatePhpPath();
 editor.$blockScrolling = Infinity;
 editorUnbind(["cmd+,", "ctrl+t", "ctrl+p"]);
+
+if (isMainWindow)
+  updatePhpPath();
 
 // PHP-exec cache bypass (temporary workaround)
 var count = 0;
@@ -65,9 +67,12 @@ function renderApp(refresh) {
   if (refresh)
     i18n.setLocale(conf.get("general.locale")); // Set new locale
 
-  if (isMainWindow)
+  // Translate interface and populate binaries path
+  if (isMainWindow) {
     translateInterface();
-
+    binaryUpdateList();
+  }
+  
   // Populate language list
   $('#locales-list').empty();
   $.each(i18n.fullLocaleList, function(i, v) {
@@ -93,9 +98,6 @@ function renderApp(refresh) {
           editor.resize();
         }
     });
-
-    // Fetch binary paths
-    binaryUpdateList();
 
     // Sidebar
     if (isMainWindow) {

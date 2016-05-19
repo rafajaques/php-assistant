@@ -9,6 +9,7 @@ const BrowserWindow = electron.BrowserWindow;
 const ipc = electron.ipcMain;
 const dialog = electron.Dialog;
 const Path = require("path");
+let screen;
 
 // Check for debug option
 const debug = /--debug/.test(process.argv[2])
@@ -41,6 +42,9 @@ var forceQuit = false;
  * Starting app
  */
 app.on('ready', function() {
+  // Get screen (display) object
+  screen = electron.screen;
+
   // Localize (prepares i18n)
   localize();
 
@@ -151,19 +155,33 @@ ipc.on('asynchronous-message', function(event, arg) {
 
   // Signal to detach output window
   if (arg == "detach-output") {
-    outputWindow = new BrowserWindow({
+    var outputWindowInfo = {
       "title": "PHP Assistant: " + i18n.__("Output"),
       "height": 500,
       "width": 1000,
       "icon": Path.join(__dirname, "gfx", "app-icon.png"),
       "skipTaskbar": true
-    });
+    }
+
+    // Is there any external display?
+    var externalBounds = getExternalDisplayBounds();
+    if (externalBounds && conf.get("presentation.try-secondary-display") == "true") {
+      outputWindowInfo["x"] = externalBounds["x"];
+      outputWindowInfo["y"] = externalBounds["y"];
+    }
+
+    outputWindow = new BrowserWindow(outputWindowInfo);
 
     outputWindow.loadURL('file://' + Path.join(__dirname, 'output.html'));
 
     // We need to tell main window that output window was closed
     outputWindow.on('closed', function() {
-      mainWindow.webContents.executeJavaScript('outputClosed();');
+      // Trying that on application exit means an error
+      try {
+        mainWindow.webContents.executeJavaScript('outputClosed();');
+      } catch (e) {
+        console.log("Exiting application");
+      }
     });
 
     // Debug
@@ -215,6 +233,30 @@ function localize() {
   i18n.fullLocaleList = locales;
 
   i18n.setLocale(conf.get("general.locale"));
+}
+
+/**
+ * External display detection
+ */
+function getExternalDisplayBounds() {
+  var displays = screen.getAllDisplays();
+  var externalDisplay = false;
+
+  for (let i in displays) {
+    if (displays[i].bounds.x !== 0 || displays[i].bounds.y !== 0) {
+      externalDisplay = displays[i];
+      break;
+    }
+  }
+
+  if (externalDisplay) {
+    return {
+      x: externalDisplay.bounds.x + 50,
+      y: externalDisplay.bounds.y + 50,
+    };
+  } else {
+    return false;
+  }
 }
 
 /**
