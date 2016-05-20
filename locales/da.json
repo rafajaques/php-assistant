@@ -69,14 +69,14 @@
 	"Find PHP binary": "Find PHP binary",
 	"Oops! Invalid binary or the file doesn't exists.": "Uups! Ugyldig binary eller eksistere filen ikke.",
 	"Output": "Output",
-	"Presentation": "Presentation",
+	"Presentation": "Præsentation",
 	"Try to open secondary window in another display": "Try to open secondary window in another display",
-	"Single Display Mode": "Single Display Mode",
+	"Single Display Mode": "Enkelt Display Mode",
 	"Multi Display Mode": "Multi Display Mode",
-	"Invalid PHP binary": "Invalid PHP binary",
+	"Invalid PHP binary": "Ugyldig PHP binary",
 	"Version": "Version",
-	"Are you sure?": "Are you sure?",
-	"Removing {{version}} version. Are you sure?": "Removing {{version}} version. Are you sure?",
+	"Are you sure?": "Er du sikker?",
+	"Removing {{version}} version. Are you sure?": "Fjerner {{version}} version. Er du sikker??",
 	"OK": "OK",
-	"You don't have any PHP binary. Add one using the settings screen and try again.": "You don't have any PHP binary. Add one using the settings screen and try again."
+	"You don't have any PHP binary. Add one using the settings screen and try again.": "Du har ingen PHP binary. Tilføj en ved hjælp af indstillingerne, og prøv igen."
 }
