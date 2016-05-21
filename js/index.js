@@ -67,12 +67,16 @@ function renderApp(refresh) {
   if (refresh)
     i18n.setLocale(conf.get("general.locale")); // Set new locale
 
-  // Translate interface and populate binaries path
+  // Translate interface, populate binaries path and start tooltips (presentation)
   if (isMainWindow) {
     translateInterface();
     binaryUpdateList();
+    $('[data-tooltip="true"]').tooltip({
+      "container": "body",
+      "delay": {"show": 400}
+    });
   }
-  
+
   // Populate language list
   $('#locales-list').empty();
   $.each(i18n.fullLocaleList, function(i, v) {

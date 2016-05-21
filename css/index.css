@@ -67,6 +67,10 @@ body{
   color:#7a7a7a;
   font-size:11px;
 }
+/* Little hack for presentation sidebar */
+.tooltip.left {
+  margin-left: -20px;
+}
 
 /**
  * Content - The main space

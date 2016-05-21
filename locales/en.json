@@ -78,5 +78,8 @@
 	"Are you sure?": "Are you sure?",
 	"Removing {{version}} version. Are you sure?": "Removing {{version}} version. Are you sure?",
 	"OK": "OK",
-	"You don't have any PHP binary. Add one using the settings screen and try again.": "You don't have any PHP binary. Add one using the settings screen and try again."
+	"You don't have any PHP binary. Add one using the settings screen and try again.": "You don't have any PHP binary. Add one using the settings screen and try again.",
+	"Full screen": "Full screen",
+	"Exit presentation mode": "Exit presentation mode",
+	"": ""
 }
