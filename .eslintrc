@@ -1,10 +1,23 @@
 {
   "env": {
+    "es6": true,
     "node": true,
     "jquery": true
   },
   "globals": {
-    "translateInterface": true
+    "translateInterface": true,
+    "editor": true,
+    "conf": true,
+    "i18n": true,
+    "dialog": true,
+    "php_path": true,
+    "runner": true,
+    "isMainWindow": true,
+    "binaryUpdateList": true,
+    "updatePhpPath": true,
+    "ace": true,
+    "ipc": true,
+    "goFullScreen": true
   },
   "extends": "airbnb"
 }
