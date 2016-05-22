@@ -1,0 +1,10 @@
+{
+  "env": {
+    "node": true,
+    "jquery": true
+  },
+  "globals": {
+    "translateInterface": true
+  },
+  "extends": "airbnb"
+}
