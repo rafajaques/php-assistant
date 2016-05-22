@@ -174,6 +174,10 @@ ipc.on('asynchronous-message', function(event, arg) {
 
     outputWindow.loadURL('file://' + Path.join(__dirname, 'output.html'));
 
+    if (externalBounds) {
+      outputWindow.setFullScreen(true);
+    }
+
     // We need to tell main window that output window was closed
     outputWindow.on('closed', function() {
       // Trying that on application exit means an error
