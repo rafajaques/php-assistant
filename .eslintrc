@@ -1,6 +1,6 @@
 {
+  "extends": "airbnb",
   "env": {
-    "es6": true,
     "node": true,
     "jquery": true
   },
@@ -17,7 +17,13 @@
     "updatePhpPath": true,
     "ace": true,
     "ipc": true,
-    "goFullScreen": true
+    "goFullScreen": true,
+    "runCode": true
   },
-  "extends": "airbnb"
+  "rules": {
+    "no-underscore-dangle": 0,
+    "import/no-unresolved": 0,
+    "func-names": 0,
+    "prefer-arrow-callback:": 0
+  }
 }
