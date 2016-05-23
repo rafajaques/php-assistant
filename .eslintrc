@@ -6,6 +6,7 @@
     "jquery": true
   },
   "globals": {
+    "electron": true,
     "translateInterface": true,
     "editor": true,
     "conf": true,

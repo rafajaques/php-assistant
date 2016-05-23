@@ -1,47 +1,47 @@
 'use strict';
 
 // Imports
-const electron = require("electron");
+const electron = require('electron');
 const remote = electron.remote;
 const ipc = electron.ipcRenderer;
 const shell = electron.shell;
 const dialog = remote.dialog;
-const fs = require("fs");
-const Path = require("path");
-const runner = require("child_process");
+const fs = require('fs');
+const Path = require('path');
+const runner = require('child_process');
 
 // Output mode
-var mode = "raw";
+let mode = 'raw';
 
 // Config stuff
-const Configstore = require("configstore");
+const Configstore = require('configstore');
 const package_info = require(Path.join(__dirname, 'package.json'));
 const conf = new Configstore(package_info.name);
 const settings_default = {
   // Defaults
-  "general.locale": "en",
-  "general.mode": "both",
-  "general.autorun": "true",
-  "editor.font-size": "16",
-  "editor.theme": "monokai",
-  "editor.wordwrap": "true",
-  "editor.highlight-line": "true",
-  "presentation.font-size": "33",
-  "presentation.try-secondary-display": "true",
+  'general.locale': 'en',
+  'general.mode': 'both',
+  'general.autorun': 'true',
+  'editor.font-size': '16',
+  'editor.theme': 'monokai',
+  'editor.wordwrap': 'true',
+  'editor.highlight-line': 'true',
+  'presentation.font-size': '33',
+  'presentation.try-secondary-display': 'true',
 }
 
 // Editor
-var php_path;
-var editor = ace.edit("editor");
+let php_path;
+let editor = ace.edit('editor');
 editor.$blockScrolling = Infinity;
-editorUnbind(["cmd+,", "ctrl+t", "ctrl+p"]);
+editorUnbind(['cmd+,', 'ctrl+t', 'ctrl+p']);
 
 if (isMainWindow)
   updatePhpPath();
 
 // PHP-exec cache bypass (temporary workaround)
-var count = 0;
-var tmp_file;
+let count = 0;
+let tmp_file;
 
 // Set missing settings to default
 settingsDefault(true);
@@ -49,31 +49,28 @@ settingsDefault(true);
 // Everything setup! Let's render the app!
 renderApp();
 
-//** @TODO Probably a good idea to move the functions to another file **//
-
 function renderApp(refresh) {
   // refresh = render only stuff modified by settings
-  // @TODO Do a "wait" screen with a progress bar or something
 
   // Render editor
-  editor.setTheme("ace/theme/" + conf.get("editor.theme")); // This is not a path
+  editor.setTheme('ace/theme/' + conf.get('editor.theme')); // This is not a path
   editor.setShowPrintMargin(false);
-  editor.getSession().setMode("ace/mode/php");
-  $("#editor").css("font-size", conf.get("editor.font-size") + "px");
-  editor.setHighlightActiveLine($.parseJSON(conf.get("editor.highlight-line")));
-  editor.getSession().setUseWrapMode($.parseJSON(conf.get("editor.wordwrap")));
+  editor.getSession().setMode('ace/mode/php');
+  $('#editor').css('font-size', conf.get('editor.font-size') + 'px');
+  editor.setHighlightActiveLine($.parseJSON(conf.get('editor.highlight-line')));
+  editor.getSession().setUseWrapMode($.parseJSON(conf.get('editor.wordwrap')));
 
   // Set translations
   if (refresh)
-    i18n.setLocale(conf.get("general.locale")); // Set new locale
+    i18n.setLocale(conf.get('general.locale')); // Set new locale
 
   // Translate interface, populate binaries path and start tooltips (presentation)
   if (isMainWindow) {
     translateInterface();
     binaryUpdateList();
     $('[data-tooltip="true"]').tooltip({
-      "container": "body",
-      "delay": {"show": 400}
+      'container': 'body',
+      'delay': { show: 400 }
     });
   }
 
@@ -92,12 +89,12 @@ function renderApp(refresh) {
     preventLinkDefault();
 
     // Set version on "about" modal
-    $("#version").html(package_info.version);
+    $('#version').html(package_info.version);
 
     // Split pane behavior
     Split(['#editor', '#output'], {
-        "sizes": [75, 25],
-        "direction": "vertical",
+        sizes: [75, 25],
+        direction: 'vertical',
         onDragEnd: function() {
           editor.resize();
         }
@@ -106,40 +103,40 @@ function renderApp(refresh) {
     // Sidebar
     if (isMainWindow) {
       // "Run code" button click
-      $("*[data-event='sidebar-run']").click(runCode); // Invoke runCode()
+      $('*[data-event="sidebar-run"]').click(runCode); // Invoke runCode()
 
       // "Clear" button click
-      $("*[data-event='sidebar-clear']").click(clear); // Invoke clear()
+      $('*[data-event="sidebar-clear"]').click(clear); // Invoke clear()
 
       // "Import from file" button click
-      $("*[data-event='sidebar-import']").click(importFromFile); // Invoke importFromFile()
+      $('*[data-event="sidebar-import"]').click(importFromFile); // Invoke importFromFile()
 
       // "Quit" butotn click
-      $("*[data-event='sidebar-quit']").click(quit); // Invoke quit();
+      $('*[data-event="sidebar-quit"]').click(quit); // Invoke quit();
 
       // "Toggle mode" button click
-      $("#toggle-mode").click(toggleMode); // Invoke toggleMode()
+      $('#toggle-mode').click(toggleMode); // Invoke toggleMode()
 
       // Presentation mode
-      $("*[data-event='sidebar-fullscreen']").click(toggleFullscreen); // Invoke quit();
-      $("*[data-event='sidebar-presentation-off']").click(presentationSingle); // Invoke quit();
+      $('*[data-event="sidebar-fullscreen"]').click(toggleFullscreen); // Invoke quit();
+      $('*[data-event="sidebar-presentation-off"]').click(presentationSingle); // Invoke quit();
 
-      $("*[data-event='sidebar-presentation']").click(checkPresentation); // Invoke checkPresentation();
+      $('*[data-event="sidebar-presentation"]').click(checkPresentation); // Invoke checkPresentation();
 
       // Presentation modal
-      $("#presentation-single-button").click(presentationSingle);
-      $("#presentation-multi-button").click(presentationMulti);
+      $('#presentation-single-button').click(presentationSingle);
+      $('#presentation-multi-button').click(presentationMulti);
 
       // Settings modal
       // "Save" button click
-      $("#settings-save").click(saveSettings) // Invoke saveSettings()
+      $('#settings-save').click(saveSettings) // Invoke saveSettings()
 
       // Binary add
-      $("#binary-add").click(binaryAdd); // Invoke binaryAdd()
+      $('#binary-add').click(binaryAdd); // Invoke binaryAdd()
     }
 
     // Shows the app
-    $("body").css("visibility", "visible");
+    $('body').css('visibility', 'visible');
   }
 
   // Back to the editor...
@@ -155,15 +152,15 @@ function runCode() {
 
   // Is there any PHP for us to work with?
   if (!php_path) {
-    setOutput(i18n.__("Error") + ": " + i18n.__("You don't have any PHP binary. Add one using the settings screen and try again."));
+    setOutput(i18n.__('Error') + ': ' + i18n.__("You don't have any PHP binary. Add one using the settings screen and try again."));
     return;
   }
 
   setBusy(true);
   editor.focus();
 
-  var code = editor.getValue();
-  var tmp_file = Path.join(__dirname, "tmp", "tmpcode"+(count++));
+  let code = editor.getValue();
+  let tmp_file = Path.join(__dirname, 'tmp', 'tmpcode'+(count++));
   fs.writeFileSync(tmp_file, code);
 
   runner.exec(php_path + ' -d"error_reporting=E_ALL" -d"display_errors=On" "' + tmp_file + '"', function(err, phpResponse, stderr) {
@@ -176,18 +173,18 @@ function runCode() {
 
 // Toggle RAW and HTML modes
 function toggleMode() {
-  var btn = $("#toggle-mode");
-  btn.toggleClass("btn-primary btn-success");
-  if (mode == "raw") {
-    btn.html(i18n.__("HTML mode"));
-    mode = "html";
-    $("#console").css("display", "none");
-    $("#console-html").css("display", "block");
+  let btn = $('#toggle-mode');
+  btn.toggleClass('btn-primary btn-success');
+  if (mode == 'raw') {
+    btn.html(i18n.__('HTML mode'));
+    mode = 'html';
+    $('#console').css('display', 'none');
+    $('#console-html').css('display', 'block');
   } else {
-    btn.html(i18n.__("RAW mode"));
-    mode = "raw";
-    $("#console").css("display", "block");
-    $("#console-html").css("display", "none");
+    btn.html(i18n.__('RAW mode'));
+    mode = 'raw';
+    $('#console').css('display', 'block');
+    $('#console-html').css('display', 'none');
   }
 
   editor.focus();
@@ -195,28 +192,28 @@ function toggleMode() {
 
 function clear() {
   // 1 = Cursor at the end
-  editor.setValue("<?php\n", 1);
+  editor.setValue('<?php\n', 1);
 }
 
 function setOutput(text) {
   // Raw version
-  $("#console").html($('<div/>').text(text).html());
+  $('#console').html($('<div/>').text(text).html());
 
   // HTML Version
-  $("#console-html").html(text);
+  $('#console-html').html(text);
 
   // Send the text to detached output window (if sent by main window)
   if (isMainWindow)
-    ipc.send("output-channel", {"code": editor.getValue(), "output": text});
+    ipc.send('output-channel', { code: editor.getValue(), output: text });
 
   editor.focus();
 }
 
 function setBusy(set) {
   if (set) {
-    $("#busy").css("visibility", "visible");
+    $('#busy').css('visibility', 'visible');
   } else {
-    $("#busy").css("visibility", "hidden");
+    $('#busy').css('visibility', 'hidden');
   }
 }
 
@@ -224,22 +221,22 @@ function setBusy(set) {
  * Import from file stuff
  */
 function importFromFile() {
-  var file = dialog.showOpenDialog({
-    "title": i18n.__("Import from file"),
-    "filters": [{
-      "name": 'PHP files',
-      "extensions": ['php', 'phtml', 'tpl', 'ctp']
+  let file = dialog.showOpenDialog({
+    title: i18n.__('Import from file'),
+    filters: [{
+      name: 'PHP files',
+      extensions: ['php', 'phtml', 'tpl', 'ctp']
     }],
   });
 
   if (file) {
-    fs.readFile(file[0], "utf8", importReady);
+    fs.readFile(file[0], 'utf8', importReady);
   }
 }
 
 function importReady(err, data) {
   if (err) {
-    return dialog.showErrorBox(i18n.__("Error"), i18n.__("Could not import from file."));
+    return dialog.showErrorBox(i18n.__('Error'), i18n.__('Could not import from file.'));
   }
 
   // Set value and moves the cursor to the start
@@ -251,51 +248,51 @@ function importReady(err, data) {
  * Change font size stuff
  */
 function increaseFontSize() {
-  var size = parseInt($("#editor").css("font-size"));
+  let size = parseInt($('#editor').css('font-size'));
   size += 2;
-  $("#editor").css("font-size", size);
+  $('#editor').css('font-size', size);
 
-  var consSize = parseInt($("#console,#console-html").css("font-size"));
+  let consSize = parseInt($('#console,#console-html').css('font-size'));
   consSize += 2;
-  $("#console,#console-html").css("font-size", consSize);
+  $('#console,#console-html').css('font-size', consSize);
 }
 
 function decreaseFontSize() {
-  var size = parseInt($("#editor").css("font-size"));
+  let size = parseInt($('#editor').css('font-size'));
   size -= 2;
-  $("#editor").css("font-size", size);
+  $('#editor').css('font-size', size);
 
-  var consSize = parseInt($("#console,#console-html").css("font-size"));
+  let consSize = parseInt($('#console,#console-html').css('font-size'));
   consSize -= 2;
-  $("#console,#console-html").css("font-size", consSize);
+  $('#console,#console-html').css('font-size', consSize);
 }
 
 /**
  * Settings stuff
  */
-// Reload config on modal open
+/* Reload config on modal open */
 $('#settings').on('show.bs.modal', function () {
   // Let's load the options!
-  for (var s in settings_default) {
-    $("*[data-settings='"+s+"']").val(conf.get(s));
+  for (let s in settings_default) {
+    $('*[data-settings="'+s+'"]').val(conf.get(s));
   }
 });
 
-// Save settings to config file
+/* Save settings to config file */
 function saveSettings() {
   $('*[data-settings]').each(function() {
-    conf.set($(this).attr("data-settings"), $(this).val());
+    conf.set($(this).attr('data-settings'), $(this).val());
   });
 
   renderApp(true);
 }
 
-// Restore settings to default
+/* Restore settings to default */
 function settingsDefault(missing) {
   // missing = only missing options
-  for (var s in settings_default) {
+  for (let s in settings_default) {
     // Check if it's not null (to not change things that are not intended to be)
-    if ( settings_default[s] && (!missing || !conf.get(s)) ) {
+    if (settings_default[s] && (!missing || !conf.get(s))) {
       conf.set(s, settings_default[s]);
     }
   }
@@ -304,11 +301,13 @@ function settingsDefault(missing) {
 /**
  * Full screen stuff
  */
+/* Reverts current full screen mode */
 function toggleFullscreen() {
-  var currWin = remote.getCurrentWindow();
+  let currWin = remote.getCurrentWindow();
   currWin.setFullScreen(!currWin.isFullScreen());
 }
 
+/* Enter or exit full screen mode */
 function goFullScreen(full) {
   remote.getCurrentWindow().setFullScreen(full);
 }
@@ -317,29 +316,26 @@ function goFullScreen(full) {
  * Quit stuff
  */
 function quit() {
-  ipc.send("asynchronous-message", "force-quit");
+  ipc.send('asynchronous-message', 'force-quit');
 }
 
-/**
- * Unbind shortcuts from editor
- */
+/* Unbind shortcuts from editor */
 function editorUnbind(which) {
-  for (var x in which) {
+  for (let x in which) {
     editor.commands.commandKeyBinding[which[x]] = null;
-    editor.commands.commandKeyBinding[which[x].replace(/\+/g, "-")] = null;
+    editor.commands.commandKeyBinding[which[x].replace(/\+/g, '-')] = null;
   }
 }
 
-/**
- * Prevent link default action
- */
+/* Prevents link default action */
 function preventLinkDefault() {
-    $('a').on('click', function(e) {
-        e.preventDefault();
-        var target = $(this).attr('href');
-        // Open only if it's not a #ID
-        if (target.indexOf('#') !== 0) {
-            shell.openExternal(target);
-        }
-    });
+  $('a').on('click', function(e) {
+    e.preventDefault();
+    let target = $(this).attr('href');
+
+    // Open only if it's not a #ID
+    if (target.indexOf('#') !== 0) {
+      shell.openExternal(target);
+    }
+  });
 }

@@ -97,6 +97,7 @@ function presentationEnd() {
 }
 
 /* Starts or stops presentation mode when clicking button */
+/* eslint-disable no-unused-vars */
 function checkPresentation() {
   if (presentationMode) {
     presentationEnd();
@@ -109,3 +110,4 @@ function checkPresentation() {
 function outputClosed() {
   presentationEnd();
 }
+/* eslint-enable no-unused-vars */
