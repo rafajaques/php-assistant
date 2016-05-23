@@ -1,31 +1,28 @@
-
-//runner.
-
 /**
  * Modal functions
  */
 function binaryAdd() {
-  var file = dialog.showOpenDialog({
-    "title": i18n.__("Find PHP binary")
+  let file = dialog.showOpenDialog({
+    title: i18n.__('Find PHP binary')
   });
 
   if (file && file[0]) {
     // Get path
-    var path = file[0];
+    let path = file[0];
 
     // Get version
     // We cannot save data with dots with "configstore" package :(
     // Workaround = replace . with : (the "true" is for returning replaced)
-    var version = binaryGetVersion(path, true);
+    let version = binaryGetVersion(path, true);
 
     // Oops! Invalid PHP binary!
     if (!version) {
-      dialog.showErrorBox(i18n.__("Error"), i18n.__("Invalid PHP binary"));
+      dialog.showErrorBox(i18n.__('Error'), i18n.__('Invalid PHP binary'));
       return;
     }
 
     // Save new version to config
-    conf.set("php.versions." + version, path);
+    conf.set('php.versions.' + version, path);
 
     // Is this our first?
     if (binaryGetCount() == 1) {
@@ -39,9 +36,9 @@ function binaryAdd() {
 }
 
 function binaryRemove(version) {
-  conf.del("php.versions." + version)
+  conf.del('php.versions.' + version)
   // Are you deleting your default version?
-  if (conf.get("php.default") == version) {
+  if (conf.get('php.default') == version) {
     binarySetNewDefault();
   }
 }
@@ -50,24 +47,27 @@ function binaryMakeDefault(version) {
   binarySetNewDefault(binaryConvertVersionToSave(version));
 }
 
+/* Converts binary string to a save-safe string */
 function binaryConvertVersionToSave(version) {
-  return version.replace(/\./g, ":");
+  return version.replace(/\./g, ':');
 }
 
+/* Converts binary save-safe string to regular string */
 function binaryConvertVersionToShow(version) {
-  return version.replace(/\:/g, ".");
+  return version.replace(/\:/g, '.');
 }
 
 /**
- * replaced = replacing . with : (configstore workaround)
+ * @param {string} path - path to php binary
+ * @param {string} replaced - replacing . with : (configstore workaround)
  */
 function binaryGetVersion(path, replaced) {
-  var response = runner.execSync(path + " --version", {"encoding": "utf8"});
+  let response = runner.execSync(path + ' --version', {'encoding': 'utf8'});
 
   // Is this PHP?
   if (/^PHP/.test(response)) {
     // Get PHP version
-    var result = response.match(/^PHP ([0-9\.]+)/);
+    let result = response.match(/^PHP ([0-9\.]+)/);
     if (result && result[1]) {
       if (replaced)
         return binaryConvertVersionToSave(result[1]);
@@ -78,25 +78,35 @@ function binaryGetVersion(path, replaced) {
   }
 }
 
+/* Count of associated php binaries */
 function binaryGetCount() {
-  return Object.keys(conf.get("php.versions")).length;
+  return Object.keys(conf.get('php.versions')).length;
 }
 
 /**
  * Commands from modal
  */
+
+/**
+ * Set default PHP version to run code
+ * @param {string} version - version to set as default
+ */
 function makeDefaultVersion(version) {
   binaryMakeDefault(version);
   binaryUpdateList();
-  php_path = conf.get("php.versions." + conf.get("php.default"));
+  php_path = conf.get('php.versions.' + conf.get('php.default'));
 }
 
+/**
+ * Remove a PHP version from the listing
+ * @param {string} version - version to remove
+ */
 function removeVersion(version) {
-  var opt = dialog.showMessageBox({
-    "type": "question",
-    "title": i18n.__("Are you sure?"),
-    "message": i18n.__("Removing {{version}} version. Are you sure?", {"version": binaryConvertVersionToShow(version)}),
-    "buttons": [i18n.__("Yes"), i18n.__("No")],
+  let opt = dialog.showMessageBox({
+    'type': 'question',
+    'title': i18n.__('Are you sure?'),
+    'message': i18n.__('Removing {{version}} version. Are you sure?', {'version': binaryConvertVersionToShow(version)}),
+    'buttons': [i18n.__('Yes'), i18n.__('No')],
   });
 
   // Yes = 0; No = 1
@@ -108,43 +118,43 @@ function removeVersion(version) {
 
 function binarySetNewDefault(which) {
   if (which) {
-    conf.set("php.default", which);
+    conf.set('php.default', which);
   } else if (binaryGetCount()) {
     // Set first option on the list as default (if we have any)
-    var v_keys = Object.keys(conf.get("php.versions"));
-    conf.set("php.default", v_keys[0]);
+    let v_keys = Object.keys(conf.get('php.versions'));
+    conf.set('php.default', v_keys[0]);
   } else {
-    conf.del("php.default");
+    conf.del('php.default');
   }
   updatePhpPath();
 }
 
 function updatePhpPath() {
-  // Change php_path variable for runner
-  php_path = conf.get("php.versions." + conf.get("php.default"));
+  // Change php_path letiable for runner
+  php_path = conf.get('php.versions.' + conf.get('php.default'));
 
   // Change PHP version number shown in app
-  $("#run-version").html(phpGetCurrVersion());
+  $('#run-version').html(phpGetCurrVersion());
 }
 
 /**
  * Get current version
  */
 function phpGetCurrVersion() {
-  return binaryConvertVersionToShow(conf.get("php.default"));
+  return binaryConvertVersionToShow(conf.get('php.default'));
 }
 
 /**
  * Binary list functions
  */
 function binaryUpdateList() {
-  $("#binary-list").empty();
+  $('#binary-list').empty();
 
-  var versions = conf.get("php.versions");
-  var in_use = conf.get("php.default");
+  let versions = conf.get('php.versions');
+  let in_use = conf.get('php.default');
 
-  for (var v in versions) {
-    $("#binary-list").append(binaryLineGetTemplate(v, versions[v], (in_use == v)));
+  for (let v in versions) {
+    $('#binary-list').append(binaryLineGetTemplate(v, versions[v], (in_use == v)));
   }
 }
 
@@ -164,5 +174,5 @@ function binaryLineGetTemplate(version, path, in_use) {
     '    </div>',
     '  </td>',
     '</tr>'
-  ].join("\n");
+  ].join('\n');
 }
