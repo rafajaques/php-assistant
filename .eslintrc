@@ -34,7 +34,10 @@
     "packageInfo": true,
     "fs": true,
     "count": true,
-    "Split": true
+    "Split": true,
+    "editorUnbind": true,
+    "setDefaultSettings": true,
+    "renderApp": true
   },
   "rules": {
     "no-underscore-dangle": 0,

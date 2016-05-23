@@ -14,7 +14,9 @@ const Path = require('path');
 const runner = require('child_process');
 
 // Output mode
+/* eslint-disable prefer-const */
 let mode = 'raw';
+/* eslint-enable prefer-const */
 
 // Config stuff
 const Configstore = require('configstore');
@@ -39,7 +41,9 @@ const editor = ace.edit('editor');
 editor.$blockScrolling = Infinity;
 
 // Cache bypass
+/* eslint-disable prefer-const */
 let count = 0;
+/* eslint-enable prefer-const */
 
 /* Startup routine */
 $(() => {
