@@ -20,7 +20,9 @@
     "ipc": true,
     "goFullScreen": true,
     "runCode": true,
-    "setOutput": true
+    "setOutput": true,
+    "checkPresentation": true,
+    "outputClosed": true
   },
   "rules": {
     "no-underscore-dangle": 0,

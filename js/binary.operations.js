@@ -1,19 +1,60 @@
 /**
- * Modal functions
+ * binary.operations.js
+ * Management over available PHP versions
  */
+
+/* Count of associated php binaries */
+function binaryGetCount() {
+ return Object.keys(conf.get('php.versions')).length;
+}
+
+/* Converts binary string to a save-safe string */
+function binaryConvertVersionToSave(version) {
+return version.replace(/\./g, ':');
+}
+
+/* Converts binary save-safe string to regular string */
+function binaryConvertVersionToShow(version) {
+return version.replace(/:/g, '.');
+}
+
+/**
+* @param {string} path - path to php binary
+* @param {string} replaced - replacing . with : (configstore workaround)
+*/
+function binaryGetVersion(path, replaced) {
+ const response = runner.execSync(path + ' --version', { encoding: 'utf8' });
+
+ // Is this PHP?
+ if (/^PHP/.test(response)) {
+   // Get PHP version
+   const result = response.match(/^PHP ([0-9\.]+)/);
+   if (result && result[1]) {
+     if (replaced) {
+       return binaryConvertVersionToSave(result[1]);
+     } else {
+       return result[1];
+     }
+   }
+ }
+
+ return false;
+}
+
+/* Searches for a PHP binary */
 function binaryAdd() {
-  let file = dialog.showOpenDialog({
+  const file = dialog.showOpenDialog({
     title: i18n.__('Find PHP binary')
   });
 
   if (file && file[0]) {
     // Get path
-    let path = file[0];
+    const path = file[0];
 
     // Get version
     // We cannot save data with dots with "configstore" package :(
     // Workaround = replace . with : (the "true" is for returning replaced)
-    let version = binaryGetVersion(path, true);
+    const version = binaryGetVersion(path, true);
 
     // Oops! Invalid PHP binary!
     if (!version) {
@@ -35,66 +76,22 @@ function binaryAdd() {
   }
 }
 
+/* Remove a PHP version from listing */
 function binaryRemove(version) {
-  conf.del('php.versions.' + version)
+  conf.del('php.versions.' + version);
   // Are you deleting your default version?
   if (conf.get('php.default') == version) {
     binarySetNewDefault();
   }
 }
 
-function binaryMakeDefault(version) {
-  binarySetNewDefault(binaryConvertVersionToSave(version));
-}
-
-/* Converts binary string to a save-safe string */
-function binaryConvertVersionToSave(version) {
-  return version.replace(/\./g, ':');
-}
-
-/* Converts binary save-safe string to regular string */
-function binaryConvertVersionToShow(version) {
-  return version.replace(/\:/g, '.');
-}
-
-/**
- * @param {string} path - path to php binary
- * @param {string} replaced - replacing . with : (configstore workaround)
- */
-function binaryGetVersion(path, replaced) {
-  let response = runner.execSync(path + ' --version', {'encoding': 'utf8'});
-
-  // Is this PHP?
-  if (/^PHP/.test(response)) {
-    // Get PHP version
-    let result = response.match(/^PHP ([0-9\.]+)/);
-    if (result && result[1]) {
-      if (replaced)
-        return binaryConvertVersionToSave(result[1]);
-      else
-        return result[1];
-    }
-    return false;
-  }
-}
-
-/* Count of associated php binaries */
-function binaryGetCount() {
-  return Object.keys(conf.get('php.versions')).length;
-}
-
-/**
- * Commands from modal
- */
-
 /**
  * Set default PHP version to run code
  * @param {string} version - version to set as default
  */
 function makeDefaultVersion(version) {
-  binaryMakeDefault(version);
+  binarySetNewDefault(version);
   binaryUpdateList();
-  php_path = conf.get('php.versions.' + conf.get('php.default'));
 }
 
 /**

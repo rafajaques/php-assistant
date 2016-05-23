@@ -1,5 +1,3 @@
-var electron = require('electron');
-
 /* eslint prefer-arrow-callback: 0 */
 // Startup routines of Presentation Output in Multi mode
 $(function () {
