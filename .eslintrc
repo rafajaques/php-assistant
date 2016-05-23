@@ -12,9 +12,10 @@
     "conf": true,
     "i18n": true,
     "dialog": true,
-    "php_path": true,
+    "phpPath": true,
     "runner": true,
     "isMainWindow": true,
+    "binaryAdd": true,
     "binaryUpdateList": true,
     "updatePhpPath": true,
     "ace": true,
@@ -23,7 +24,17 @@
     "runCode": true,
     "setOutput": true,
     "checkPresentation": true,
-    "outputClosed": true
+    "presentationSingle": true,
+    "presentationMulti": true,
+    "mode": true,
+    "remote": true,
+    "shell": true,
+    "settingsDefault": true,
+    "Path": true,
+    "packageInfo": true,
+    "fs": true,
+    "count": true,
+    "Split": true
   },
   "rules": {
     "no-underscore-dangle": 0,
@@ -32,6 +43,7 @@
     "prefer-arrow-callback:": 0,
     "prefer-template": 0,
     "no-var": 0,
-    "comma-dangle": 0
+    "comma-dangle": 0,
+    "no-unused-vars": 0
   }
 }

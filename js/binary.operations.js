@@ -5,17 +5,17 @@
 
 /* Count of associated php binaries */
 function binaryGetCount() {
- return Object.keys(conf.get('php.versions')).length;
+  return Object.keys(conf.get('php.versions')).length;
 }
 
 /* Converts binary string to a save-safe string */
 function binaryConvertVersionToSave(version) {
-return version.replace(/\./g, ':');
+  return version.replace(/\./g, ':');
 }
 
 /* Converts binary save-safe string to regular string */
 function binaryConvertVersionToShow(version) {
-return version.replace(/:/g, '.');
+  return version.replace(/:/g, '.');
 }
 
 /**
@@ -23,22 +23,95 @@ return version.replace(/:/g, '.');
 * @param {string} replaced - replacing . with : (configstore workaround)
 */
 function binaryGetVersion(path, replaced) {
- const response = runner.execSync(path + ' --version', { encoding: 'utf8' });
+  const response = runner.execSync(path + ' --version', { encoding: 'utf8' });
 
- // Is this PHP?
- if (/^PHP/.test(response)) {
-   // Get PHP version
-   const result = response.match(/^PHP ([0-9\.]+)/);
-   if (result && result[1]) {
-     if (replaced) {
-       return binaryConvertVersionToSave(result[1]);
-     } else {
-       return result[1];
-     }
-   }
- }
+  // Is this PHP?
+  if (/^PHP/.test(response)) {
+    // Get PHP version
+    const result = response.match(/^PHP ([0-9\.]+)/);
+    if (result && result[1]) {
+      if (replaced) {
+        return binaryConvertVersionToSave(result[1]);
+      }
 
- return false;
+      return result[1];
+    }
+  }
+
+  return false;
+}
+
+function binaryLineGetTemplate(version, path, inUse) {
+  return [
+    '<tr ' + (inUse ? 'class="info"' : '') + '>',
+    '  <td>' + binaryConvertVersionToShow(version) + '</td>',
+    '  <td>' + path + '</td>',
+    '  <td class="text-right">',
+    '    <div class="btn-group">',
+    '      <button class="btn btn-default btn-xs" onclick="makeDefaultVersion(\''
+            + version + '\')">',
+    '        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>',
+    '      </button>',
+    '      <button class="btn btn-default btn-xs" onclick="removeVersion(\'' + version + '\')">',
+    '        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>',
+    '      </button>',
+    '    </div>',
+    '  </td>',
+    '</tr>'
+  ].join('\n');
+}
+
+/**
+ * Binary list functions
+ */
+function binaryUpdateList() {
+  $('#binary-list').empty();
+
+  const versions = conf.get('php.versions');
+  const inUse = conf.get('php.default');
+
+  Object.keys(versions).forEach((v) => {
+    $('#binary-list').append(binaryLineGetTemplate(v, versions[v], (inUse === v)));
+  });
+}
+
+/**
+ * Get current version
+ */
+function phpGetCurrVersion() {
+  const curr = conf.get('php.default');
+
+  if (curr) {
+    return binaryConvertVersionToShow(conf.get('php.default'));
+  }
+
+  return false;
+}
+
+/* Updates binary path used by the runner */
+function updatePhpPath() {
+  // Change phpPath for runner
+  phpPath = conf.get('php.versions.' + conf.get('php.default'));
+
+  // Change PHP version number shown in app
+  $('#run-version').html(phpGetCurrVersion());
+}
+
+/**
+ * Set new PHP binary as default
+ * @param {string} which - version / if given none, auto-select
+ */
+function binarySetNewDefault(which) {
+  if (which) {
+    conf.set('php.default', which);
+  } else if (binaryGetCount()) {
+    // Set first option on the list as default (if we have any)
+    const vKeys = Object.keys(conf.get('php.versions'));
+    conf.set('php.default', vKeys[0]);
+  } else {
+    conf.del('php.default');
+  }
+  updatePhpPath();
 }
 
 /* Searches for a PHP binary */
@@ -66,7 +139,7 @@ function binaryAdd() {
     conf.set('php.versions.' + version, path);
 
     // Is this our first?
-    if (binaryGetCount() == 1) {
+    if (binaryGetCount() === 1) {
       // Please, set it as our new default
       binarySetNewDefault();
     }
@@ -80,7 +153,7 @@ function binaryAdd() {
 function binaryRemove(version) {
   conf.del('php.versions.' + version);
   // Are you deleting your default version?
-  if (conf.get('php.default') == version) {
+  if (conf.get('php.default') === version) {
     binarySetNewDefault();
   }
 }
@@ -99,77 +172,17 @@ function makeDefaultVersion(version) {
  * @param {string} version - version to remove
  */
 function removeVersion(version) {
-  let opt = dialog.showMessageBox({
-    'type': 'question',
-    'title': i18n.__('Are you sure?'),
-    'message': i18n.__('Removing {{version}} version. Are you sure?', {'version': binaryConvertVersionToShow(version)}),
-    'buttons': [i18n.__('Yes'), i18n.__('No')],
+  const opt = dialog.showMessageBox({
+    type: 'question',
+    title: i18n.__('Are you sure?'),
+    message: i18n.__('Removing {{version}} version. Are you sure?',
+                    { version: binaryConvertVersionToShow(version) }),
+    buttons: [i18n.__('Yes'), i18n.__('No')],
   });
 
   // Yes = 0; No = 1
-  if (opt == 0) {
+  if (opt === 0) {
     binaryRemove(version);
     binaryUpdateList();
   }
-}
-
-function binarySetNewDefault(which) {
-  if (which) {
-    conf.set('php.default', which);
-  } else if (binaryGetCount()) {
-    // Set first option on the list as default (if we have any)
-    let v_keys = Object.keys(conf.get('php.versions'));
-    conf.set('php.default', v_keys[0]);
-  } else {
-    conf.del('php.default');
-  }
-  updatePhpPath();
-}
-
-function updatePhpPath() {
-  // Change php_path letiable for runner
-  php_path = conf.get('php.versions.' + conf.get('php.default'));
-
-  // Change PHP version number shown in app
-  $('#run-version').html(phpGetCurrVersion());
-}
-
-/**
- * Get current version
- */
-function phpGetCurrVersion() {
-  return binaryConvertVersionToShow(conf.get('php.default'));
-}
-
-/**
- * Binary list functions
- */
-function binaryUpdateList() {
-  $('#binary-list').empty();
-
-  let versions = conf.get('php.versions');
-  let in_use = conf.get('php.default');
-
-  for (let v in versions) {
-    $('#binary-list').append(binaryLineGetTemplate(v, versions[v], (in_use == v)));
-  }
-}
-
-function binaryLineGetTemplate(version, path, in_use) {
-  return [
-    '<tr ' + (in_use ? 'class="info"' : '') + '>',
-    '  <td>' + binaryConvertVersionToShow(version) + '</td>',
-    '  <td>' + path + '</td>',
-    '  <td class="text-right">',
-    '    <div class="btn-group">',
-    '      <button class="btn btn-default btn-xs" onclick="makeDefaultVersion(\'' + version + '\')">',
-    '        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>',
-    '      </button>',
-    '      <button class="btn btn-default btn-xs" onclick="removeVersion(\'' + version + '\')">',
-    '        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>',
-    '      </button>',
-    '    </div>',
-    '  </td>',
-    '</tr>'
-  ].join('\n');
 }
