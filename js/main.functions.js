@@ -236,7 +236,7 @@ function renderApp(refresh) {
       $('#settings-save').click(saveSettings);
 
       // Binary add
-      $('#binary-add').click(binaryAdd);
+      $('#binary-add').click(binaryDialogAdd);
       /* eslint-enable no-use-before-define */
     }
 

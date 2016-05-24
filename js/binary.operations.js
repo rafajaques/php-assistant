@@ -114,8 +114,20 @@ function binarySetNewDefault(which) {
   updatePhpPath();
 }
 
+/* Adds a binary, if valid */
+function binaryAdd(path) {
+  const vers = binaryGetVersion(path);
+  // Is this a valid version?
+  if (!vers) {
+    return false;
+  }
+  // Saves to the versions list
+  conf.set('php.versions.' + binaryConvertVersionToSave(vers), path);
+  return true;
+}
+
 /* Searches for a PHP binary */
-function binaryAdd() {
+function binaryDialogAdd() {
   const file = dialog.showOpenDialog({
     title: i18n.__('Find PHP binary')
   });
@@ -124,19 +136,11 @@ function binaryAdd() {
     // Get path
     const path = file[0];
 
-    // Get version
-    // We cannot save data with dots with "configstore" package :(
-    // Workaround = replace . with : (the "true" is for returning replaced)
-    const version = binaryGetVersion(path, true);
-
     // Oops! Invalid PHP binary!
-    if (!version) {
+    if (!binaryAdd(path)) {
       dialog.showErrorBox(i18n.__('Error'), i18n.__('Invalid PHP binary'));
       return;
     }
-
-    // Save new version to config
-    conf.set('php.versions.' + version, path);
 
     // Is this our first?
     if (binaryGetCount() === 1) {

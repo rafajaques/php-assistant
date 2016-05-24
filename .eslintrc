@@ -16,7 +16,9 @@
     "runner": true,
     "isMainWindow": true,
     "binaryAdd": true,
+    "binaryDialogAdd": true,
     "binaryUpdateList": true,
+    "binarySetNewDefault": true,
     "updatePhpPath": true,
     "ace": true,
     "ipc": true,
@@ -37,7 +39,8 @@
     "Split": true,
     "editorUnbind": true,
     "setDefaultSettings": true,
-    "renderApp": true
+    "renderApp": true,
+    "binaryGetVersion": true
   },
   "rules": {
     "no-underscore-dangle": 0,
