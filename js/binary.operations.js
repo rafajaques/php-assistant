@@ -116,11 +116,25 @@ function binarySetNewDefault(which) {
 
 /* Adds a binary, if valid */
 function binaryAdd(path) {
+  // Is this a file?
+  try {
+    const file = fs.lstatSync(path);
+    if (!file.isFile() && !file.isSymbolicLink()) {
+      return false;
+    }
+  } catch (e) {
+    // I couldn't even find the file!!!
+    return false;
+  }
+
+  // So, let's find out it's version
   const vers = binaryGetVersion(path);
+
   // Is this a valid version?
   if (!vers) {
     return false;
   }
+
   // Saves to the versions list
   conf.set('php.versions.' + binaryConvertVersionToSave(vers), path);
   return true;

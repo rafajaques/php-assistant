@@ -6,20 +6,21 @@
 // Configuration check routine
 const electron = require('electron');
 const Configstore = require('configstore');
-const pkg = require('./package.json');
-const conf = new Configstore(pkg.name);
-const dialog = electron.remote.dialog;
 const fs = require('fs');
 const runner = require('child_process');
+const pkg = require('./package.json');
+const conf = new Configstore(pkg.name);
+const remote = electron.remote;
+const dialog = remote.dialog;
 let os;
 
 var unixPaths = [
-  // '/usr/sbin/php',
-  // '/etc/php',
-  // '/usr/lib/php',
-  // '/usr/bin/php',
-  // '/usr/local/bin/php',
-  // '/usr/share/php'
+  '/usr/sbin/php',
+  '/etc/php',
+  '/usr/lib/php',
+  '/usr/bin/php',
+  '/usr/local/bin/php',
+  '/usr/share/php'
 ];
 
 var winPaths = [
@@ -44,16 +45,26 @@ function phpSearchOptions(show) {
   }
 }
 
+/* Leave check mode and go to app */
+function startApp() {
+  window.location = 'index.html';
+}
+
 /* Called when app has a PHP binary and is ready to start */
 function phpFound() {
   $('#output').toggleClass('alert-danger alert-success');
 
+  // Hide search options
+  phpSearchOptions(false);
+
   // Prepares a default PHP binary
   binarySetNewDefault();
 
+  // Binary found!
   checkWrite(i18n.__('PHP binary found!') + '<br>' + i18n.__('Starting app...'));
+
   // Wait for 2 seconds, just in the first run
-  setTimeout('window.location = "index.html"', 2000);
+  setTimeout(startApp, 2000);
 }
 
 /* Called when it was not possible to find a valid php binary automatically */
@@ -62,25 +73,20 @@ function phpNotFound() {
   phpSearchOptions(true);
 }
 
+/* Called when wrong path or invalid binary is given */
+function phpWrong() {
+  $('#output').html(i18n.__('Oops! Invalid binary or the file doesn\'t exists.'));
+}
+
 /* Checks automatically for php binaries in known paths */
 function checkPhpPath(list) {
   let count = 0;
 
   // Try to find a binary in every known path
   list.every((path) => {
-    try {
-      const file = fs.statSync(path);
-      // Is this a valid file?
-      if (file.isFile() || file.isSymbolicLink()) {
-        // Try to add to our listing
-        if (binaryAdd(path)) {
-          count++;
-        }
-      }
-    } catch (e) {
-      return true; // Go on...
+    if (binaryAdd(path)) {
+      count++;
     }
-
     return true;
   });
 
@@ -106,6 +112,8 @@ function browse() {
   if (binaryAdd(file)) {
     phpSearchOptions(false);
     phpFound();
+  } else {
+    phpWrong();
   }
 }
 
@@ -113,31 +121,29 @@ function browse() {
 function type() {
   $('#type').css('display', 'none');
   $('#type-input').css('display', 'block');
-  $('form').on('submit', function () { return false; }); // Prevents form default
+  $('form').on('submit', () => false); // Prevents form default
   $('#path').focus();
 }
 
 /* Called when user has finished typing binary path */
 function typeDone() {
-  var tPath = $('#path').val();
-  try {
-    const file = fs.lstatSync(tPath);
-    if ((file.isFile() || file.isSymbolicLink()) && binaryAdd(tPath)) {
-      $('#type-input').css('display', 'block');
-      phpFound();
-    }
-  } catch (e) {
-    $('#output').html(i18n.__('Oops! Invalid binary or the file doesn\'t exists.'));
+  var path = $('#path').val();
+  if (binaryAdd(path)) {
+    $('#type-input').css('display', 'none');
+    phpFound();
+  } else {
+    $('#type-input').css('display', 'block');
+    phpWrong();
   }
 }
 
 /* Startup routines */
-$(function() {
+$(() => {
   // Buttons actions
   $('#browse').click(browse); // Invoke browse();
   $('#type').click(type); // Invoke type();
   $('#type-done').click(typeDone); // Invoke typeDone();
-  $('#quit').click(function(){ require('remote').app.quit(); });
+  $('#quit').click(() => remote.app.quit());
 
   // Startup routines
 

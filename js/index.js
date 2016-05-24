@@ -25,7 +25,7 @@ const conf = new Configstore(packageInfo.name);
 const settingsDefault = {
   // Defaults
   'general.locale': 'en',
-  'general.mode': 'both',
+  'general.mode': 'regular',
   'general.autorun': 'true',
   'editor.font-size': '16',
   'editor.theme': 'monokai',
