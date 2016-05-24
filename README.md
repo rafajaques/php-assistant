@@ -3,6 +3,8 @@
 </p>
 
 [![Build Status](https://travis-ci.org/rafajaques/php-assistant.svg?branch=master)](https://travis-ci.org/rafajaques/php-assistant)
+[![Dependency Status](https://david-dm.org/rafajaques/php-assistant.svg)](https://david-dm.org/rafajaques/php-assistant)
+[![devDependency Status](https://david-dm.org/rafajaques/php-assistant/dev-status.svg)](https://david-dm.org/rafajaques/php-assistant#info=devDependencies)
 
 PHP Assistant is a cross-platform desktop app for testing PHP snippets.
 Built with Electron, Node.js and HTML5/CSS/JS.
