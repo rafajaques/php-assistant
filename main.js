@@ -113,7 +113,7 @@ function hideAppIcon() {
 
 // Behavior when clicking tray icon
 function focusBehavior() {
-  if (!mainWindow.isFocused()) {
+  if (!mainWindow.isVisible()) {
     mainWindow.show();
   } else {
     mainWindow.hide();
