@@ -2,12 +2,7 @@
   <img width="200" src="https://raw.githubusercontent.com/rafajaques/php-assistant/master/gfx/readme/logo.png" alt="PHP Assistant Logo"/>
 </p>
 
-<p>
 [![Build Status](https://travis-ci.org/rafajaques/php-assistant.svg?branch=master)](https://travis-ci.org/rafajaques/php-assistant)
-[![Dependency Status](https://david-dm.org/rafajaques/php-assistant.svg)](https://david-dm.org/rafajaques/php-assistant)
-[![devDependency Status](https://david-dm.org/rafajaques/php-assistant/dev-status.svg)](https://david-dm.org/rafajaques/php-assistant#info=devDependencies)
-[![license:mit](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
-</p>
 
 PHP Assistant is a cross-platform desktop app for testing PHP snippets.
 Built with Electron, Node.js and HTML5/CSS/JS.
