@@ -1,0 +1,25 @@
+{
+  "name": "phpassistant",
+  "productName": "PHP Assistant",
+  "version": "0.0.6",
+  "main": "main.js",
+  "description": "A cross-platform desktop PHP runner",
+  "author": "Rafael Jaques <rafael@phpit.com.br>",
+  "keywords": [
+    "Electron",
+    "PHP",
+    "Sandbox"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafajaques/php-assistant"
+  },
+  "bugs": {
+    "url": "https://github.com/rafajaques/php-assistant/issues"
+  },
+  "dependencies": {
+    "configstore": "^2.0.0",
+    "i18n": "^0.8.2"
+  },
+  "license": "MIT"
+}

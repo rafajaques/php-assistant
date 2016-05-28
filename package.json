@@ -1,39 +1,18 @@
 {
-  "name": "php-assistant",
-  "productName": "PHP Assistant",
-  "version": "0.0.6",
-  "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "dev": "electron . --debug",
-    "locale-sync": "/usr/bin/env php tools/locale-sync.php",
-    "test": "eslint main.js js/*"
-  },
-  "description": "A cross-platform desktop PHP runner",
-  "author": "Rafael Jaques <rafael@phpit.com.br>",
-  "keywords": [
-    "Electron",
-    "PHP",
-    "Sandbox"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rafajaques/php-assistant"
-  },
-  "bugs": {
-    "url": "https://github.com/rafajaques/php-assistant/issues"
-  },
-  "dependencies": {
-    "configstore": "^2.0.0",
-    "i18n": "^0.7.0"
+    "start": "electron ./app",
+    "dev": "electron ./app --debug",
+    "locale-sync": "/usr/bin/env php ./apptools/locale-sync.php",
+    "test": "eslint ./app/main.js ./app/js/*",
+    "postinstall": "install-app-deps"
   },
   "devDependencies": {
-    "electron-prebuilt": "^1.0.2",
+    "electron-prebuilt": "^1.2.0",
+    "electron-builder": "^3.27.0",
     "eslint": "^2.10.2",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.8.0",
     "eslint-plugin-jsx-a11y": "^1.2.2",
     "eslint-plugin-react": "^5.1.1"
-  },
-  "license": "MIT"
+  }
 }

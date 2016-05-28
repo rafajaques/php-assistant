@@ -80,5 +80,6 @@
 	"OK": "OK",
 	"You don't have any PHP binary. Add one using the settings screen and try again.": "Você não possui nenhum binário PHP. Adicione um na tela de configurações e tente novamente.",
 	"Full screen": "Tela cheia",
-	"Exit presentation mode": "Sair do modo apresentação"
+	"Exit presentation mode": "Sair do modo apresentação",
+	"": ""
 }
