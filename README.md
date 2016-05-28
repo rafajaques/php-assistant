@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="200" src="https://raw.githubusercontent.com/rafajaques/php-assistant/master/gfx/readme/logo.png" alt="PHP Assistant Logo"/>
+  <img width="200" src="https://raw.githubusercontent.com/rafajaques/php-assistant/master/app/gfx/readme/logo.png" alt="PHP Assistant Logo"/>
 </p>
 
 [![Travis Build Status](https://travis-ci.org/rafajaques/php-assistant.svg?branch=master)](https://travis-ci.org/rafajaques/php-assistant)
@@ -12,7 +12,7 @@ Built with Electron, Node.js and HTML5/CSS/JS.
 The main goal is to have a simple app to test small pieces of code without having to search for a sandbox, creating a file or opening the terminal.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/rafajaques/php-assistant/master/gfx/readme/screenshot.png" alt="ScreenShot"/>
+  <img src="https://raw.githubusercontent.com/rafajaques/php-assistant/master/app/gfx/readme/screenshot.png" alt="ScreenShot"/>
 </p>
 
 ## Download
