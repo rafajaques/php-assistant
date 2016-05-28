@@ -24,4 +24,8 @@ build_script:
   - npm --version
   - npm run dist:win64
 
+artifacts:
+  - path: php-assistant\dist
+    name: PhpAssistant
+
 test: off
