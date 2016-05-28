@@ -32,7 +32,7 @@ const locales = {
   da: 'Danish',
   de: 'Deutsch',
   en: 'English',
-  "fr": 'Français',
+  fr: 'Français',
   'pt-BR': 'Português (Brasil)',
 };
 
