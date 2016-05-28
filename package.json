@@ -4,7 +4,17 @@
     "dev": "electron ./app --debug",
     "locale-sync": "/usr/bin/env php ./apptools/locale-sync.php",
     "test": "eslint ./app/main.js ./app/js/*",
-    "postinstall": "install-app-deps"
+    "postinstall": "install-app-deps",
+    "dist": "npm run dist:osx && npm run dist:win32 && npm run dist:win64",
+    "dist:osx": "build --platform darwin",
+    "dist:linux": "build --platform linux --arch=all",
+    "dist:win32": "build --platform win32 --arch ia32",
+    "dist:win64": "build --platform win32 --arch x64"
+  },
+  "build": {
+    "app-bundle-id": "br.rafajaques.phpassistant",
+    "app-category-type": "public.app-category.utilities",
+    "iconUrl": "http://rafajaques.com.br/php-assistant/icon.ico"
   },
   "devDependencies": {
     "electron-prebuilt": "^1.2.0",
