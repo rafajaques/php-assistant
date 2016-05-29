@@ -29,9 +29,8 @@ install:
 - npm install
 after_success:
 - npm run dist:$TRAVIS_OS_NAME
-after_deploy:
-  - ls
-  - pwd
+- ls
+- pwd
 deploy:
   provider: bintray
   file: "bintray-descriptor.json"
