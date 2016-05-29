@@ -1,9 +1,9 @@
 {
     "package": {
-        "name": "auto-upload",
+        "name": "php-assistant",
         "repo": "generic",
         "subject": "rafajaques",
-        "desc": "PHP Assistant Description",
+        "desc": "A cross-platform desktop PHP runner",
         "website_url": "www.github.com/rafajaques",
         "issue_tracker_url": "https://github.com/rafajaques/php-assistant/issues",
         "vcs_url": "https://github.com/rafajaques/php-assistant.git",
