@@ -24,22 +24,8 @@ addons:
     - graphicsmagick
     - xz-utils
 before_install:
-- npm install -g eslint eslint-config-airbnb
-- openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_key -in super_secret.txt.enc -out super_secret.txt -d
+  - npm install -g eslint eslint-config-airbnb
 install:
-- npm install
+  - npm install
 after_success:
-- npm run dist:$TRAVIS_OS_NAME
-env:
-  global:
-    ENCRYPTION_LABEL: "f9f50d88f793"
-    secure: 2e508ca34765bda533c21a96c90d9fe3730db4e1
-deploy:
-  provider: releases
-  overwrite: true
-  api_key:
-    secure: 2e508ca34765bda533c21a96c90d9fe3730db4e1
-  file: "/Users/travis/build/rafajaques/php-assistant/dist/osx/PHP Assistant-0.0.6.dmg"
-  on:
-    repo: rafajaques/php-assistant
-    tags: true
+  - npm run dist:$TRAVIS_OS_NAME
