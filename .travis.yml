@@ -29,8 +29,6 @@ install:
 - npm install
 after_success:
 - npm run dist:$TRAVIS_OS_NAME
-- ruby -v
-- rvm use 2.3.1
 deploy:
   provider: bintray
   file: "bintray-descriptor.json"
