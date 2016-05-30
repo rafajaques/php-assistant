@@ -25,7 +25,9 @@ build_script:
   - npm run dist:win
 
 artifacts:
-  - path: "win\\PHP-Assistant Setup 0.0.7.exe"
+  - path: dist\win
+    name: win
+    type: zip
 
 deploy:
   - provider: BinTray
