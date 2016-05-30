@@ -1,6 +1,6 @@
 {
   "name": "phpassistant",
-  "productName": "PHP Assistant",
+  "productName": "PHP-Assistant",
   "version": "0.0.7",
   "main": "main.js",
   "description": "A cross-platform desktop PHP runner",

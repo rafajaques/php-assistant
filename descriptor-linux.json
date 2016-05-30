@@ -1,7 +1,7 @@
 {
     "package": {
         "name": "php-assistant",
-        "repo": "generic",
+        "repo": "deb",
         "subject": "rafajaques",
         "desc": "A cross-platform desktop PHP runner",
         "website_url": "www.github.com/rafajaques",
@@ -24,14 +24,17 @@
     },
 
     "files":
-        [
-        {
-          "includePattern": "dist/(.*)",
-          "uploadPattern": "/$1",
-          "matrixParams": {
-            "override": 1
-          }
+    [
+      {
+        "includePattern": "dist/(.*\.deb)",
+        "uploadPattern": "/$1",
+        "matrixParams": {
+          "deb_distribution": "vivid",
+          "deb_component": "main",
+          "deb_architecture": "amd64",
+          "overwrite": 1
         }
-        ],
+      }
+    ],
     "publish": false
 }
