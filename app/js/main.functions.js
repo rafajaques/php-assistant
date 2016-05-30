@@ -275,8 +275,8 @@ function saveSettings() {
 function setDefaultSettings(missing) {
   Object.keys(settingsDefault).forEach((key) => {
     // Check if it's not null (to not change things that are not intended to be)
-    if (!missing || !conf.get(settingsDefault[key])) {
-      conf.set(key, settingsDefault[key]);
+    if (!missing || !conf.get(key)) {
+      conf.set(key, settingsDefault.key);
     }
   });
 }
