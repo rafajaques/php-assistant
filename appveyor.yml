@@ -31,10 +31,10 @@ artifacts:
   - path: dist\win-ia32\*.exe
     name: win32-installer
     type: zip
-  - path: dist\win-unpacked\**
+  - path: dist\win-unpacked
     name: win64-standalone
     type: zip
-  - path: dist\win-ia32-unpacked\**
+  - path: dist\win-ia32-unpacked
     name: win32-standalone
     type: zip
 
