@@ -25,7 +25,7 @@
 
     "files":
         [
-        {"includePattern": "dist/.*", "uploadPattern": "/"}
+        {"includePattern": "/home/travis/build/rafajaques/php-assistant/dist/.*", "uploadPattern": "/"}
         ],
     "publish": false
 }
