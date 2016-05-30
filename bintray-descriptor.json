@@ -25,7 +25,7 @@
 
     "files":
         [
-        {"includePattern": "dist/.*/.*", "uploadPattern": "dist/"}
+        {"includePattern": "dist/.*", "uploadPattern": "/"}
         ],
     "publish": false
 }
