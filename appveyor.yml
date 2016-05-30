@@ -27,8 +27,10 @@ build_script:
 artifacts:
   - path: dist\win\*.exe
     name: win64-installer
+    type: zip
   - path: dist\win-ia32\*.exe
     name: win32-installer
+    type: zip
   - path: dist\win-unpacked
     name: win64-standalone
     type: zip
