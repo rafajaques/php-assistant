@@ -22,10 +22,22 @@ install:
 build_script:
   - node --version
   - npm --version
-  - npm run dist:win64
+  - npm run dist:win
 
 artifacts:
-  - path: php-assistant\dist\*
-    name: PhpAssistant
+  - path: "win\\PHP-Assistant Setup 0.0.7.exe"
+
+deploy:
+  - provider: BinTray
+    username: rafajaques
+    api_key:
+      secure: C3BCPbZfcKkbEDdCofae+VImfUy5XlMoZueo0N2HT7Bf8H0QiWS6SQ/XpMdEiFvy
+    subject: rafajaques
+    repo: generic
+    package: "php-assistant"
+    version: 0.0.7
+    publish: false
+    override: true
+    explode: true
 
 test: off

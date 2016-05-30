@@ -8,6 +8,7 @@
     "dist": "npm run dist:osx && npm run dist:win32 && npm run dist:win64",
     "dist:osx": "build --platform darwin",
     "dist:linux": "build --platform linux --arch=all",
+    "dist:win": "build --platform win32 --arch=all",
     "dist:win32": "build --platform win32 --arch ia32",
     "dist:win64": "build --platform win32 --arch x64"
   },

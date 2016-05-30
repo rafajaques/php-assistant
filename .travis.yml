@@ -23,6 +23,10 @@ addons:
     - icnsutils
     - graphicsmagick
     - xz-utils
+    - gcc-multilib # for building 32 in 64 machine
+    - g++-multilib # for building 32 in 64 machine
+    - rpm # for building rpm pack
+    - bsdtar # for building pacman
 before_install:
 - npm install -g eslint eslint-config-airbnb
 install:
@@ -33,7 +37,7 @@ after_success:
 deploy:
   skip_cleanup: true
   provider: bintray
-  file: "descriptor-$TRAVIS_OS_NAME.json"
+  file: "deploy/descriptor-$TRAVIS_OS_NAME.json"
   user: rafajaques
   key:
     secure: pfY4//jQB8KIqmNxZ9LXzeIWohn9K2At7NamxTdUKytnRhSn7RffYQuOCiBNgS3DPT91VHNaUkyAPsolye3O2NKo7DZLdkksVVeRM324fCPrXyL4CPZdCy5N5W8PrALsRN3XzuNHgP9ENdkOd4dCFBTlaunCvwdkcLkZFxzeSKMuDmRbOZuLz5049uWPs9hVeE/w8p99PQoSTPsnkIWZQbnSYbIxegXTGlb8O1NO2+oJJM4Gy/5C6xU8e7uvffysjqsjG4VO/8o0YpQabttdxfcmdf/u7CKDeoPPxYE4XHpxmFpKzRQ5tLqbKVx3Q2piWNTk0wQ51Udljpd5gDGCdhoZ04liU+H63+FH4ehHzIVFCxoOEBq0wfvJnGJh6/Y4a8ZDmLAoBIsiyiGTEe21Oav7EeGmeYHAqnD0Wx4dB3rbIPh4GfVkVmU3fUeGU3UfM6/zboPTO+hR9I+2LLS/s6ucL32EArae1lTzwtlfTTGiTOYwAVS95INSIE58Fzq/bzWLEmh7Be+AtrEB6/z+npBgQCXoKTBZvI3fe4tpU9IUCQMTl/BVKEKIURGa0NOxc+Jt300TkfYkHzfRTsm8P3JrWMIz20vHQ4u4jVAS9meaDlp8B9Wsh/wCGvMM3D2X32lnVF1uwjSHZmJ4ga1tU9Fbf24oMf41xNcsX+ACaMA=
