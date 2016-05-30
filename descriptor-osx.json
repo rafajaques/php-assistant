@@ -26,15 +26,8 @@
     "files":
     [
       {
-        "includePattern": "dist/(.*)",
-        "uploadPattern": "/$1",
-        "matrixParams": {
-          "override": 1
-        }
-      },
-      {
         "includePattern": "dist/osx/(.*\.dmg)",
-        "uploadPattern": "$1",
+        "uploadPattern": "/$1",
         "matrixParams": {
           "override": 1
         }
