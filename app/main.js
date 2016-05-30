@@ -93,7 +93,7 @@ function startApp() {
 
 function createTrayIcon() {
   // Set tray icon
-  var trayIcon = Path.join(__dirname, 'gfx');
+  let trayIcon = Path.join(__dirname, 'gfx');
   if (process.platform !== 'darwin') {
     trayIcon = Path.join(trayIcon, 'tray.png');
   } else {
@@ -224,8 +224,8 @@ function localize() {
  * External display detection
  */
 function getExternalDisplayBounds() {
-  var displays = screen.getAllDisplays();
-  var externalDisplay = false;
+  const displays = screen.getAllDisplays();
+  let externalDisplay = false;
 
   displays.every((display) => {
     if (display.bounds.x !== 0 || display.bounds.y !== 0) {
@@ -251,7 +251,7 @@ function getExternalDisplayBounds() {
 
 // Creates app menu
 function createMenu() {
-  var template = [
+  const template = [
     {
       label: i18n.__('Actions'),
       submenu: [

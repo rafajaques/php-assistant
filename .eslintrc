@@ -35,7 +35,7 @@
     "Path": true,
     "packageInfo": true,
     "fs": true,
-    "count": true,
+    "chdir": true,
     "Split": true,
     "editorUnbind": true,
     "setDefaultSettings": true,
@@ -48,7 +48,6 @@
     "func-names": 0,
     "prefer-arrow-callback:": 0,
     "prefer-template": 0,
-    "no-var": 0,
     "comma-dangle": 0,
     "no-unused-vars": 0
   }

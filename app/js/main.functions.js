@@ -84,12 +84,18 @@ function runCode() {
   editor.focus();
 
   const code = editor.getValue();
-  const tmpFile = Path.join(__dirname, 'tmp', 'tmpcode' + (count++));
+  const tmpFile = Path.join(__dirname, 'tmp', 'tmpcode');
   fs.writeFileSync(tmpFile, code);
 
   const runtimeOpts = ' -d"error_reporting=E_ALL" -d"display_errors=On" "';
 
-  runner.exec(phpPath + runtimeOpts + tmpFile + '"', (err, phpResponse, stderr) => {
+  let commandToRun = phpPath + runtimeOpts + tmpFile + '"';
+
+  if (chdir) {
+    commandToRun = 'cd chdir && ' + chdir;
+  }
+
+  runner.exec(commandToRun, (err, phpResponse, stderr) => {
     fs.unlink(tmpFile);
     // User doesn't need to know where the file is
     setOutput(phpResponse.replace(' in ' + tmpFile, ''));

@@ -1,4 +1,4 @@
-/* eslint prefer-arrow-callback: 0 */
+/* eslint prefer-arrow-callback: 0 */ /* needed for jquery */
 // Startup routines of Presentation Output in Multi mode
 $(function () {
   // Prepare layout
@@ -17,10 +17,8 @@ $(function () {
   $('#console,#console-html').css('font-size', conf.get('presentation.font-size') + 'px');
 });
 
-/* eslint no-unused-vars: 0 */
 function receiveOutput() {
-  var arg = electron.remote.getGlobal('output');
+  const arg = electron.remote.getGlobal('output');
   editor.setValue(arg.code);
   setOutput(arg.output);
-  // console.log(arg["output"]);
 }
