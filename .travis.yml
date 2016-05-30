@@ -30,6 +30,7 @@ install:
 after_success:
 - npm run dist:$TRAVIS_OS_NAME
 deploy:
+  skip_cleanup: true
   provider: bintray
   file: "bintray-descriptor.json"
   user: rafajaques
