@@ -216,9 +216,6 @@ function renderApp(refresh) {
       // "Import from file" button click
       $('*[data-event="sidebar-import"]').click(importFromFile);
 
-      // "Quit" butotn click
-      $('*[data-event="sidebar-quit"]').click(quit);
-
       // "Toggle mode" button click
       $('#toggle-mode').click(toggleMode);
 
