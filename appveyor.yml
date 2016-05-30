@@ -42,7 +42,7 @@ deploy:
     api_key:
       secure: C3BCPbZfcKkbEDdCofae+VImfUy5XlMoZueo0N2HT7Bf8H0QiWS6SQ/XpMdEiFvy
     subject: rafajaques
-    repo: generic
+    repo: windows
     package: "php-assistant"
     version: 0.0.7
     publish: false

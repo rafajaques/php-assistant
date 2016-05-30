@@ -1,7 +1,7 @@
 {
     "package": {
         "name": "php-assistant",
-        "repo": "generic",
+        "repo": "mac-osx",
         "subject": "rafajaques",
         "desc": "A cross-platform desktop PHP runner",
         "website_url": "www.github.com/rafajaques",
