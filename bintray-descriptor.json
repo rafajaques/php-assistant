@@ -25,7 +25,13 @@
 
     "files":
         [
-        {"includePattern": "dist/.*", "uploadPattern": "/"}
+        {
+          "includePattern": "dist/(.*)",
+          "uploadPattern": "/$1",
+          "matrixParams": {
+            "override": 1
+          }
+        }
         ],
     "publish": false
 }
