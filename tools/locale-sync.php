@@ -2,7 +2,7 @@
 <?php
 echo "Syncing locale files...\n";
 
-$base = 'locales/';
+$base = 'app/locales/';
 
 if (!file_exists($base . 'pt-BR.json'))
   die("Could not find pt-BR.json\n");

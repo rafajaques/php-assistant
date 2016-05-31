@@ -83,22 +83,39 @@ function runCode() {
   setBusy(true);
   editor.focus();
 
-  const code = editor.getValue();
+  let code = editor.getValue();
   const tmpFile = Path.join(__dirname, 'tmp', 'tmpcode');
-  fs.writeFileSync(tmpFile, code);
 
-  const runtimeOpts = ' -d"error_reporting=E_ALL" -d"display_errors=On" "';
-
-  let commandToRun = phpPath + runtimeOpts + tmpFile + '"';
-
+  // In case of using another workin path, then we simulate it!
   if (chdir) {
-    commandToRun = 'cd chdir && ' + chdir;
+    // Simulate a filename in the working path
+    const simulateFilename = Path.join(chdir, 'dummy.php');
+
+    // Simulate php path variables
+    let simulateEnv = 'chdir(\'' + chdir + '\'); ';
+    simulateEnv += '$_SERVER["DOCUMENT_ROOT"] = \'' + chdir + '\'; ';
+    simulateEnv += '$_SERVER["PHP_SELF"] = \'' + simulateFilename + '\'; ';
+    simulateEnv += '$_SERVER["SCRIPT_NAME"] = \'' + simulateFilename + '\'; ';
+    simulateEnv += '$_SERVER["SCRIPT_FILENAME"] = \'' + simulateFilename + '\'; ';
+
+    // Inject variables at the first <?php occurence
+    code = code.replace('<?php', '<?php ' + simulateEnv);
   }
 
+  // Creates temporary file to run
+  fs.writeFileSync(tmpFile, code);
+
+  // Activates error reporting
+  const runtimeOpts = ' -d"error_reporting=E_ALL" -d"display_errors=On" "';
+
+  // Prepares PHP call
+  const commandToRun = phpPath + runtimeOpts + tmpFile + '"';
+
+  // Runs the code in /bin/sh
   runner.exec(commandToRun, (err, phpResponse, stderr) => {
     fs.unlink(tmpFile);
     // User doesn't need to know where the file is
-    setOutput(phpResponse.replace(' in ' + tmpFile, ''));
+    setOutput(phpResponse.replace(new RegExp(' in ' + tmpFile, 'g'), ''));
     setBusy(false);
   });
 }

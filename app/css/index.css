@@ -19,6 +19,9 @@ body{
 .ball-scale-ripple-multiple > div {
   background: #494E57;
 }
+.top-margin{
+  margin-top: 30px;
+}
 /**
  * Sidebar stuff
  */
