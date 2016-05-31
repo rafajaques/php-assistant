@@ -24,9 +24,8 @@
         <li data-event="sidebar-clear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> <span data-string="Clear"></span></li>
         <li data-event="sidebar-import"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> <span data-string="Import from file"></span></li>
         <li data-event="sidebar-presentation"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> <span data-string="Presentation mode"></span></li>
+        <li data-event="sidebar-workingpath" data-toggle="modal" data-target="#workingpath"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> <span data-string="Working path"></span></li>
         <li data-event="sidebar-settings" data-toggle="modal" data-target="#settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span data-string="Settings"></span></li>
-        <li data-event="sidebar-about" data-toggle="modal" data-target="#about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <span data-string="About"></span></li>
-        <li data-event="sidebar-quit"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> <span data-string="Quit"></span></li>
       </ul>
       <!-- Toggle mode -->
       <div class="mode"><button id="toggle-mode" class="btn btn-default btn-xs btn-primary" data-string="RAW mode"></button></div>
@@ -285,8 +284,14 @@
     <div id="presentation" class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-body">
+          <!-- Header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" data-string="Presentation mode"></h4>
+          </div>
 
+          <!-- Content -->
+          <div class="modal-body">
             <!-- Choose presentation mode -->
             <div class="container-fluid">
               <div class="row">
@@ -302,6 +307,8 @@
             </div>
 
           </div>
+
+          <!-- Footer -->
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" data-string="Close"></button>
           </div>
@@ -309,6 +316,42 @@
       </div>
     </div>
     <!-- / About Modal -->
+
+    <!-- Working path Modal -->
+    <div id="workingpath" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" data-string="Working path"></h4>
+          </div>
+
+          <!-- Content -->
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <h4><span data-string="Current working path"></span>: <small id="workingpath-span">/User/seilaonde/ok</small></h4>
+              </div>
+            </div>
+            <div class="row top-margin">
+              <div class="col-md-12 text-center">
+                <button id="workingpath-change" type="button" class="btn btn-primary" data-string="Change working path"></button>
+                <button id="workingpath-reset" type="button" class="btn btn-primary" data-string="Reset working path"></button>
+              </div>
+            </div>
+
+            <div class="alert alert-danger top-margin" role="alert" data-string="Be careful! This is not a sandbox. The indiscriminate use of some functions may damage the system."></div>
+          </div>
+
+          <!-- Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" data-string="Close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / Working path Modal -->
 
   </body>
   <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
@@ -320,4 +363,5 @@
   <script src="js/main.functions.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/autorun.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/workingpath.js" type="text/javascript" charset="utf-8"></script>
 </html>

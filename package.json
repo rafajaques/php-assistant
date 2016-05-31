@@ -2,7 +2,7 @@
   "scripts": {
     "start": "electron ./app",
     "dev": "electron ./app --debug",
-    "locale-sync": "/usr/bin/env php ./apptools/locale-sync.php",
+    "locale-sync": "/usr/bin/env php ./tools/locale-sync.php",
     "test": "eslint ./app/main.js ./app/js/*",
     "postinstall": "install-app-deps",
     "dist": "npm run dist:osx && npm run dist:win32 && npm run dist:win64",

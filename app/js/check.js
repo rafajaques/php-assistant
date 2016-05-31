@@ -14,7 +14,7 @@ const remote = electron.remote;
 const dialog = remote.dialog;
 let os;
 
-var unixPaths = [
+const unixPaths = [
   '/usr/sbin/php',
   '/etc/php',
   '/usr/lib/php',
@@ -23,7 +23,7 @@ var unixPaths = [
   '/usr/share/php'
 ];
 
-var winPaths = [
+const winPaths = [
   'C:\\php\\php.exe',
   'C:\\xampp\\php\\php.exe'
 ];
@@ -104,7 +104,7 @@ function checkPhpPath(list) {
 
 /* Browser for PHP binary */
 function browse() {
-  var file = dialog.showOpenDialog({
+  const file = dialog.showOpenDialog({
     title: i18n.__('Find PHP binary')
   });
 
@@ -127,7 +127,7 @@ function type() {
 
 /* Called when user has finished typing binary path */
 function typeDone() {
-  var path = $('#path').val();
+  const path = $('#path').val();
   if (binaryAdd(path)) {
     $('#type-input').css('display', 'none');
     phpFound();

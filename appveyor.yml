@@ -27,14 +27,16 @@ build_script:
 artifacts:
   - path: dist\win\*.exe
     name: win64-installer
+    type: zip
   - path: dist\win-ia32\*.exe
     name: win32-installer
-  - path: dist\win-unpacked
-    name: win64-standalone
     type: zip
-  - path: dist\win-ia32-unpacked
-    name: win32-standalone
-    type: zip
+  # - path: dist\win-unpacked
+  #   name: win64-standalone
+  #   type: zip
+  # - path: dist\win-ia32-unpacked
+  #   name: win32-standalone
+  #   type: zip
 
 deploy:
   - provider: BinTray
@@ -45,8 +47,10 @@ deploy:
     repo: windows
     package: "php-assistant"
     version: 0.0.7
-    publish: false
+    publish: true
     override: true
     explode: true
+    on:
+      branch: release
 
 test: off

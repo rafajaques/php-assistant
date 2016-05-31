@@ -80,5 +80,11 @@
 	"OK": "OK",
 	"You don't have any PHP binary. Add one using the settings screen and try again.": "Du har ingen PHP binary. Tilføj en ved hjælp af indstillingerne, og prøv igen.",
 	"Full screen": "Full screen",
-	"Exit presentation mode": "Exit presentation mode"
+	"Exit presentation mode": "Exit presentation mode",
+	"Working path": "Working path",
+	"Current working path": "Current working path",
+	"Change working path": "Change working path",
+	"Reset working path": "Reset working path",
+	"Be careful! This is not a sandbox. The indiscriminate use of some functions may damage the system.": "Be careful! This is not a sandbox. The indiscriminate use of some functions may damage the system.",
+	"None": "None"
 }
