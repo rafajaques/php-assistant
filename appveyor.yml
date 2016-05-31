@@ -50,5 +50,7 @@ deploy:
     publish: false
     override: true
     explode: true
+    on:
+      branch: release
 
 test: off
