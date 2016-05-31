@@ -47,7 +47,7 @@ deploy:
     repo: windows
     package: "php-assistant"
     version: 0.0.7
-    publish: false
+    publish: true
     override: true
     explode: true
     on:
