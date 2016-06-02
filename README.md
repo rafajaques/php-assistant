@@ -20,7 +20,13 @@ The main goal is to have a simple app to test small pieces of code without havin
 
 ## Download
 
-Get the most recent release at [releases](https://github.com/rafajaques/php-assistant/releases).
+You will find the most recent releases at Bintray repositories. Remember that PHP Assistant is still in development, so you may find bugs during its utilization. In case of problem, open an [issue](https://github.com/rafajaques/php-assistant/issues).
+
+Mac OSX [![OSX Download](https://api.bintray.com/packages/rafajaques/mac-osx/php-assistant/images/download.svg) ](https://bintray.com/rafajaques/mac-osx/php-assistant/_latestVersion#files)
+
+Debian/Ubuntu/Mint [![DEB Download](https://api.bintray.com/packages/rafajaques/deb/php-assistant/images/download.svg) ](https://bintray.com/rafajaques/deb/php-assistant/_latestVersion#files)
+
+Windows [![Windows Download](https://api.bintray.com/packages/rafajaques/windows/php-assistant/images/download.svg) ](https://bintray.com/rafajaques/windows/php-assistant/_latestVersion#files)
 
 ## Building
 
