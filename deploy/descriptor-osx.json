@@ -16,10 +16,10 @@
     },
 
     "version": {
-        "name": "0.0.7",
+        "name": "0.0.8",
         "desc": "Minor release",
-        "released": "2016-05-29",
-        "vcs_tag": "0.0.7",
+        "released": "2016-06-02",
+        "vcs_tag": "0.0.8",
         "gpgSign": false
     },
 

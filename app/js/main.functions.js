@@ -45,7 +45,10 @@ function clear() {
   editor.setValue('<?php\n', 1);
 }
 
-/* Send text to output window */
+/**
+ * Send text to output window (generally PHP return)
+ * @param {text} string - text to show
+ */
 function setOutput(text) {
   // Raw version
   $('#console').html($('<div/>').text(text).html());
@@ -61,6 +64,10 @@ function setOutput(text) {
   editor.focus();
 }
 
+/**
+ * Toggle busy animation
+ * @param {set} boolean - show or hide animation
+ */
 function setBusy(set) {
   if (set) {
     $('#busy').css('visibility', 'visible');
@@ -69,7 +76,7 @@ function setBusy(set) {
   }
 }
 
-// Sends code to PHP
+/* Gets the code from editor and run it */
 function runCode() {
   // Is there any PHP for us to work with?
   if (!phpPath) {
@@ -80,16 +87,20 @@ function runCode() {
     return;
   }
 
+  // Start busy animation
   setBusy(true);
   editor.focus();
 
+  // Get the code from editor
   let code = editor.getValue();
-  const tmpFile = Path.join(__dirname, 'tmp', 'tmpcode');
 
-  // In case of using another workin path, then we simulate it!
+  // Create temporary file path
+  const tmpFile = Path.join(tmpDir, dummyName);
+
+  // In case of using another working path, then we simulate it!
   if (chdir) {
     // Simulate a filename in the working path
-    const simulateFilename = Path.join(chdir, 'dummy.php');
+    const simulateFilename = Path.join(chdir, dummyName);
 
     // Simulate php path variables
     let simulateEnv = 'chdir(\'' + chdir + '\'); ';
@@ -154,6 +165,7 @@ function importFromFile() {
 /**
  * Change font size stuff
  */
+/* Increase editor font size */
 function increaseFontSize() {
   let size = parseInt($('#editor').css('font-size'), 10);
   size += 2;
@@ -164,6 +176,7 @@ function increaseFontSize() {
   $('#console,#console-html').css('font-size', consSize);
 }
 
+/* Decrease editor font size */
 function decreaseFontSize() {
   let size = parseInt($('#editor').css('font-size'), 10);
   size -= 2;
@@ -173,9 +186,12 @@ function decreaseFontSize() {
   consSize -= 2;
   $('#console,#console-html').css('font-size', consSize);
 }
-function renderApp(refresh) {
-  // refresh = render only stuff modified by settings
 
+/**
+ * Configure app UI
+ * @param {refresh} boolean - render only stuff modified by settings
+ */
+function renderApp(refresh) {
   // Render editor
   editor.setTheme('ace/theme/' + conf.get('editor.theme')); // This is not a path
   editor.setShowPrintMargin(false);
@@ -290,7 +306,8 @@ function saveSettings() {
 }
 
 /**
- * @param {missing} boolean - set only missing options
+ * Fill settings with default values
+ * @param {missing} boolean - set only missing values
  */
 function setDefaultSettings(missing) {
   Object.keys(settingsDefault).forEach((key) => {
@@ -318,11 +335,15 @@ function goFullScreen(full) {
 /**
  * Quit stuff
  */
+/* Send a signal to force quit */
 function quit() {
   ipc.send('asynchronous-message', 'force-quit');
 }
 
-/* Unbind shortcuts from editor */
+/**
+ * Unbind shortcuts from editor
+ * @param {which} array = list of commands to unbind (ace editor)
+ */
 function editorUnbind(which) {
   which.forEach((cmd) => {
     editor.commands.commandKeyBinding[cmd] = null;

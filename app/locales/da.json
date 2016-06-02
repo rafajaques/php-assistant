@@ -86,5 +86,6 @@
 	"Change working path": "Change working path",
 	"Reset working path": "Reset working path",
 	"Be careful! This is not a sandbox. The indiscriminate use of some functions may damage the system.": "Be careful! This is not a sandbox. The indiscriminate use of some functions may damage the system.",
-	"None": "None"
+	"None": "None",
+	"Add binary": "Add binary"
 }

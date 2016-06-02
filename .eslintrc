@@ -40,7 +40,9 @@
     "editorUnbind": true,
     "setDefaultSettings": true,
     "renderApp": true,
-    "binaryGetVersion": true
+    "binaryGetVersion": true,
+    "dummyName": true,
+    "tmpDir": true
   },
   "rules": {
     "no-underscore-dangle": 0,
