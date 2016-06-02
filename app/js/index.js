@@ -9,6 +9,7 @@ const remote = electron.remote;
 const ipc = electron.ipcRenderer;
 const shell = electron.shell;
 const dialog = remote.dialog;
+const os = require('os');
 const fs = require('fs');
 const Path = require('path');
 const runner = require('child_process');
@@ -36,8 +37,14 @@ const settingsDefault = {
   'presentation.try-secondary-display': 'true',
 };
 
-// Editor
+// Will hold path to php binary
 let phpPath;
+
+// Will hold tmp dir (for creating files to run)
+const tmpDir = os.tmpDir();
+const dummyName = 'php-assistant-dummy.php';
+
+// Editor
 const editor = ace.edit('editor');
 editor.$blockScrolling = Infinity;
 

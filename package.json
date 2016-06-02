@@ -1,4 +1,5 @@
 {
+  "author": "Rafael Jaques <rafael@phpit.com.br>",
   "scripts": {
     "start": "electron ./app",
     "dev": "electron ./app --debug",
@@ -25,5 +26,6 @@
     "eslint-plugin-import": "^1.8.0",
     "eslint-plugin-jsx-a11y": "^1.2.2",
     "eslint-plugin-react": "^5.1.1"
-  }
+  },
+  "license": "MIT"
 }
