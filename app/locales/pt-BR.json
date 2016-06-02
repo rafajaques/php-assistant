@@ -86,5 +86,6 @@
 	"Change working path": "Alterar diretório de trabalho",
 	"Reset working path": "Redefinir diretório de trabalho",
 	"Be careful! This is not a sandbox. The indiscriminate use of some functions may damage the system.": "Cuidado! Isso não é uma sandbox. O uso indiscriminado de algumas funções pode danificar o sistema.",
-	"None": "Nenhum"
+	"None": "Nenhum",
+	"Add binary": "Adicionar binário"
 }
