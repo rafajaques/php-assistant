@@ -32,7 +32,7 @@
           "deb_distribution": "vivid",
           "deb_component": "main",
           "deb_architecture": "amd64",
-          "overwrite": 1
+          "override": 1
         }
       }
     ],
