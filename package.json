@@ -6,12 +6,12 @@
     "locale-sync": "/usr/bin/env php ./tools/locale-sync.php",
     "test": "eslint ./app/main.js ./app/js/*",
     "postinstall": "install-app-deps",
-    "dist": "npm run dist:osx && npm run dist:win32 && npm run dist:win64",
-    "dist:osx": "build --platform darwin",
-    "dist:linux": "build --platform linux --arch=all",
-    "dist:win": "build --platform win32 --arch=all",
-    "dist:win32": "build --platform win32 --arch ia32",
-    "dist:win64": "build --platform win32 --arch x64"
+    "dist": "build --windows --linux --osx",
+    "dist:osx": "build --osx",
+    "dist:linux": "build --linux",
+    "dist:win": "npm run dist:win32 && npm run dist:win64",
+    "dist:win32": "build --windows --ia32",
+    "dist:win64": "build --windows --x64"
   },
   "build": {
     "app-bundle-id": "br.rafajaques.phpassistant",
@@ -26,6 +26,5 @@
     "eslint-plugin-import": "^1.8.0",
     "eslint-plugin-jsx-a11y": "^1.2.2",
     "eslint-plugin-react": "^5.1.1"
-  },
-  "license": "MIT"
+  }
 }
