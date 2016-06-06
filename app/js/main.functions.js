@@ -217,6 +217,11 @@ function renderApp(refresh) {
       container: 'body',
       delay: { show: 400 }
     });
+
+    // Padding sidebar buttons to not be under traffic lights
+    if (conf.get('system.os') === 'osx') {
+      $('#sidebar ul').css('margin-top', '22px');
+    }
   }
 
   // Populate language list
