@@ -21,17 +21,21 @@ function preventLinkDefault() {
  */
 
 /* Toggle RAW and HTML modes */
-function toggleMode() {
-  const btn = $('#toggle-mode');
-  btn.toggleClass('btn-primary btn-success');
-  if (mode === 'raw') {
-    btn.html(i18n.__('HTML mode'));
-    mode = 'html';
+function toggleMode(switchMode) {
+  if (switchMode === 'html') {
+    // Swap classes
+    $('.toggle-mode-html').addClass('btn-primary').removeClass('btn-dark');
+    $('.toggle-mode-raw').addClass('btn-dark').removeClass('btn-primary');
+
+    // Swap consoles
     $('#console').css('display', 'none');
     $('#console-html').css('display', 'block');
   } else {
-    btn.html(i18n.__('RAW mode'));
-    mode = 'raw';
+    // Swap classes
+    $('.toggle-mode-html').addClass('btn-dark').removeClass('btn-primary');
+    $('.toggle-mode-raw').addClass('btn-primary').removeClass('btn-dark');
+
+    // Swap consoles
     $('#console').css('display', 'block');
     $('#console-html').css('display', 'none');
   }
@@ -256,7 +260,8 @@ function renderApp(refresh) {
       $('*[data-event="sidebar-import"]').click(importFromFile);
 
       // "Toggle mode" button click
-      $('#toggle-mode').click(toggleMode);
+      $('.toggle-mode-raw').click(() => toggleMode('raw'));
+      $('.toggle-mode-html').click(() => toggleMode('html'));
 
       // Presentation mode
       $('*[data-event="sidebar-fullscreen"]').click(toggleFullscreen);

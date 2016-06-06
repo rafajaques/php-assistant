@@ -22,6 +22,11 @@ body{
 .top-margin{
   margin-top: 30px;
 }
+.btn-dark{
+  background-color: transparent;
+  border:1px solid rgb(61, 61, 61);
+  color: rgb(100, 100, 100);
+}
 /**
  * Sidebar stuff
  */
@@ -57,7 +62,7 @@ body{
   text-align: center;
   width: 100px;
 }
-#toggle-mode{
+#sidebar .mode button{
   cursor: default;
 }
 #sidebar span[data-string]{

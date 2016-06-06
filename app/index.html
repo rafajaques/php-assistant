@@ -19,7 +19,7 @@
     <!-- Sidebar -->
     <div id="sidebar">
       <!-- Menu -->
-      <ul>
+      <ul style="margin-top:25px;">
         <li data-event="sidebar-run"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> <span data-string="Run code"></span> <span id="run-version"></span></li>
         <li data-event="sidebar-clear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> <span data-string="Clear"></span></li>
         <li data-event="sidebar-import"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> <span data-string="Import from file"></span></li>
@@ -29,7 +29,12 @@
         <li data-event="sidebar-about" data-toggle="modal" data-target="#about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <span data-string="About"></span></li>
       </ul>
       <!-- Toggle mode -->
-      <div class="mode"><button id="toggle-mode" class="btn btn-default btn-xs btn-primary" data-string="RAW mode"></button></div>
+      <div class="mode text-center">
+        <div class="btn-group btn-group-xs">
+        <button class="toggle-mode-raw btn btn-primary">RAW</button>
+        <button class="toggle-mode-html btn btn-dark">HTML</button>
+      </div>
+      </div>
     </div>
     <div id="content">
       <div id="editor"></div>

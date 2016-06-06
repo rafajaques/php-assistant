@@ -58,6 +58,7 @@ app.on('ready', () => {
     height: 700,
     width: 900,
     center: true,
+    titleBarStyle: 'hidden',
     icon: Path.join(__dirname, 'gfx', 'app-icon.png'),
     skipTaskbar: conf.get('general.mode') === 'tray',
   });
