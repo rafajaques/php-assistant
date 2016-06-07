@@ -85,5 +85,9 @@
 	"Reset working path": "Redefinir diretório de trabalho",
 	"Be careful! This is not a sandbox. The indiscriminate use of some functions may damage the system.": "Cuidado! Isso não é uma sandbox. O uso indiscriminado de algumas funções pode danificar o sistema.",
 	"None": "Nenhum",
-	"Add binary": "Adicionar binário"
+	"Add binary": "Adicionar binário",
+	"When a working path is set, your code will be executed in that directory context.": "Quendo estiver utilizando um diretório de trabalho, seu código será executado no contexto desse diretório.",
+	"Update available": "Atualização disponível",
+	"Check for updates automatically": "Procurar atualizações automaticamente",
+	"Check for updates now": "Procurar atualizações agora"
 }

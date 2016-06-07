@@ -42,7 +42,9 @@
     "renderApp": true,
     "binaryGetVersion": true,
     "dummyName": true,
-    "tmpDir": true
+    "tmpDir": true,
+    "checkForUpdates": true,
+    "setSearchingUpdate": true
   },
   "rules": {
     "no-underscore-dangle": 0,

@@ -74,9 +74,21 @@ function setOutput(text) {
  */
 function setBusy(set) {
   if (set) {
-    $('#busy').css('visibility', 'visible');
+    $('#code-running').css('visibility', 'visible');
   } else {
-    $('#busy').css('visibility', 'hidden');
+    $('#code-running').css('visibility', 'hidden');
+  }
+}
+
+/**
+ * Toggle searching for update animation
+ * @param {set} boolean - show or hide animation
+ */
+function setSearchingUpdate(set) {
+  if (set) {
+    $('#progress-running').css('visibility', 'visible');
+  } else {
+    $('#progress-running').css('visibility', 'hidden');
   }
 }
 
@@ -283,6 +295,9 @@ function renderApp(refresh) {
 
       // Binary add
       $('#binary-add').click(binaryDialogAdd);
+
+      // Check for updates
+      $('#check-updates').click(checkForUpdates);
       /* eslint-enable no-use-before-define */
     }
 
@@ -292,6 +307,9 @@ function renderApp(refresh) {
 
   // Back to the editor...
   editor.focus();
+
+  // Check automatically for updates
+  if (!refresh && conf.get('general.updates') === 'true') checkForUpdates();
 }
 
 /**
