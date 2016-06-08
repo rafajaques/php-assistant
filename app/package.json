@@ -1,10 +1,11 @@
 {
   "name": "phpassistant",
-  "productName": "PHP-Assistant",
-  "version": "0.0.8",
+  "productName": "PHP Assistant",
+  "version": "0.0.9",
   "main": "main.js",
   "description": "A cross-platform desktop PHP runner",
   "author": "Rafael Jaques <rafael@phpit.com.br>",
+  "license": "MIT",
   "keywords": [
     "Electron",
     "PHP",
@@ -19,7 +20,7 @@
   },
   "dependencies": {
     "configstore": "^2.0.0",
-    "i18n": "^0.8.2"
-  },
-  "license": "MIT"
+    "i18n": "^0.8.2",
+    "request": "^2.72.0"
+  }
 }

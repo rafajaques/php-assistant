@@ -3,8 +3,6 @@
 	"Clear": "Clear",
 	"Settings": "Settings",
 	"About": "About",
-	"RAW mode": "RAW mode",
-	"HTML mode": "HTML mode",
 	"Save": "Save",
 	"Cancel": "Cancel",
 	"General": "General",
@@ -87,5 +85,10 @@
 	"Reset working path": "Reset working path",
 	"Be careful! This is not a sandbox. The indiscriminate use of some functions may damage the system.": "Be careful! This is not a sandbox. The indiscriminate use of some functions may damage the system.",
 	"None": "None",
-	"Add binary": "Add binary"
+	"Add binary": "Add binary",
+	"When a working path is set, your code will be executed in that directory context.": "When a working path is set, your code will be executed in that directory context.",
+	"Update available": "Update available",
+	"Check for updates automatically": "Check for updates automatically",
+	"Check for updates now": "Check for updates now",
+	"Default font size": "Default font size"
 }

@@ -58,6 +58,7 @@ app.on('ready', () => {
     height: 700,
     width: 900,
     center: true,
+    titleBarStyle: 'hidden',
     icon: Path.join(__dirname, 'gfx', 'app-icon.png'),
     skipTaskbar: conf.get('general.mode') === 'tray',
   });
@@ -333,6 +334,11 @@ function createMenu() {
           label: i18n.__('Decrease font size'),
           accelerator: 'CmdOrCtrl+-',
           click: () => runOnApp('decreaseFontSize();'),
+        },
+        {
+          label: i18n.__('Default font size'),
+          accelerator: 'CmdOrCtrl+0',
+          click: () => runOnApp('defaultFontSize();'),
         },
         {
           type: 'separator'

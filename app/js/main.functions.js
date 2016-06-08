@@ -21,17 +21,21 @@ function preventLinkDefault() {
  */
 
 /* Toggle RAW and HTML modes */
-function toggleMode() {
-  const btn = $('#toggle-mode');
-  btn.toggleClass('btn-primary btn-success');
-  if (mode === 'raw') {
-    btn.html(i18n.__('HTML mode'));
-    mode = 'html';
+function toggleMode(switchMode) {
+  if (switchMode === 'html') {
+    // Swap classes
+    $('.toggle-mode-html').addClass('btn-primary').removeClass('btn-dark');
+    $('.toggle-mode-raw').addClass('btn-dark').removeClass('btn-primary');
+
+    // Swap consoles
     $('#console').css('display', 'none');
     $('#console-html').css('display', 'block');
   } else {
-    btn.html(i18n.__('RAW mode'));
-    mode = 'raw';
+    // Swap classes
+    $('.toggle-mode-html').addClass('btn-dark').removeClass('btn-primary');
+    $('.toggle-mode-raw').addClass('btn-primary').removeClass('btn-dark');
+
+    // Swap consoles
     $('#console').css('display', 'block');
     $('#console-html').css('display', 'none');
   }
@@ -70,9 +74,21 @@ function setOutput(text) {
  */
 function setBusy(set) {
   if (set) {
-    $('#busy').css('visibility', 'visible');
+    $('#code-running').css('visibility', 'visible');
   } else {
-    $('#busy').css('visibility', 'hidden');
+    $('#code-running').css('visibility', 'hidden');
+  }
+}
+
+/**
+ * Toggle searching for update animation
+ * @param {set} boolean - show or hide animation
+ */
+function setSearchingUpdate(set) {
+  if (set) {
+    $('#progress-running').css('visibility', 'visible');
+  } else {
+    $('#progress-running').css('visibility', 'hidden');
   }
 }
 
@@ -187,6 +203,13 @@ function decreaseFontSize() {
   $('#console,#console-html').css('font-size', consSize);
 }
 
+/* Editor font size back to default */
+function defaultFontSize() {
+  const size = parseInt(conf.get('editor.font-size'), 10);
+  $('#editor').css('font-size', size);
+  $('#console,#console-html').css('font-size', 16); // Hardcoded for a while...
+}
+
 /**
  * Configure app UI
  * @param {refresh} boolean - render only stuff modified by settings
@@ -213,6 +236,11 @@ function renderApp(refresh) {
       container: 'body',
       delay: { show: 400 }
     });
+
+    // Padding sidebar buttons to not be under traffic lights
+    if (conf.get('system.os') === 'osx') {
+      $('#sidebar ul').css('margin-top', '22px');
+    }
   }
 
   // Populate language list
@@ -256,7 +284,8 @@ function renderApp(refresh) {
       $('*[data-event="sidebar-import"]').click(importFromFile);
 
       // "Toggle mode" button click
-      $('#toggle-mode').click(toggleMode);
+      $('.toggle-mode-raw').click(() => toggleMode('raw'));
+      $('.toggle-mode-html').click(() => toggleMode('html'));
 
       // Presentation mode
       $('*[data-event="sidebar-fullscreen"]').click(toggleFullscreen);
@@ -273,6 +302,9 @@ function renderApp(refresh) {
 
       // Binary add
       $('#binary-add').click(binaryDialogAdd);
+
+      // Check for updates
+      $('#check-updates').click(checkForUpdates);
       /* eslint-enable no-use-before-define */
     }
 
@@ -282,6 +314,9 @@ function renderApp(refresh) {
 
   // Back to the editor...
   editor.focus();
+
+  // Check automatically for updates
+  if (!refresh && conf.get('general.updates') === 'true') checkForUpdates();
 }
 
 /**

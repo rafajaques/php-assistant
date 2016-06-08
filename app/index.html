@@ -8,7 +8,6 @@
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="css/index.css" type="text/css" rel="stylesheet">
     <link href="css/presentation.css" type="text/css" rel="stylesheet">
-    <link href="css/loader.css" type="text/css" rel="stylesheet">
     <script>
       window.$ = window.jQuery = require('./js/jquery.js');
       var isMainWindow = true;
@@ -26,17 +25,22 @@
         <li data-event="sidebar-presentation"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> <span data-string="Presentation mode"></span></li>
         <li data-event="sidebar-workingpath" data-toggle="modal" data-target="#workingpath"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> <span data-string="Working path"></span></li>
         <li data-event="sidebar-settings" data-toggle="modal" data-target="#settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span data-string="Settings"></span></li>
+        <li data-event="sidebar-about" data-toggle="modal" data-target="#about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <span data-string="About"></span></li>
+        <li data-event="sidebar-update" class="update-available list-group-item-info" data-toggle="modal" data-target="#update"><span data-string="Update available"></span></li>
       </ul>
       <!-- Toggle mode -->
-      <div class="mode"><button id="toggle-mode" class="btn btn-default btn-xs btn-primary" data-string="RAW mode"></button></div>
+      <div class="mode text-center">
+        <div class="btn-group btn-group-xs">
+        <button class="toggle-mode-raw btn btn-primary">RAW</button>
+        <button class="toggle-mode-html btn btn-dark">HTML</button>
+      </div>
+      </div>
     </div>
     <div id="content">
       <div id="editor"></div>
 
       <!-- Console output -->
       <div id="output">
-        <!-- Busy animation -->
-        <div id="busy" class="loader-inner ball-scale-ripple-multiple"><div></div><div></div><div></div></div>
         <!-- Two types of console -->
         <div id="console" class="console console-raw"></div>
         <div id="console-html" class="console console-html"></div>
@@ -113,6 +117,18 @@
                         <option value="true" data-string="Yes"></option>
                         <option value="false" data-string="No"></option>
                       </select>
+                    </div>
+                  </div>
+
+                  <!-- Check for updates -->
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label" data-string="Check for updates automatically"></label>
+                    <div class="col-sm-9">
+                      <select class="form-control" data-settings="general.updates">
+                        <option value="true" data-string="Yes"></option>
+                        <option value="false" data-string="No"></option>
+                      </select>
+                      <button id="check-updates" data-dismiss="modal" class="btn btn-primary" data-string="Check for updates now"></button>
                     </div>
                   </div>
 
@@ -331,8 +347,9 @@
           <div class="modal-body">
             <div class="row">
               <div class="col-md-12">
-                <h4><span data-string="Current working path"></span>: <small id="workingpath-span">/User/seilaonde/ok</small></h4>
+                <h4><span data-string="Current working path"></span>: <small id="workingpath-span">None</small></h4>
               </div>
+              <div class="col-md-12" data-string="When a working path is set, your code will be executed in that directory context."></div>
             </div>
             <div class="row top-margin">
               <div class="col-md-12 text-center">
@@ -353,9 +370,60 @@
     </div>
     <!-- / Working path Modal -->
 
+    <!-- Update Modal -->
+    <div id="update" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" data-string="Update available"></h4>
+          </div>
+
+          <!-- Content -->
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12 text-center">
+              <p>There is a newer version of PHP Assistant available. Auto-update is not implemented yet.</p>
+              <p>The most recent version is <strong id="version-newest"></strong>. You're running <strong id="version-current"></strong>.
+              <p>Access <a href="https://github.com/rafajaques/php-assistant/releases">https://github.com/rafajaques/php-assistant/releases</a> and download a new copy.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" data-string="Close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / Working path Modal -->
+
+    <!-- Bottom progress bar -->
+    <div id="code-running">
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+
+        </div>
+      </div>
+    </div>
+    <!-- / Bottom progress bar -->
+
+    <!-- Bottom progress bar -->
+    <div id="progress-running">
+      <div class="progress">
+        <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+
+        </div>
+      </div>
+    </div>
+    <!-- / Bottom progress bar -->
+
   </body>
   <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/split.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/update.check.js" type="text/javascript" charset="utf-8"></script>
   <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/translate.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/presentation.js" type="text/javascript" charset="utf-8"></script>

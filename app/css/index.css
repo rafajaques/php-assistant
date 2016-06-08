@@ -7,9 +7,6 @@ body{
   background-color: #fff;
   -webkit-overflow-scrolling: touch;
 }
-#busy{
-  visibility: hidden;
-}
 .loader-inner{
   position: absolute;
   top:50%;
@@ -21,6 +18,29 @@ body{
 }
 .top-margin{
   margin-top: 30px;
+}
+.btn-dark{
+  background-color: transparent;
+  border:1px solid rgb(61, 61, 61);
+  color: rgb(100, 100, 100);
+}
+#progress-running, #code-running{
+  z-index: 1100;
+  position: absolute;
+  bottom: 0;
+  width:100%;
+  visibility: hidden;
+}
+#progress-running .progress, #code-running .progress{
+  margin:0;
+  height:7px;
+  border-radius: 0;
+}
+#code-running .progress{
+  height:9px;
+}
+#progress-running .progress .progress-bar, #code-running .progress .progress-bar{
+  width: 100%;
 }
 /**
  * Sidebar stuff
@@ -34,9 +54,9 @@ body{
   cursor: default;
 }
 #sidebar span.glyphicon{
-  font-size:30px;
+  font-size:26px;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 #sidebar ul{
   list-style: none;
@@ -57,22 +77,42 @@ body{
   text-align: center;
   width: 100px;
 }
-#toggle-mode{
+#sidebar .mode button{
   cursor: default;
 }
 #sidebar span[data-string]{
   padding: 2px;
   display: block;
-  font-size: 13px;
+  font-size: 12px;
 }
 #run-version{
   display: block;
   color:#7a7a7a;
   font-size:11px;
 }
+#sidebar .update-available{
+  visibility: hidden;
+  padding: 2px;
+}
+#sidebar .update-available:hover{
+  background-color: rgb(141, 201, 250);
+}
+#sidebar .update-available > span{
+  font-size: 11px !important;
+}
 /* Little hack for presentation sidebar */
 .tooltip.left {
   margin-left: -20px;
+}
+
+/**
+ * Modal tuning
+ */
+#update .modal-body{
+  height: 150px;
+}
+#check-updates{
+  margin-top: 5px;
 }
 
 /**

@@ -3,8 +3,6 @@
 	"Clear": "Limpar",
 	"Settings": "Configurações",
 	"About": "Sobre",
-	"RAW mode": "Modo RAW",
-	"HTML mode": "Modo HTML",
 	"Save": "Salvar",
 	"Cancel": "Cancelar",
 	"General": "Geral",
@@ -55,9 +53,9 @@
 	"Preferences": "Preferências",
 	"Actions": "Ações",
 	"PHP binary found!": "Binário do PHP encontrado!",
-	"Starting app...": "Inicializando aplicação...",
-	"PHP Assistant: First run check...": "PHP Assistant: Checagem da primeira inicialização...",
-	"Preparing to start app for the first time...": "Preparando para inicializar aplicação pela primeira vez...",
+	"Starting app...": "Iniciando a aplicação...",
+	"PHP Assistant: First run check...": "PHP Assistant: Checagem da primeira execução...",
+	"Preparing to start app for the first time...": "Preparando para iniciar a aplicação pela primeira vez...",
 	"Type PHP binary location": "Digite a localização do binário do PHP",
 	"Browse to PHP binary": "Navegar até o binário do PHP",
 	"Done": "Pronto",
@@ -87,5 +85,10 @@
 	"Reset working path": "Redefinir diretório de trabalho",
 	"Be careful! This is not a sandbox. The indiscriminate use of some functions may damage the system.": "Cuidado! Isso não é uma sandbox. O uso indiscriminado de algumas funções pode danificar o sistema.",
 	"None": "Nenhum",
-	"Add binary": "Adicionar binário"
+	"Add binary": "Adicionar binário",
+	"When a working path is set, your code will be executed in that directory context.": "Quendo estiver utilizando um diretório de trabalho, seu código será executado no contexto desse diretório.",
+	"Update available": "Atualização disponível",
+	"Check for updates automatically": "Procurar atualizações automaticamente",
+	"Check for updates now": "Procurar atualizações agora",
+	"Default font size": "Tamanho de fonte padrão"
 }
