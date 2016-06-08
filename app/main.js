@@ -336,6 +336,11 @@ function createMenu() {
           click: () => runOnApp('decreaseFontSize();'),
         },
         {
+          label: i18n.__('Default font size'),
+          accelerator: 'CmdOrCtrl+0',
+          click: () => runOnApp('defaultFontSize();'),
+        },
+        {
           type: 'separator'
         },
         {

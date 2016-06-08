@@ -89,5 +89,6 @@
 	"When a working path is set, your code will be executed in that directory context.": "Quendo estiver utilizando um diretório de trabalho, seu código será executado no contexto desse diretório.",
 	"Update available": "Atualização disponível",
 	"Check for updates automatically": "Procurar atualizações automaticamente",
-	"Check for updates now": "Procurar atualizações agora"
+	"Check for updates now": "Procurar atualizações agora",
+	"Default font size": "Tamanho de fonte padrão"
 }

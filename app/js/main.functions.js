@@ -203,6 +203,13 @@ function decreaseFontSize() {
   $('#console,#console-html').css('font-size', consSize);
 }
 
+/* Editor font size back to default */
+function defaultFontSize() {
+  const size = parseInt(conf.get('editor.font-size'), 10);
+  $('#editor').css('font-size', size);
+  $('#console,#console-html').css('font-size', 16); // Hardcoded for a while...
+}
+
 /**
  * Configure app UI
  * @param {refresh} boolean - render only stuff modified by settings
