@@ -6,9 +6,10 @@
     "locale-sync": "/usr/bin/env php ./tools/locale-sync.php",
     "test": "eslint ./app/main.js ./app/js/*",
     "postinstall": "install-app-deps",
+    "pack": "build --target dir",
     "dist": "build --windows --linux --osx",
-    "dist:osx": "build --osx",
-    "dist:linux": "build --linux",
+    "dist:osx": "build --osx --publish onTagOrDraft",
+    "dist:linux": "build --linux --publish onTagOrDraft",
     "dist:win": "npm run dist:win32 && npm run dist:win64",
     "dist:win32": "build --windows --ia32",
     "dist:win64": "build --windows --x64"

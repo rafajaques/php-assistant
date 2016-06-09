@@ -23,23 +23,26 @@ addons:
     - icnsutils
     - graphicsmagick
     - xz-utils
-    - gcc-multilib # for building 32 in 64 machine
-    - g++-multilib # for building 32 in 64 machine
-    - rpm # for building rpm pack
-    - bsdtar # for building pacman
+    - gcc-multilib
+    - g++-multilib
+    - rpm
+    - bsdtar
 before_install:
 - npm install -g eslint eslint-config-airbnb
 install:
 - npm install
 after_success:
 - npm run dist:$TRAVIS_OS_NAME
-- ls dist/
-deploy:
-  skip_cleanup: true
-  provider: bintray
-  file: "deploy/descriptor-$TRAVIS_OS_NAME.json"
-  user: rafajaques
-  on:
-    branch: release
-  key:
-    secure: pfY4//jQB8KIqmNxZ9LXzeIWohn9K2At7NamxTdUKytnRhSn7RffYQuOCiBNgS3DPT91VHNaUkyAPsolye3O2NKo7DZLdkksVVeRM324fCPrXyL4CPZdCy5N5W8PrALsRN3XzuNHgP9ENdkOd4dCFBTlaunCvwdkcLkZFxzeSKMuDmRbOZuLz5049uWPs9hVeE/w8p99PQoSTPsnkIWZQbnSYbIxegXTGlb8O1NO2+oJJM4Gy/5C6xU8e7uvffysjqsjG4VO/8o0YpQabttdxfcmdf/u7CKDeoPPxYE4XHpxmFpKzRQ5tLqbKVx3Q2piWNTk0wQ51Udljpd5gDGCdhoZ04liU+H63+FH4ehHzIVFCxoOEBq0wfvJnGJh6/Y4a8ZDmLAoBIsiyiGTEe21Oav7EeGmeYHAqnD0Wx4dB3rbIPh4GfVkVmU3fUeGU3UfM6/zboPTO+hR9I+2LLS/s6ucL32EArae1lTzwtlfTTGiTOYwAVS95INSIE58Fzq/bzWLEmh7Be+AtrEB6/z+npBgQCXoKTBZvI3fe4tpU9IUCQMTl/BVKEKIURGa0NOxc+Jt300TkfYkHzfRTsm8P3JrWMIz20vHQ4u4jVAS9meaDlp8B9Wsh/wCGvMM3D2X32lnVF1uwjSHZmJ4ga1tU9Fbf24oMf41xNcsX+ACaMA=
+- ls dist/$TRAVIS_OS_NAME
+# deploy:
+#   skip_cleanup: true
+#   provider: bintray
+#   file: deploy/descriptor-$TRAVIS_OS_NAME.json
+#   user: rafajaques
+#   on:
+#     branch: release
+#   key:
+#     secure: pfY4//jQB8KIqmNxZ9LXzeIWohn9K2At7NamxTdUKytnRhSn7RffYQuOCiBNgS3DPT91VHNaUkyAPsolye3O2NKo7DZLdkksVVeRM324fCPrXyL4CPZdCy5N5W8PrALsRN3XzuNHgP9ENdkOd4dCFBTlaunCvwdkcLkZFxzeSKMuDmRbOZuLz5049uWPs9hVeE/w8p99PQoSTPsnkIWZQbnSYbIxegXTGlb8O1NO2+oJJM4Gy/5C6xU8e7uvffysjqsjG4VO/8o0YpQabttdxfcmdf/u7CKDeoPPxYE4XHpxmFpKzRQ5tLqbKVx3Q2piWNTk0wQ51Udljpd5gDGCdhoZ04liU+H63+FH4ehHzIVFCxoOEBq0wfvJnGJh6/Y4a8ZDmLAoBIsiyiGTEe21Oav7EeGmeYHAqnD0Wx4dB3rbIPh4GfVkVmU3fUeGU3UfM6/zboPTO+hR9I+2LLS/s6ucL32EArae1lTzwtlfTTGiTOYwAVS95INSIE58Fzq/bzWLEmh7Be+AtrEB6/z+npBgQCXoKTBZvI3fe4tpU9IUCQMTl/BVKEKIURGa0NOxc+Jt300TkfYkHzfRTsm8P3JrWMIz20vHQ4u4jVAS9meaDlp8B9Wsh/wCGvMM3D2X32lnVF1uwjSHZmJ4ga1tU9Fbf24oMf41xNcsX+ACaMA=
+env:
+  global:
+    secure: ZAAQcyMG0qqLSUYAkvIG3r6MuumuD4DiYasIdqFE6XuidwcyRVPNIR2znPp2Rxt6b+qfs0J8L86YsgzbCdj8zRqoifg3e4T9tWh7oCK4KkrkxS0V7vJ5tlRpN2Z/6nAk7I1eaC4gpdDvuZUeiKX+Hy/K4uDffR7w2PNCSh2oRV8pyKstpvc3Jcp8+59xiTpF+0fX2wahG5vYlg5hq2ilaG97lwOgkkb7ODUm2Cr2kGqeIcUJBvrniabKPkZXkiBrbk44cnITDa9xvVR+jbbPRpqtC9jr9XmYK9q4XDx5VTFfh5dXEAL5A3CxyzgzYL83utl4EBCMbWFUW1PPoDFKXO4D5dSuyDXTNdrzrLYQCe/o6ceVVZ3quCQZieAfUm7JJ9ZHVr/PPAIlwfNdw1heJeJ629+ynyr2SLLclVWySTf1yJ6bCZKUGpAAI01Ri89p2BpqpIHpcSJknxjKjPN+i+9QxuTiDZijjTFiQLhLIfzaskeY7TjmfyNtCqADSyfrzpB+dPBjtja2yN8tRtLlMjL+ZFEb933F4wZaZsGxhGlplgDovY5yrGrJtcBu07kapb60NlWU5xy0RMWC69pRsVb2RdqnzWWXW5w6rJBK0bPc5uIxQW1fumCWWkj8f8SdpNmraghGFSjF5IBh0WQ3LpppJDDXm/oo+MmQaeIlPOA=
