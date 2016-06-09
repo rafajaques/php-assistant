@@ -1,58 +1,24 @@
 version: 0.5.{build}
-
 platform:
   - x64
-
 cache:
   - node_modules
   - app\node_modules
   - '%APPDATA%\npm-cache'
   - '%USERPROFILE%\.electron'
-
 init:
   - git config --global core.autocrlf input
-
 install:
   - git reset --hard HEAD
   - npm install npm -g
   - npm install electron-builder@next # force install next version to test electron-builder
   - npm install
   - npm prune
-
 build_script:
   - node --version
   - npm --version
   - npm run dist:win
-
-artifacts:
-  - path: dist\win\*.exe
-    name: win64-installer
-    type: zip
-  - path: dist\win-ia32\*.exe
-    name: win32-installer
-    type: zip
-  # - path: dist\win-unpacked
-  #   name: win64-standalone
-  #   type: zip
-  # - path: dist\win-ia32-unpacked
-  #   name: win32-standalone
-  #   type: zip
 environment:
   GH_TOKEN:
     secure: SsWMU6aC2YeEqjKERctSLqPZOLjTlmjkj5df53e8kvWhW8BRvboGNz0Pp43yUMcq
-deploy:
-  - provider: BinTray
-    username: rafajaques
-    api_key:
-      secure: C3BCPbZfcKkbEDdCofae+VImfUy5XlMoZueo0N2HT7Bf8H0QiWS6SQ/XpMdEiFvy
-    subject: rafajaques
-    repo: windows
-    package: "php-assistant"
-    version: 0.0.10
-    publish: true
-    override: true
-    explode: true
-    on:
-      branch: release
-
 test: off
