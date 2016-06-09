@@ -9,10 +9,12 @@
     "pack": "build --target dir",
     "dist": "build --windows --linux --osx",
     "dist:osx": "build --osx --publish onTagOrDraft",
-    "dist:linux": "build --linux --publish onTagOrDraft",
+    "dist:linux": "npm run dist:linux32 && npm run dist:linux64",
+    "dist:linux32": "build --linux --ia32 --publish onTagOrDraft",
+    "dist:linux64": "build --linux --x64 --publish onTagOrDraft",
     "dist:win": "npm run dist:win32 && npm run dist:win64",
-    "dist:win32": "build --windows --ia32",
-    "dist:win64": "build --windows --x64"
+    "dist:win32": "build --windows --ia32 --publish onTagOrDraft",
+    "dist:win64": "build --windows --x64 --publish onTagOrDraft"
   },
   "build": {
     "app-bundle-id": "br.rafajaques.phpassistant",
