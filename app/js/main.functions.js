@@ -144,6 +144,9 @@ function runCode() {
     // User doesn't need to know where the file is
     setOutput(phpResponse.replace(new RegExp(' in ' + tmpFile, 'g'), ''));
     setBusy(false);
+
+    // Prevent link default (if returned output has links)
+    preventLinkDefault();
   });
 }
 
