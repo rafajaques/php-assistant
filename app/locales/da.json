@@ -32,7 +32,6 @@
 	"Requires restart": "Kræver genstart",
 	"Presentation mode": "Præsentations mode",
 	"Auto run code": "Auto kør kode",
-	"Actions": "Actions",
 	"Toggle mode": "Skift mode",
 	"Edit": "Rediger",
 	"Undo": "Fortryd",
@@ -90,5 +89,6 @@
 	"Update available": "Update available",
 	"Check for updates automatically": "Check for updates automatically",
 	"Check for updates now": "Check for updates now",
-	"Default font size": "Default font size"
+	"Default font size": "Default font size",
+	"File": "File"
 }

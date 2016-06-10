@@ -4,6 +4,7 @@
 
 [![Travis Build Status](https://travis-ci.org/rafajaques/php-assistant.svg?branch=master)](https://travis-ci.org/rafajaques/php-assistant)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/r4wsabo0ury7a5kg?svg=true)](https://ci.appveyor.com/project/rafajaques/php-assistant)
+[![Latest release](https://img.shields.io/github/tag/rafajaques/php-assistant.svg)](https://github.com/rafajaques/php-assistant/releases)
 [![Dependency Status](https://david-dm.org/rafajaques/php-assistant.svg?path=app)](https://david-dm.org/rafajaques/php-assistant?path=app)
 [![devDependency Status](https://david-dm.org/rafajaques/php-assistant/dev-status.svg)](https://david-dm.org/rafajaques/php-assistant#info=devDependencies)
 [![license:mit](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
@@ -20,11 +21,11 @@ The main goal is to have a simple app to test small pieces of code without havin
 
 You will find the most recent releases at Bintray repositories. Remember that PHP Assistant is still in development, so you may find bugs during its utilization. In case of problem, open an [issue](https://github.com/rafajaques/php-assistant/issues).
 
-Mac OSX [![OSX Download](https://api.bintray.com/packages/rafajaques/mac-osx/php-assistant/images/download.svg) ](https://bintray.com/rafajaques/mac-osx/php-assistant/_latestVersion#files)
-
-Debian/Ubuntu/Mint [![DEB Download](https://api.bintray.com/packages/rafajaques/deb/php-assistant/images/download.svg) ](https://bintray.com/rafajaques/deb/php-assistant/_latestVersion#files)
-
-Windows [![Windows Download](https://api.bintray.com/packages/rafajaques/windows/php-assistant/images/download.svg) ](https://bintray.com/rafajaques/windows/php-assistant/_latestVersion#files)
+[![Mac OSX Download](https://img.shields.io/badge/download-Mac%20OSX-blue.svg)](link)
+[![Debian/Ubuntu/Mint 32](https://img.shields.io/badge/download-Debian%2FUbuntu%2FMint%20(32)-blue.svg)](link)
+[![Debian/Ubuntu/Mint 64](https://img.shields.io/badge/download-Debian%2FUbuntu%2FMint%20(64)-blue.svg)](link)
+[![Windows 32 Download](https://img.shields.io/badge/download-Windows%20(32)-blue.svg)](link)
+[![Windows 64 Download](https://img.shields.io/badge/download-Windows%20(64)-blue.svg)](link)
 
 ## Building
 

@@ -79,6 +79,11 @@ app.on('ready', () => {
   }
 });
 
+/* In case of all windows are closed */
+app.on('window-all-closed', () => {
+  app.quit();
+});
+
 function startApp() {
   // Loading main HTML
   mainWindow.loadURL('file://' + Path.join(__dirname, 'index.html'));
@@ -254,7 +259,7 @@ function getExternalDisplayBounds() {
 function createMenu() {
   const template = [
     {
-      label: i18n.__('Actions'),
+      label: i18n.__('File'),
       submenu: [
         {
           label: i18n.__('Run code'),
@@ -368,6 +373,12 @@ function createMenu() {
           label: i18n.__('Minimize'),
           accelerator: 'CmdOrCtrl+M',
           role: 'minimize'
+        },
+        {
+          label: i18n.__('Hide'),
+          accelerator: 'CmdOrCtrl+H',
+          role: 'hide',
+          click: () => mainWindow.hide()
         },
       ]
     },
