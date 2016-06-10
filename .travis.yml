@@ -29,7 +29,6 @@ addons:
     - bsdtar
 before_install:
 - npm install -g eslint eslint-config-airbnb
-- export CSC_IDENTITY_AUTO_DISCOVERY=false
 install:
 - npm install
 after_success:
