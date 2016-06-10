@@ -51,7 +51,6 @@
 	"Bring All to Front": "Bring All to Front",
 	"Toggle mode": "Toggle mode",
 	"Preferences": "Preferences",
-	"Actions": "Actions",
 	"PHP binary found!": "PHP binary found!",
 	"Starting app...": "Starting app...",
 	"PHP Assistant: First run check...": "PHP Assistant: First run check...",
@@ -90,5 +89,6 @@
 	"Update available": "Update available",
 	"Check for updates automatically": "Check for updates automatically",
 	"Check for updates now": "Check for updates now",
-	"Default font size": "Default font size"
+	"Default font size": "Default font size",
+	"File": "File"
 }

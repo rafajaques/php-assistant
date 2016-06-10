@@ -51,7 +51,6 @@
 	"Bring All to Front": "Trazer todas para frente",
 	"Toggle mode": "Alternar modo",
 	"Preferences": "Preferências",
-	"Actions": "Ações",
 	"PHP binary found!": "Binário do PHP encontrado!",
 	"Starting app...": "Iniciando a aplicação...",
 	"PHP Assistant: First run check...": "PHP Assistant: Checagem da primeira execução...",
@@ -90,5 +89,6 @@
 	"Update available": "Atualização disponível",
 	"Check for updates automatically": "Procurar atualizações automaticamente",
 	"Check for updates now": "Procurar atualizações agora",
-	"Default font size": "Tamanho de fonte padrão"
+	"Default font size": "Tamanho de fonte padrão",
+	"File": "Arquivo"
 }

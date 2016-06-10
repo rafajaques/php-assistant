@@ -30,7 +30,6 @@
 	"Tray only": "Nur Taskleiste",
 	"Regular + Tray": "Normal + Taskleiste",
 	"Requires restart": "Neustart erforderlich",
-	"Actions": "Aktionen",
 	"Toggle mode": "Modus umschalten",
 	"Edit": "Bearbeiten",
 	"Undo": "Rückgänig",
@@ -90,5 +89,6 @@
 	"Update available": "Update available",
 	"Check for updates automatically": "Check for updates automatically",
 	"Check for updates now": "Check for updates now",
-	"Default font size": "Default font size"
+	"Default font size": "Default font size",
+	"File": "File"
 }
