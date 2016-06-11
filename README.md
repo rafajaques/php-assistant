@@ -19,7 +19,7 @@ The main goal is to have a simple app to test small pieces of code without havin
 
 ## Download
 
-You will find the most recent releases at Bintray repositories. Remember that PHP Assistant is still in development, so you may find bugs during its utilization. In case of problem, open an [issue](https://github.com/rafajaques/php-assistant/issues).
+You will find the most recent releases here. Remember that PHP Assistant is still in development, so you may find bugs during its utilization. In case of problem, open an [issue](https://github.com/rafajaques/php-assistant/issues).
 
 [![Mac OSX Download](https://img.shields.io/badge/download-Mac%20OSX-blue.svg)](https://github.com/rafajaques/php-assistant/releases/download/v0.0.10/phpassistant-0.0.10.dmg)
 [![Debian/Ubuntu/Mint 32](https://img.shields.io/badge/download-Debian%2FUbuntu%2FMint%20(32)-blue.svg)](https://github.com/rafajaques/php-assistant/releases/download/v0.0.10/phpassistant-0.0.10-ia32.deb)
