@@ -1,7 +1,7 @@
 {
   "name": "phpassistant",
   "productName": "PHP Assistant",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "main.js",
   "description": "A cross-platform desktop PHP runner",
   "author": "Rafael Jaques <rafael@phpit.com.br>",
