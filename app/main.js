@@ -69,6 +69,11 @@ app.on('ready', () => {
     mainWindow.maximize();
   }
 
+  /* In case of closing main window */
+  mainWindow.on('close', () => {
+    app.quit();
+  });
+
   // Check if phpPath is already known
   if (conf.get('php.default')) {
     // Yes! I know where PHP is!
@@ -222,7 +227,6 @@ function localize() {
   });
 
   i18n.fullLocaleList = locales;
-
   i18n.setLocale(conf.get('general.locale'));
 }
 

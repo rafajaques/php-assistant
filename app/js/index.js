@@ -35,6 +35,8 @@ const settingsDefault = {
   'editor.wordwrap': 'true',
   'editor.highlight-line': 'true',
   'presentation.font-size': '33',
+  'presentation.theme': 'false',
+  'presentation.update-type': 'true',
   'presentation.try-secondary-display': 'true',
 };
 

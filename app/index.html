@@ -79,6 +79,7 @@
               <li role="presentation"><a href="#settings-editor" role="tab" data-toggle="tab" data-string="Editor"></a></li>
               <li role="presentation"><a href="#settings-presentation" role="tab" data-toggle="tab" data-string="Presentation"></a></li>
               <li role="presentation"><a href="#settings-php" role="tab" data-toggle="tab" data-string="PHP"></a></li>
+              <li role="presentation"><a href="#settings-updates" role="tab" data-toggle="tab" data-string="Updates"></a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -120,18 +121,6 @@
                     </div>
                   </div>
 
-                  <!-- Check for updates -->
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label" data-string="Check for updates automatically"></label>
-                    <div class="col-sm-9">
-                      <select class="form-control" data-settings="general.updates">
-                        <option value="true" data-string="Yes"></option>
-                        <option value="false" data-string="No"></option>
-                      </select>
-                      <button id="check-updates" data-dismiss="modal" class="btn btn-primary" data-string="Check for updates now"></button>
-                    </div>
-                  </div>
-
                 </form>
               </div>
 
@@ -150,11 +139,32 @@
                     </div>
                   </div>
 
-                  <!-- Auto run code -->
+                  <!-- Theme -->
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label" data-string="Theme"></label>
+                    <div class="col-sm-9">
+                      <select class="form-control" data-settings="presentation.theme" id="presentation-theme">
+
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Open on another display -->
                   <div class="form-group">
                     <label class="col-sm-3 control-label" data-string="Try to open secondary window in another display"></label>
                     <div class="col-sm-9">
                       <select class="form-control" data-settings="presentation.try-secondary-display">
+                        <option value="true" data-string="Yes"></option>
+                        <option value="false" data-string="No"></option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Update code as you type -->
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label" data-string="Update presentation code as you type"></label>
+                    <div class="col-sm-9">
+                      <select class="form-control" data-settings="presentation.update-type">
                         <option value="true" data-string="Yes"></option>
                         <option value="false" data-string="No"></option>
                       </select>
@@ -205,32 +215,8 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label" data-string="Theme"></label>
                     <div class="col-sm-9">
-                      <select class="form-control" data-settings="editor.theme">
-                        <option value="ambiance">Ambiance</option>
-                        <option value="chaos">Chaos</option>
-                        <option value="chrome">Chrome</option>
-                        <option value="clouds">Clouds</option>
-                        <option value="clouds_midnight">Clouds (Midnight)</option>
-                        <option value="cobalt">Cobalt</option>
-                        <option value="dawn">Dawn</option>
-                        <option value="eclipse">Eclipse</option>
-                        <option value="github">GitHub</option>
-                        <option value="idle_fingers">IDLE Fingers</option>
-                        <option value="iplastic">iPlastic</option>
-                        <option value="kuroir">Kuroir</option>
-                        <option value="merbivore">Merbivore</option>
-                        <option value="merbivore_soft">Merbivore (Soft)</option>
-                        <option value="mono_industrial">Mono Industrial</option>
-                        <option value="monokai">Monokai</option>
-                        <option value="pastel_on_dark">Pastel On Dark</option>
-                        <option value="solarized_dark">Solarized (Dark)</option>
-                        <option value="solarized_light">Solarized (Light)</option>
-                        <option value="terminal">Terminal</option>
-                        <option value="textmate">TextMate</option>
-                        <option value="tomorrow">Tomorrow</option>
-                        <option value="tomorrow_night">Tomorrow (Night)</option>
-                        <option value="twilight">Twilight</option>
-                        <option value="xcode">XCode</option>
+                      <select class="form-control" data-settings="editor.theme" id="editor-theme">
+
                       </select>
                     </div>
                   </div>
@@ -258,6 +244,25 @@
 
                   </tbody>
                 </table>
+              </div>
+
+              <!-- Settings: General tab -->
+              <div role="tabpanel" class="tab-pane" id="settings-updates">
+                <form class="form-horizontal">
+
+                  <!-- Check for updates -->
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label" data-string="Check for updates automatically"></label>
+                    <div class="col-sm-9">
+                      <select class="form-control" data-settings="general.updates">
+                        <option value="true" data-string="Yes"></option>
+                        <option value="false" data-string="No"></option>
+                      </select>
+                      <button id="check-updates" data-dismiss="modal" class="btn btn-primary" data-string="Check for updates now"></button>
+                    </div>
+                  </div>
+
+                </form>
               </div>
 
             <!-- / Tab panes -->
@@ -425,6 +430,7 @@
   <script src="js/split.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/update.check.js" type="text/javascript" charset="utf-8"></script>
   <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/themes.list.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/translate.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/presentation.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/binary.operations.js" type="text/javascript" charset="utf-8"></script>

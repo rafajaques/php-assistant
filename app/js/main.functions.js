@@ -213,6 +213,15 @@ function defaultFontSize() {
   $('#console,#console-html').css('font-size', 16); // Hardcoded for a while...
 }
 
+/* Insert themes into a list */
+function populateThemes(where) {
+  $(where).empty();
+  $(where).append($('<option>').text(i18n.__('Don\'t change')).attr('value', 'false'));
+  $.each(themesList, (i, v) => {
+    $(where).append($('<option>').text(v).attr('value', i));
+  });
+}
+
 /**
  * Configure app UI
  * @param {refresh} boolean - render only stuff modified by settings
@@ -251,6 +260,10 @@ function renderApp(refresh) {
   $.each(i18n.fullLocaleList, (i, v) => {
     $('#locales-list').append($('<option>').text(v).attr('value', i));
   });
+
+  // Populate themes
+  populateThemes('#editor-theme');
+  populateThemes('#presentation-theme');
 
   // First run
   if (!refresh) {
@@ -319,7 +332,9 @@ function renderApp(refresh) {
   editor.focus();
 
   // Check automatically for updates
-  if (!refresh && conf.get('general.updates') === 'true') checkForUpdates();
+  if (isMainWindow && !refresh && conf.get('general.updates') === 'true') {
+    checkForUpdates();
+  }
 }
 
 /**
