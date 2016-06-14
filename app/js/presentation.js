@@ -18,7 +18,7 @@ function detachOutput() {
   // Event is attached now to avoid unecessary binding
   editor.on('change', (e) => {
     if (conf.get('presentation.update-type') === 'true') {
-      console.log(editor.getValue());
+      ipc.send('output-channel', { code: editor.getValue() });
     }
   });
 }

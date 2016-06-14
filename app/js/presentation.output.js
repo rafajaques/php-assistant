@@ -24,5 +24,5 @@ $(function () {
 function receiveOutput() {
   const arg = electron.remote.getGlobal('output');
   editor.setValue(arg.code);
-  setOutput(arg.output);
+  if (arg.output) setOutput(arg.output);
 }
