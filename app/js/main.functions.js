@@ -249,9 +249,13 @@ function renderApp(refresh) {
       delay: { show: 400 }
     });
 
-    // Padding sidebar buttons to not be under traffic lights
+    // OSX specific tuning
     if (conf.get('system.os') === 'osx') {
+      // Padding sidebar buttons to not be under traffic lights
       $('#sidebar ul').css('margin-top', '22px');
+    } else {
+      // Remove draggable area to avoid bugs
+      $('#draggable-area').remove(); // OSX only draggable area
     }
   }
 

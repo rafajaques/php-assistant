@@ -7,13 +7,21 @@ body{
   background-color: #fff;
   -webkit-overflow-scrolling: touch;
 }
+#draggable-area{
+  position: absolute;
+  top: 0;
+  height: 25px;
+  width: 100%;
+  z-index: 5000;
+  -webkit-app-region: drag !important;
+}
 .loader-inner{
   position: absolute;
   top:50%;
   left:50%;
   z-index:1000;
 }
-.ball-scale-ripple-multiple > div {
+.ball-scale-ripple-multiple > div{
   background: #494E57;
 }
 .top-margin{
@@ -101,7 +109,7 @@ body{
   font-size: 11px !important;
 }
 /* Little hack for presentation sidebar */
-.tooltip.left {
+.tooltip.left{
   margin-left: -20px;
 }
 
@@ -196,23 +204,23 @@ body{
 /**
  * Split pane
  */
-.gutter {
+.gutter{
  background-color: #eee;
  background-repeat: no-repeat;
  background-position: 50%;
 }
 
-.gutter.gutter-horizontal {
+.gutter.gutter-horizontal{
  background-image: url('../gfx/grips/vertical.png');
  cursor: ew-resize;
 }
 
-.gutter.gutter-vertical {
+.gutter.gutter-vertical{
  background-image: url('../gfx/grips/horizontal.png');
  cursor: ns-resize;
 }
 
-split, .gutter.gutter-horizontal {
+split, .gutter.gutter-horizontal{
   height: 100%;
   float: left;
 }
