@@ -2,6 +2,7 @@
   <img width="200" src="https://raw.githubusercontent.com/rafajaques/php-assistant/master/app/gfx/readme/logo.png" alt="PHP Assistant Logo"/>
 </p>
 
+
 [![Travis Build Status](https://travis-ci.org/rafajaques/php-assistant.svg?branch=master)](https://travis-ci.org/rafajaques/php-assistant)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/r4wsabo0ury7a5kg?svg=true)](https://ci.appveyor.com/project/rafajaques/php-assistant)
 [![Latest release](https://img.shields.io/github/tag/rafajaques/php-assistant.svg)](https://github.com/rafajaques/php-assistant/releases)
