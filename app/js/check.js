@@ -109,7 +109,7 @@ function browse() {
   });
 
   // Try to add this binary
-  if (binaryAdd(file)) {
+  if (file && binaryAdd(file[0])) {
     phpSearchOptions(false);
     phpFound();
   } else {

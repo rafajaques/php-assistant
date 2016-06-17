@@ -136,7 +136,7 @@ function runCode() {
   const runtimeOpts = ' -d"error_reporting=E_ALL" -d"display_errors=On" "';
 
   // Prepares PHP call
-  const commandToRun = phpPath + runtimeOpts + tmpFile + '"';
+  const commandToRun = '"' + phpPath + '"' + runtimeOpts + tmpFile + '"';
 
   // Runs the code in /bin/sh
   runner.exec(commandToRun, (err, phpResponse, stderr) => {

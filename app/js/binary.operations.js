@@ -25,7 +25,7 @@ function binaryConvertVersionToShow(version) {
 function binaryGetVersion(path, replaced) {
   let response;
   try {
-    response = runner.execSync(path + ' --version', { encoding: 'utf8' });
+    response = runner.execSync('"' + path + '" --version', { encoding: 'utf8' });
   } catch (e) {
     /* eslint-disable no-console */
     console.log(e);
