@@ -19,7 +19,7 @@
     "publish:linux": "build --linux deb rpm freebsd pacman tar.xz --publish onTagOrDraft",
     "publish:linux32": "build --linux tar.xz --ia32 --publish onTagOrDraft",
     "publish:linux64": "build --linux tar.xz --x64 --publish onTagOrDraft",
-    "publish:win": "build --windows --ia32 --x64 --publish onTagOrDraft",
+    "publish:win": "npm run publish:win32 && npm run publish:win64",
     "publish:win32": "build --windows --ia32 --publish onTagOrDraft",
     "publish:win64": "build --windows --x64 --publish onTagOrDraft"
   },

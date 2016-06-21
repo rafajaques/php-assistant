@@ -18,7 +18,4 @@ build_script:
   - node --version
   - npm --version
   - npm run publish:win
-environment:
-  GH_TOKEN:
-    secure: b8diNSvxXN45/Ua6JVsodsPSMuO9412TlpzN8zmDpKN/9U27VlskXUnc+6mjB8ti
 test: off
