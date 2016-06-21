@@ -17,8 +17,5 @@ install:
 build_script:
   - node --version
   - npm --version
-  - npm run dist:win
-environment:
-  GH_TOKEN:
-    secure: SsWMU6aC2YeEqjKERctSLqPZOLjTlmjkj5df53e8kvWhW8BRvboGNz0Pp43yUMcq
+  - npm run publish:win
 test: off

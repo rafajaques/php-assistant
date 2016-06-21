@@ -4,8 +4,8 @@ language: node_js
 matrix:
   include:
   - os: osx
-    node_js: '4'
     osx_image: xcode7.3
+    node_js: '4'
   - os: linux
     env: CC=clang CXX=clang++ npm_config_clang=1
     compiler: clang
@@ -32,8 +32,5 @@ before_install:
 install:
 - npm install
 after_success:
-- npm run dist:$TRAVIS_OS_NAME
+- npm run publish:$TRAVIS_OS_NAME
 - ls dist/$TRAVIS_OS_NAME
-env:
-  global:
-    secure: ZAAQcyMG0qqLSUYAkvIG3r6MuumuD4DiYasIdqFE6XuidwcyRVPNIR2znPp2Rxt6b+qfs0J8L86YsgzbCdj8zRqoifg3e4T9tWh7oCK4KkrkxS0V7vJ5tlRpN2Z/6nAk7I1eaC4gpdDvuZUeiKX+Hy/K4uDffR7w2PNCSh2oRV8pyKstpvc3Jcp8+59xiTpF+0fX2wahG5vYlg5hq2ilaG97lwOgkkb7ODUm2Cr2kGqeIcUJBvrniabKPkZXkiBrbk44cnITDa9xvVR+jbbPRpqtC9jr9XmYK9q4XDx5VTFfh5dXEAL5A3CxyzgzYL83utl4EBCMbWFUW1PPoDFKXO4D5dSuyDXTNdrzrLYQCe/o6ceVVZ3quCQZieAfUm7JJ9ZHVr/PPAIlwfNdw1heJeJ629+ynyr2SLLclVWySTf1yJ6bCZKUGpAAI01Ri89p2BpqpIHpcSJknxjKjPN+i+9QxuTiDZijjTFiQLhLIfzaskeY7TjmfyNtCqADSyfrzpB+dPBjtja2yN8tRtLlMjL+ZFEb933F4wZaZsGxhGlplgDovY5yrGrJtcBu07kapb60NlWU5xy0RMWC69pRsVb2RdqnzWWXW5w6rJBK0bPc5uIxQW1fumCWWkj8f8SdpNmraghGFSjF5IBh0WQ3LpppJDDXm/oo+MmQaeIlPOA=

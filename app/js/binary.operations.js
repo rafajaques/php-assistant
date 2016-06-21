@@ -23,7 +23,14 @@ function binaryConvertVersionToShow(version) {
 * @param {string} replaced - replacing . with : (configstore workaround)
 */
 function binaryGetVersion(path, replaced) {
-  const response = runner.execSync(path + ' --version', { encoding: 'utf8' });
+  let response;
+  try {
+    response = runner.execSync('"' + path + '" --version', { encoding: 'utf8' });
+  } catch (e) {
+    /* eslint-disable no-console */
+    console.log(e);
+    /* eslint-enable no-console */
+  }
 
   // Is this PHP?
   if (/^PHP/.test(response)) {

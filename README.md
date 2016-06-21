@@ -2,6 +2,7 @@
   <img width="200" src="https://raw.githubusercontent.com/rafajaques/php-assistant/master/app/gfx/readme/logo.png" alt="PHP Assistant Logo"/>
 </p>
 
+
 [![Travis Build Status](https://travis-ci.org/rafajaques/php-assistant.svg?branch=master)](https://travis-ci.org/rafajaques/php-assistant)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/r4wsabo0ury7a5kg?svg=true)](https://ci.appveyor.com/project/rafajaques/php-assistant)
 [![Latest release](https://img.shields.io/github/tag/rafajaques/php-assistant.svg)](https://github.com/rafajaques/php-assistant/releases)
@@ -19,13 +20,13 @@ The main goal is to have a simple app to test small pieces of code without havin
 
 ## Download
 
-You will find the most recent releases at Bintray repositories. Remember that PHP Assistant is still in development, so you may find bugs during its utilization. In case of problem, open an [issue](https://github.com/rafajaques/php-assistant/issues).
+You will find the most recent releases here. Remember that PHP Assistant is still in development, so you may find bugs during its utilization. In case of problem, open an [issue](https://github.com/rafajaques/php-assistant/issues).
 
-[![Mac OSX Download](https://img.shields.io/badge/download-Mac%20OSX-blue.svg)](link)
-[![Debian/Ubuntu/Mint 32](https://img.shields.io/badge/download-Debian%2FUbuntu%2FMint%20(32)-blue.svg)](link)
-[![Debian/Ubuntu/Mint 64](https://img.shields.io/badge/download-Debian%2FUbuntu%2FMint%20(64)-blue.svg)](link)
-[![Windows 32 Download](https://img.shields.io/badge/download-Windows%20(32)-blue.svg)](link)
-[![Windows 64 Download](https://img.shields.io/badge/download-Windows%20(64)-blue.svg)](link)
+[![Mac OSX Download](https://img.shields.io/badge/download-Mac%20OSX-blue.svg)](https://github.com/rafajaques/php-assistant/releases/download/v0.0.11/phpassistant-0.0.11.dmg)
+[![Debian/Ubuntu/Mint 32](https://img.shields.io/badge/download-Debian%2FUbuntu%2FMint%20(32)-blue.svg)](https://github.com/rafajaques/php-assistant/releases/download/v0.0.11/phpassistant-0.0.11-ia32.deb)
+[![Debian/Ubuntu/Mint 64](https://img.shields.io/badge/download-Debian%2FUbuntu%2FMint%20(64)-blue.svg)](https://github.com/rafajaques/php-assistant/releases/download/v0.0.11/phpassistant-0.0.11.deb)
+[![Windows 32 Download](https://img.shields.io/badge/download-Windows%20(32)-blue.svg)](https://github.com/rafajaques/php-assistant/releases/download/v0.0.11/phpassistant-Setup-0.0.11-ia32.exe)
+[![Windows 64 Download](https://img.shields.io/badge/download-Windows%20(64)-blue.svg)](https://github.com/rafajaques/php-assistant/releases/download/v0.0.11/phpassistant-Setup-0.0.11.exe)
 
 ## Building
 

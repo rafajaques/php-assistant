@@ -136,7 +136,7 @@ function runCode() {
   const runtimeOpts = ' -d"error_reporting=E_ALL" -d"display_errors=On" "';
 
   // Prepares PHP call
-  const commandToRun = phpPath + runtimeOpts + tmpFile + '"';
+  const commandToRun = '"' + phpPath + '"' + runtimeOpts + tmpFile + '"';
 
   // Runs the code in /bin/sh
   runner.exec(commandToRun, (err, phpResponse, stderr) => {
@@ -144,6 +144,9 @@ function runCode() {
     // User doesn't need to know where the file is
     setOutput(phpResponse.replace(new RegExp(' in ' + tmpFile, 'g'), ''));
     setBusy(false);
+
+    // Prevent link default (if returned output has links)
+    preventLinkDefault();
   });
 }
 
@@ -210,6 +213,15 @@ function defaultFontSize() {
   $('#console,#console-html').css('font-size', 16); // Hardcoded for a while...
 }
 
+/* Insert themes into a list */
+function populateThemes(where) {
+  $(where).empty();
+  $(where).append($('<option>').text(i18n.__('Don\'t change')).attr('value', 'false'));
+  $.each(themesList, (i, v) => {
+    $(where).append($('<option>').text(v).attr('value', i));
+  });
+}
+
 /**
  * Configure app UI
  * @param {refresh} boolean - render only stuff modified by settings
@@ -237,9 +249,13 @@ function renderApp(refresh) {
       delay: { show: 400 }
     });
 
-    // Padding sidebar buttons to not be under traffic lights
+    // OSX specific tuning
     if (conf.get('system.os') === 'osx') {
+      // Padding sidebar buttons to not be under traffic lights
       $('#sidebar ul').css('margin-top', '22px');
+    } else {
+      // Remove draggable area to avoid bugs
+      $('#draggable-area').remove(); // OSX only draggable area
     }
   }
 
@@ -248,6 +264,10 @@ function renderApp(refresh) {
   $.each(i18n.fullLocaleList, (i, v) => {
     $('#locales-list').append($('<option>').text(v).attr('value', i));
   });
+
+  // Populate themes
+  populateThemes('#editor-theme');
+  populateThemes('#presentation-theme');
 
   // First run
   if (!refresh) {
@@ -316,7 +336,9 @@ function renderApp(refresh) {
   editor.focus();
 
   // Check automatically for updates
-  if (!refresh && conf.get('general.updates') === 'true') checkForUpdates();
+  if (isMainWindow && !refresh && conf.get('general.updates') === 'true') {
+    checkForUpdates();
+  }
 }
 
 /**

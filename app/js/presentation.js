@@ -13,6 +13,14 @@ $('#presentation-sidebar').hide();
 /* Signal to create another output window */
 function detachOutput() {
   ipc.send('asynchronous-message', 'detach-output');
+
+  // Update presentation code as you type
+  // Event is attached now to avoid unecessary binding
+  editor.on('change', (e) => {
+    if (conf.get('presentation.update-type') === 'true') {
+      ipc.send('output-channel', { code: editor.getValue() });
+    }
+  });
 }
 
 /* Prepares single layout presentation mode */

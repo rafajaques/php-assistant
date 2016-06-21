@@ -44,7 +44,8 @@
     "dummyName": true,
     "tmpDir": true,
     "checkForUpdates": true,
-    "setSearchingUpdate": true
+    "setSearchingUpdate": true,
+    "themesList": true
   },
   "rules": {
     "no-underscore-dangle": 0,

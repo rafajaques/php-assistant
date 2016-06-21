@@ -13,6 +13,10 @@ $(function () {
     highlightGutterLine: false // No active line number
   });
   editor.renderer.$cursorLayer.element.style.opacity = 0; // No cursor
+  // Is there any new theme?
+  if (conf.get('presentation.theme') !== 'false') {
+    editor.setTheme('ace/theme/' + conf.get('presentation.theme')); // This is not a path
+  }
   $('#editor').css('font-size', conf.get('presentation.font-size') + 'px');
   $('#console,#console-html').css('font-size', conf.get('presentation.font-size') + 'px');
 });
@@ -20,5 +24,5 @@ $(function () {
 function receiveOutput() {
   const arg = electron.remote.getGlobal('output');
   editor.setValue(arg.code);
-  setOutput(arg.output);
+  if (arg.output) setOutput(arg.output);
 }
