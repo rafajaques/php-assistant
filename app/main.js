@@ -43,6 +43,11 @@ let forceQuit = false;
  * Starting app
  */
 app.on('ready', () => {
+  startupRoutine();
+});
+
+/* Prepares app to run */
+function startupRoutine() {
   // Get screen (display) object
   screen = electron.screen;
 
@@ -82,7 +87,7 @@ app.on('ready', () => {
     // Nope! Go and find it!
     runCheck();
   }
-});
+}
 
 /* In case of all windows are closed */
 app.on('window-all-closed', () => {
