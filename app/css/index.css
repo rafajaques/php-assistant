@@ -15,15 +15,6 @@ body{
   z-index: 5000;
   -webkit-app-region: drag !important;
 }
-.loader-inner{
-  position: absolute;
-  top:50%;
-  left:50%;
-  z-index:1000;
-}
-.ball-scale-ripple-multiple > div{
-  background: #494E57;
-}
 .top-margin{
   margin-top: 30px;
 }
