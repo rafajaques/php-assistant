@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHP Assistant: Welcome</title>
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/welcome.css" type="text/css" rel="stylesheet">
+    <script>
+      window.$ = window.jQuery = require('./js/jquery.js');
+      var isMainWindow = true;
+    </script>
+  </head>
+  <body>
+
+    <div id="close-button"><button>&times;</button></div>
+
+    <div id="logo" class="row">
+      <img src="gfx/app-icon.png" width="150">
+    </div>
+
+    <div id="lang-select" class="container-fluid">
+      <div class="row col-xs-offset-2 col-xs-6">
+          <select id="locales-list" class="form-control">
+
+          </select>
+      </div>
+      <div class="row col-xs-2">
+          <button id="go" class="btn btn-default"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+      </div>
+    </div>
+
+    <div id="instructions" class="container-fluid">
+      <div class="row col-xs-offset-0 col-xs-12 well">
+        <h1>Bem-vindo!</h1>
+        <p>Seja bem-vindo ao PHP Assistant. Aqui estão as instruções para uso.</p>
+        <p>Para que esta aplicação funcione, você precisa ter o PHP instalado na máquina.</p>
+        <p>Caso você tenha, a aplicação tentará descobrir automaticamente onde o PHP está. Se não for possível, você deverá indicar onde o executável/binário do PHP está localizado.</p>
+        <p>Se você instalou ferramentas como XAMPP, pode utilizar o PHP que veio junto.</p>
+        <p>Caso não saiba como instalar o PHP, acesse as instruções no manual, {{pre-link}}clicando aqui{{post-link}}.</p>
+        <p>Quando estiver pronto, clique no botão "Iniciar".</p>
+      </div>
+      <div class="row">
+        <button class="btn btn-default"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Iniciar</button>
+      </div>
+    </div>
+
+  </body>
+  <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/welcome.js" type="text/javascript" charset="utf-8"></script>
+
+</html>
