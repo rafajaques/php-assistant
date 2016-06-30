@@ -1,0 +1,31 @@
+body{
+  /*background-color: #21252B;*/
+  background: url('../gfx/intro_bg.jpg');
+  /*background-size: cover;*/
+  background-position: -20px -60px;
+}
+div{
+  text-align: center;
+}
+#logo{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+#close-button{
+  color: #fff;
+  font-size:30px;
+  position: fixed;
+  top: 0px;
+  right: 10px;
+}
+#close-button button{
+  background: none;
+  border: none;
+}
+.well p{
+  text-align: justify;
+}
+.well h1{
+  margin-top: 0;
+  margin-bottom: 20px;
+}
