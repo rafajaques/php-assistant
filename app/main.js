@@ -25,6 +25,7 @@ const appName = 'PHP Assistant';
 let appIcon;
 let mainWindow;
 let outputWindow;
+let welcomeWindow;
 
 // Translation
 global.i18n = require('i18n');
@@ -43,15 +44,40 @@ let forceQuit = false;
  * Starting app
  */
 app.on('ready', () => {
+  // Update version in config file
+  conf.set('version', pkg.version);
+
+  // Wake up i18n!
+  prepareLocalize();
+
+  if (!(conf.get('general.locale'))) {
+    welcome();
+    return;
+  }
   startupRoutine();
 });
+
+function welcome() {
+  // Creates welcome window
+  welcomeWindow = new BrowserWindow({
+    title: appName,
+    height: 580,
+    width: 680,
+    center: true,
+    frame: false,
+    resizable: false,
+    icon: Path.join(__dirname, 'gfx', 'app-icon.png')
+  });
+
+  welcomeWindow.loadURL('file://' + Path.join(__dirname, 'welcome.html'));
+}
 
 /* Prepares app to run */
 function startupRoutine() {
   // Get screen (display) object
   screen = electron.screen;
 
-  // Localize (prepares i18n)
+  // Localize (set i18n stuff)
   localize();
 
   // Set menu
@@ -220,18 +246,20 @@ function terminateApp() {
 /**
  * Localization
  */
-// Get translations
-function localize() {
-  if (!conf.get('general.locale')) {
-    conf.set('general.locale', app.getLocale());
-  }
-
+function prepareLocalize() {
   i18n.configure({
     locales: Object.keys(locales),
     directory: Path.join(__dirname, 'locales'),
   });
 
   i18n.fullLocaleList = locales;
+}
+// Get translations
+function localize() {
+  if (!conf.get('general.locale')) {
+    conf.set('general.locale', app.getLocale());
+  }
+
   i18n.setLocale(conf.get('general.locale'));
 }
 
