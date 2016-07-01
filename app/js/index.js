@@ -57,6 +57,8 @@ $(() => {
 
   if (isMainWindow) {
     updatePhpPath();
+    /* @@@@@@ this is a test */
+    phpPath = './php/osx/php';
   }
 
   // Set missing settings to default
