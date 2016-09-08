@@ -19,6 +19,7 @@ function binaryConvertVersionToShow(version) {
 }
 
 /**
+* Gets version of a binary
 * @param {string} path - path to php binary
 * @param {string} replaced - replacing . with : (configstore workaround)
 */
@@ -48,6 +49,9 @@ function binaryGetVersion(path, replaced) {
   return false;
 }
 
+/**
+ * Generate an HTML template of a listing line
+ */
 function binaryLineGetTemplate(version, path, inUse) {
   return [
     '<tr ' + (inUse ? 'class="info"' : '') + '>',

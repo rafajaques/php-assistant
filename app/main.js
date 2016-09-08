@@ -3,10 +3,7 @@
 
 // Libraries
 const electron = require('electron');
-const app = electron.app;
-const Tray = electron.Tray;
-const Menu = electron.Menu;
-const BrowserWindow = electron.BrowserWindow;
+const { app, Tray, Menu, BrowserWindow } = electron;
 const ipc = electron.ipcMain;
 const dialog = electron.Dialog;
 const Path = require('path');
@@ -36,9 +33,6 @@ const locales = {
   fr: 'Français',
   'pt-BR': 'Português (Brasil)',
 };
-
-// Force quit variable (quitting deppends on app mode)
-let forceQuit = false;
 
 /**
  * Starting app
@@ -239,7 +233,6 @@ ipc.on('asynchronous-message', (evt, arg) => {
 
 // Forces the quit
 function terminateApp() {
-  forceQuit = true;
   app.quit();
 }
 
