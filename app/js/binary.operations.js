@@ -18,6 +18,10 @@ function binaryConvertVersionToShow(version) {
   return version.replace(/:/g, '.');
 }
 
+/* Gets the path of bundled PHP binary */
+function getBundledPhpPath() {
+  return Path.join(__dirname, 'php', conf.get('system.os'));
+}
 /**
 * Gets version of a binary
 * @param {string} path - path to php binary
@@ -81,6 +85,10 @@ function binaryUpdateList() {
   const versions = conf.get('php.versions');
   const inUse = conf.get('php.default');
 
+  // Adds bundled version manually
+  versions['bundled'] = 'Integrated version';
+
+  // Rewrites PHP versions list
   Object.keys(versions).forEach((v) => {
     $('#binary-list').append(binaryLineGetTemplate(v, versions[v], (inUse === v)));
   });
@@ -101,8 +109,12 @@ function phpGetCurrVersion() {
 
 /* Updates binary path used by the runner */
 function updatePhpPath() {
-  // Change phpPath for runner
-  phpPath = conf.get('php.versions.' + conf.get('php.default'));
+  // Are we using bundled version?
+  if (conf.get('php.default') === 'bundled') {
+    phpPath = getBundledPhpPath();
+  } else {
+    phpPath = conf.get('php.versions.' + conf.get('php.default'));
+  }
 
   // Change PHP version number shown in app
   $('#run-version').html(phpGetCurrVersion());
@@ -134,6 +146,10 @@ function binaryAdd(path) {
       return false;
     }
   } catch (e) {
+    /* eslint-disable no-console */
+    console.log(e);
+    /* eslint-enable no-console */
+
     // I couldn't even find the file!!!
     return false;
   }

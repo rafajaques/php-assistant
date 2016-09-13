@@ -1,3 +1,6 @@
+/**
+ * main.js
+ */
 // This will be fixed when porting functions to modules
 /* eslint-disable no-use-before-define */
 
@@ -44,10 +47,12 @@ app.on('ready', () => {
   // Wake up i18n!
   prepareLocalize();
 
+  // First run?
   if (!(conf.get('general.locale'))) {
     welcome();
     return;
   }
+
   startupRoutine();
 });
 
@@ -55,7 +60,7 @@ function welcome() {
   // Creates welcome window
   welcomeWindow = new BrowserWindow({
     title: appName,
-    height: 580,
+    height: 620,
     width: 680,
     center: true,
     frame: false,
@@ -99,14 +104,7 @@ function startupRoutine() {
     app.quit();
   });
 
-  // Check if phpPath is already known
-  if (conf.get('php.default')) {
-    // Yes! I know where PHP is!
-    startApp();
-  } else {
-    // Nope! Go and find it!
-    runCheck();
-  }
+  startApp();
 }
 
 /* In case of all windows are closed */

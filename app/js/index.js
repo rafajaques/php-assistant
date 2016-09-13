@@ -53,12 +53,11 @@ editor.$blockScrolling = Infinity;
 
 /* Startup routine */
 $(() => {
+  // We need these shortcuts...
   editorUnbind(['cmd+,', 'ctrl+t', 'ctrl+p']);
 
   if (isMainWindow) {
     updatePhpPath();
-    /* @@@@@@ this is a test */
-    phpPath = Path.join(__dirname, 'php/osx/php');
   }
 
   // Set missing settings to default
