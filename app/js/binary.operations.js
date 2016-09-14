@@ -87,10 +87,11 @@ function binaryLineGetTemplate(version, path, inUse) {
 function binaryUpdateList() {
   $('#binary-list').empty();
 
-  const versions = conf.get('php.versions');
+  let versions = conf.get('php.versions');
   const inUse = conf.get('php.default');
 
   // Adds bundled version manually
+  if (!versions) versions = [];
   versions['bundled'] = 'Integrated version';
 
   // Rewrites PHP versions list
