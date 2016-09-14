@@ -20,7 +20,12 @@ function binaryConvertVersionToShow(version) {
 
 /* Gets the path of bundled PHP binary */
 function getBundledPhpPath() {
-  return Path.join(__dirname, 'php', conf.get('system.os'));
+  switch (conf.get('system.os')) {
+    case 'osx':
+      return Path.join(__dirname, 'php', 'osx');
+    case 'win':
+      return Path.join(__dirname, 'php', 'php-cgi.exe');
+  }
 }
 /**
 * Gets version of a binary

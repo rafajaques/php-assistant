@@ -26,7 +26,10 @@
   "build": {
     "appId": "br.rafajaques.phpassistant",
     "app-category-type": "public.app-category.utilities",
-    "iconUrl": "http://rafajaques.com.br/php-assistant/icon.ico"
+    "iconUrl": "http://rafajaques.com.br/php-assistant/icon.ico",
+    "asar": {
+      "unpackDir": "php"
+    }
   },
   "devDependencies": {
     "electron-prebuilt": "^1.2.5",
