@@ -53,6 +53,7 @@ editor.$blockScrolling = Infinity;
 
 /* Startup routine */
 $(() => {
+  // We need these shortcuts...
   editorUnbind(['cmd+,', 'ctrl+t', 'ctrl+p']);
 
   if (isMainWindow) {

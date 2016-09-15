@@ -1,12 +1,12 @@
+/**
+ * main.js
+ */
 // This will be fixed when porting functions to modules
 /* eslint-disable no-use-before-define */
 
 // Libraries
 const electron = require('electron');
-const app = electron.app;
-const Tray = electron.Tray;
-const Menu = electron.Menu;
-const BrowserWindow = electron.BrowserWindow;
+const { app, Tray, Menu, BrowserWindow } = electron;
 const ipc = electron.ipcMain;
 const dialog = electron.Dialog;
 const Path = require('path');
@@ -25,6 +25,7 @@ const appName = 'PHP Assistant';
 let appIcon;
 let mainWindow;
 let outputWindow;
+let welcomeWindow;
 
 // Translation
 global.i18n = require('i18n');
@@ -36,22 +37,46 @@ const locales = {
   'pt-BR': 'Português (Brasil)',
 };
 
-// Force quit variable (quitting deppends on app mode)
-let forceQuit = false;
-
 /**
  * Starting app
  */
 app.on('ready', () => {
+  // Update version in config file
+  conf.set('version', pkg.version);
+
+  // Wake up i18n!
+  prepareLocalize();
+
+  // First run?
+  if (!(conf.get('general.locale'))) {
+    welcome();
+    return;
+  }
+
   startupRoutine();
 });
+
+function welcome() {
+  // Creates welcome window
+  welcomeWindow = new BrowserWindow({
+    title: appName,
+    height: 620,
+    width: 680,
+    center: true,
+    frame: false,
+    resizable: false,
+    icon: Path.join(__dirname, 'gfx', 'app-icon.png')
+  });
+
+  welcomeWindow.loadURL('file://' + Path.join(__dirname, 'welcome.html'));
+}
 
 /* Prepares app to run */
 function startupRoutine() {
   // Get screen (display) object
   screen = electron.screen;
 
-  // Localize (prepares i18n)
+  // Localize (set i18n stuff)
   localize();
 
   // Set menu
@@ -79,14 +104,7 @@ function startupRoutine() {
     app.quit();
   });
 
-  // Check if phpPath is already known
-  if (conf.get('php.default')) {
-    // Yes! I know where PHP is!
-    startApp();
-  } else {
-    // Nope! Go and find it!
-    runCheck();
-  }
+  startApp();
 }
 
 /* In case of all windows are closed */
@@ -213,25 +231,26 @@ ipc.on('asynchronous-message', (evt, arg) => {
 
 // Forces the quit
 function terminateApp() {
-  forceQuit = true;
   app.quit();
 }
 
 /**
  * Localization
  */
-// Get translations
-function localize() {
-  if (!conf.get('general.locale')) {
-    conf.set('general.locale', app.getLocale());
-  }
-
+function prepareLocalize() {
   i18n.configure({
     locales: Object.keys(locales),
     directory: Path.join(__dirname, 'locales'),
   });
 
   i18n.fullLocaleList = locales;
+}
+// Get translations
+function localize() {
+  if (!conf.get('general.locale')) {
+    conf.set('general.locale', app.getLocale());
+  }
+
   i18n.setLocale(conf.get('general.locale'));
 }
 

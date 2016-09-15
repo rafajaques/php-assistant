@@ -7,6 +7,7 @@
     <title>PHP Assistant: Welcome</title>
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="css/welcome.css" type="text/css" rel="stylesheet">
+    <link href="css/pretty.css" type="text/css" rel="stylesheet">
     <script>
       window.$ = window.jQuery = require('./js/jquery.js');
       var isMainWindow = true;
@@ -35,19 +36,48 @@
       <div class="row col-xs-offset-0 col-xs-12 well">
         <h1>Bem-vindo!</h1>
         <p>Seja bem-vindo ao PHP Assistant. Aqui estão as instruções para uso.</p>
-        <p>Para que esta aplicação funcione, você precisa ter o PHP instalado na máquina.</p>
-        <p>Caso você tenha, a aplicação tentará descobrir automaticamente onde o PHP está. Se não for possível, você deverá indicar onde o executável/binário do PHP está localizado.</p>
+        <p>Esta aplicação já vem com uma versão do PHP disponível internamente.</p>
+        <p>Caso você tenha alguma outra versão, a aplicação tentará descobrir automaticamente onde o PHP está. Se não for possível, você deverá indicar onde o executável/binário do PHP está localizado.</p>
         <p>Se você instalou ferramentas como XAMPP, pode utilizar o PHP que veio junto.</p>
-        <p>Caso não saiba como instalar o PHP, acesse as instruções no manual, {{pre-link}}clicando aqui{{post-link}}.</p>
-        <p>Quando estiver pronto, clique no botão "Iniciar".</p>
+        <p>Quando estiver pronto, clique no botão "Próximo Passo".</p>
       </div>
       <div class="row">
-        <button class="btn btn-default"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Iniciar</button>
+        <button id="next-step" class="btn btn-default"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>&nbsp; Próximo Passo</button>
+      </div>
+    </div>
+
+    <div id="choose-mode" class="container-fluid">
+      <div class="row col-xs-offset-0 col-xs-12 well">
+        <h1>Escolha o modo</h1>
+        <p>O PHP Assistant funciona de duas maneiras: como uma aplicação comum e como uma aplicação da barra de notificações. Você pode alterar essa opção depois.</p>
+        <p>Dependendo da distribuição Linux, o modo em barra de notificações pode não funcionar.</p>
+        <div class="row modes">
+          <div class="col-xs-6">
+            <label for="radio-regular"><img src="gfx/presentation/app-regular.png" class="app-modes"></label>
+            <br>
+            <div class="pretty inline circle primary">
+              <input type="radio" id="radio-regular" name="app-mode" value="regular">
+              <label><i class="default"></i> Aplicação comum</label>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <label for="radio-tray"><img src="gfx/presentation/app-tray.png" class="app-modes"></label>
+            <br>
+            <div class="pretty inline circle primary">
+              <input type="radio" id="radio-tray" name="app-mode" value="tray">
+              <label><i class="default"></i> Aplicação na tray</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button id="start-app" class="btn btn-default" disabled><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Iniciar Aplicação</button>
       </div>
     </div>
 
   </body>
   <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/binary.operations.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/welcome.js" type="text/javascript" charset="utf-8"></script>
 
 </html>

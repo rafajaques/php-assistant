@@ -119,6 +119,7 @@ function runCode() {
     const simulateFilename = Path.join(chdir, dummyName);
 
     // Simulate php path variables
+    // @TODO may be replaced by chdir option in execFile
     let simulateEnv = 'chdir(\'' + chdir + '\'); ';
     simulateEnv += '$_SERVER["DOCUMENT_ROOT"] = \'' + chdir + '\'; ';
     simulateEnv += '$_SERVER["PHP_SELF"] = \'' + simulateFilename + '\'; ';
@@ -132,19 +133,19 @@ function runCode() {
   // Creates temporary file to run
   fs.writeFileSync(tmpFile, code);
 
-  // Activates error reporting
-  const runtimeOpts = ' -d"error_reporting=E_ALL" -d"display_errors=On" "';
-
   // Prepares PHP call
-  const commandToRun = '"' + phpPath + '"' + runtimeOpts + tmpFile + '"';
+  // const commandToRun = Path.resolve(phpPath);
+  const commandToRun = phpPath;
 
-  // Runs the code in /bin/sh
-  runner.exec(commandToRun, (err, phpResponse, stderr) => {
+  // Activates error reporting
+  const runtimeOpts = ['-d"error_reporting=E_ALL"', '-d"display_errors=On"', tmpFile];
+
+  // Runs the code in shell
+  runner.execFile(commandToRun, runtimeOpts, (err, phpResponse, stderr) => {
     fs.unlink(tmpFile);
     // User doesn't need to know where the file is
     setOutput(phpResponse.replace(new RegExp(' in ' + tmpFile, 'g'), ''));
     setBusy(false);
-
     // Prevent link default (if returned output has links)
     preventLinkDefault();
   });
