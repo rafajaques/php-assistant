@@ -24,7 +24,7 @@ function getBundledPhpPath() {
     case 'osx':
       return Path.join(__dirname, 'php', 'osx');
     case 'win':
-      return Path.join(__dirname, 'php', 'php-cgi.exe');
+      return Path.join(__dirname, 'php', 'php.exe');
   }
 }
 /**
