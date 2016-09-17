@@ -7,6 +7,14 @@ body{
 div{
   text-align: center;
 }
+#draggable-area{
+  position: absolute;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  z-index: -1;
+  -webkit-app-region: drag !important;
+}
 #logo{
   margin-bottom: 50px;
   margin-top: 50px;
