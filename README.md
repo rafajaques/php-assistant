@@ -7,7 +7,7 @@
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/r4wsabo0ury7a5kg?svg=true)](https://ci.appveyor.com/project/rafajaques/php-assistant)
 [![Latest release](https://img.shields.io/github/tag/rafajaques/php-assistant.svg)](https://github.com/rafajaques/php-assistant/releases)
 [![Dependency Status](https://david-dm.org/rafajaques/php-assistant.svg?path=app)](https://david-dm.org/rafajaques/php-assistant?path=app)
-[![devDependency Status](https://david-dm.org/rafajaques/php-assistant/dev-status.svg)](https://david-dm.org/rafajaques/php-assistant#info=devDependencies)
+[![devDependency Status](https://david-dm.org/rafajaques/php-assistant/dev-status.svg)](https://david-dm.org/rafajaques/php-assistant#info=dev)
 [![license:mit](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
 
 PHP Assistant is a cross-platform desktop app for testing PHP snippets.
