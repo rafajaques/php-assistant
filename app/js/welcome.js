@@ -33,7 +33,7 @@ $.each(i18n.fullLocaleList, (i, v) => {
 });
 
 // Try to figure out user's language
-$('#locales-list').val(app.getLocale());
+$('#locales-list').val(app.getLocale() ? app.getLocale() : 'en');
 
 /* Go button action */
 $('#go').click(() => {
