@@ -2,7 +2,6 @@
  * welcome.js
  * First time run check routines
  */
-const i18n = require('electron').remote.getGlobal('i18n');
 const app = require('electron').remote.app;
 const Configstore = require('configstore');
 const pkg = require('./package.json');
@@ -42,6 +41,7 @@ $('#go').click(() => {
   $('#lang-select').hide();
   $('#instructions').show();
   $('#logo img').attr('width', '70');
+  translateInterface();
 });
 
 /* Next step action */

@@ -3,6 +3,8 @@ body{
   background: url('../gfx/intro_bg.jpg');
   /*background-size: cover;*/
   background-position: -20px -60px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 div{
   text-align: center;

@@ -36,30 +36,30 @@
 
     <div id="instructions" class="container-fluid">
       <div class="row col-xs-offset-0 col-xs-12 well">
-        <h1>Bem-vindo!</h1>
-        <p>Seja bem-vindo ao PHP Assistant. Aqui estão as instruções para uso.</p>
-        <p>Esta aplicação já vem com uma versão do PHP disponível internamente.</p>
-        <p>Caso você tenha alguma outra versão, a aplicação tentará descobrir automaticamente onde o PHP está. Se não for possível, você deverá indicar onde o executável/binário do PHP está localizado.</p>
-        <p>Se você instalou ferramentas como XAMPP, pode utilizar o PHP que veio junto.</p>
-        <p>Quando estiver pronto, clique no botão "Próximo Passo".</p>
+        <h1 data-string="Welcome"></h1>
+        <p data-string="Welcome to PHP Assistant. Here are the usage instructions."></p>
+        <p data-string="This application comes with a bundled PHP version."></p>
+        <p data-string="If you have any other version, the application will attempt to automatically discover where PHP is. If not possible, you should indicate where the PHP executable/binary is located."></p>
+        <p data-string="If you installed tools such as XAMPP, you can use PHP that came along."></p>
+        <p data-string="Once you are ready, click the button below to proceed."></p>
       </div>
       <div class="row">
-        <button id="next-step" class="btn btn-default"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>&nbsp; Próximo Passo</button>
+        <button id="next-step" class="btn btn-default"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>&nbsp; <span data-string="Next"></span></button>
       </div>
     </div>
 
     <div id="choose-mode" class="container-fluid">
       <div class="row col-xs-offset-0 col-xs-12 well">
-        <h1>Escolha o modo</h1>
-        <p>O PHP Assistant funciona de duas maneiras: como uma aplicação comum e como uma aplicação da barra de notificações. Você pode alterar essa opção depois.</p>
-        <p>Dependendo da distribuição Linux, o modo em barra de notificações pode não funcionar.</p>
+        <h1 data-string="Choose mode"></h1>
+        <p data-string="PHP Assistant works in two ways: as a common application and as an application of the notification bar. You can change this later."></p>
+        <p data-string="Depending on the Linux distribution, status bar mode may not work."></p>
         <div class="row modes">
           <div class="col-xs-6">
             <label for="radio-regular"><img src="gfx/presentation/app-regular.png" class="app-modes"></label>
             <br>
             <div class="pretty inline circle primary">
               <input type="radio" id="radio-regular" name="app-mode" value="regular">
-              <label><i class="default"></i> Aplicação comum</label>
+              <label><i class="default"></i> <span data-string="Regular application"></span></label>
             </div>
           </div>
           <div class="col-xs-6">
@@ -67,19 +67,20 @@
             <br>
             <div class="pretty inline circle primary">
               <input type="radio" id="radio-tray" name="app-mode" value="tray">
-              <label><i class="default"></i> Aplicação na tray</label>
+              <label><i class="default"></i> <span data-string="Tray application"></span></label>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <button id="start-app" class="btn btn-default" disabled><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Iniciar Aplicação</button>
+        <button id="start-app" class="btn btn-default" disabled><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; <span data-string="Start application"></button>
       </div>
     </div>
 
   </body>
   <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/binary.operations.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/translate.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/welcome.js" type="text/javascript" charset="utf-8"></script>
 
 </html>
