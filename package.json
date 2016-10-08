@@ -25,17 +25,15 @@
   },
   "build": {
     "appId": "br.rafajaques.phpassistant",
-    "app-category-type": "public.app-category.utilities",
+    "build.mac.category": "public.app-category.utilities",
     "iconUrl": "http://rafajaques.com.br/php-assistant/icon.ico",
-    "asar": {
-      "unpackDir": "php"
-    }
+    "asar": false
   },
   "devDependencies": {
-    "electron-prebuilt": "^1.4.0",
-    "electron-builder": "^6.7.7",
+    "electron-prebuilt": "^1.4.1",
+    "electron-builder": "^7.9.0",
     "eslint": "^3.5.0",
-    "eslint-config-airbnb": "^11.1.0",
+    "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.2.2"
