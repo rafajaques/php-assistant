@@ -6,17 +6,19 @@
 
 // Libraries
 const electron = require('electron');
+const Path = require('path');
+const Configstore = require('configstore');
+
 const { app, Tray, Menu, BrowserWindow } = electron;
 const ipc = electron.ipcMain;
 const dialog = electron.Dialog;
-const Path = require('path');
+
 let screen;
 
 // Check for debug option
 const debug = /--debug/.test(process.argv[2]);
 
 // Config stuff
-const Configstore = require('configstore');
 const pkg = require(Path.join(__dirname, 'package.json'));
 const conf = new Configstore(pkg.name);
 
@@ -29,6 +31,7 @@ let welcomeWindow;
 
 // Translation
 global.i18n = require('i18n');
+
 const locales = {
   da: 'Danish',
   de: 'Deutsch',

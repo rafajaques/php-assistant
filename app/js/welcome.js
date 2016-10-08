@@ -6,9 +6,10 @@ const i18n = require('electron').remote.getGlobal('i18n');
 const app = require('electron').remote.app;
 const Configstore = require('configstore');
 const pkg = require('./package.json');
-const conf = new Configstore(pkg.name);
 const fs = require('fs');
 const runner = require('child_process');
+
+const conf = new Configstore(pkg.name);
 
 const unixPaths = [
   '/usr/sbin/php',
@@ -51,8 +52,18 @@ $('#next-step').click(() => {
 
 /* Enable start button */
 $('#radio-regular,#radio-tray').click(() => {
-  $('#start-app').prop("disabled", false);
+  $('#start-app').prop('disabled', false);
 });
+
+/* Checks automatically for php binaries in known paths */
+function checkPhpPath(list) {
+  // Try to find a binary in every known path
+  list.every((path) => {
+    binaryAdd(path);
+    return true;
+  });
+  return true;
+}
 
 /* Let's get it started in here! :) */
 $('#start-app').click(() => {
@@ -81,20 +92,9 @@ $('#start-app').click(() => {
   // Restarts the app to finish setup
   app.relaunch();
   app.exit(0);
-
 });
 
 /* Close button action */
 $('#close-button button').click(() => {
   app.quit();
 });
-
-/* Checks automatically for php binaries in known paths */
-function checkPhpPath(list) {
-  // Try to find a binary in every known path
-  list.every((path) => {
-    binaryAdd(path);
-    return true;
-  });
-  return true;
-}

@@ -25,7 +25,11 @@ function getBundledPhpPath() {
       return Path.join(__dirname, 'php', 'osx');
     case 'win':
       return Path.join(__dirname, 'php', 'php.exe');
+    default:
+      break;
   }
+
+  return false;
 }
 /**
 * Gets version of a binary
@@ -92,7 +96,7 @@ function binaryUpdateList() {
 
   // Adds bundled version manually
   if (!versions) versions = [];
-  versions['bundled'] = 'Integrated version';
+  versions.bundled = 'Integrated version';
 
   // Rewrites PHP versions list
   Object.keys(versions).forEach((v) => {

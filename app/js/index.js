@@ -5,14 +5,16 @@
 
 // Imports
 const electron = require('electron');
-const remote = electron.remote;
-const ipc = electron.ipcRenderer;
-const shell = electron.shell;
-const dialog = remote.dialog;
 const os = require('os');
 const fs = require('fs');
 const Path = require('path');
 const runner = require('child_process');
+const Configstore = require('configstore');
+
+const remote = electron.remote;
+const ipc = electron.ipcRenderer;
+const shell = electron.shell;
+const dialog = remote.dialog;
 
 // Output mode
 /* eslint-disable prefer-const */
@@ -21,7 +23,6 @@ let chdir = false;
 /* eslint-enable prefer-const */
 
 // Config stuff
-const Configstore = require('configstore');
 const packageInfo = require(Path.join(__dirname, 'package.json'));
 const conf = new Configstore(packageInfo.name);
 const settingsDefault = {

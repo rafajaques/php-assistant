@@ -50,10 +50,12 @@
   "rules": {
     "no-underscore-dangle": 0,
     "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0,
     "func-names": 0,
     "prefer-arrow-callback:": 0,
     "prefer-template": 0,
     "comma-dangle": 0,
-    "no-unused-vars": 0
+    "no-unused-vars": 0,
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   }
 }
