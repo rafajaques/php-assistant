@@ -29,7 +29,6 @@
 	"Mode": "Modo",
 	"Regular application": "Aplicação normal",
 	"Tray only": "Apenas tray",
-	"Regular + Tray": "Normal + Tray",
 	"Requires restart": "Necessita reiniciar",
 	"Edit": "Editar",
 	"Undo": "Desfazer",
@@ -94,5 +93,17 @@
 	"File": "Arquivo",
 	"Don't change": "Não mudar",
 	"Updates": "Atualizações",
-	"Update presentation code as you type": "Atualizar código da apresentação conforme você digita"
+	"Update presentation code as you type": "Atualizar código da apresentação conforme você digita",
+	"Welcome": "Bem-vindo",
+	"Welcome to PHP Assistant. Here are the usage instructions.": "Seja bem-vindo ao PHP Assistant. Aqui estão as instruções para uso.",
+	"This application comes with a bundled PHP version.": "Esta aplicação já vem com uma versão do PHP disponível internamente.",
+	"If you have any other version, the application will attempt to automatically discover where PHP is. If not possible, you should indicate where the PHP executable/binary is located.": "Caso você tenha alguma outra versão, a aplicação tentará descobrir automaticamente onde o PHP está. Se não for possível, você deverá indicar onde o executável/binário do PHP está localizado.",
+	"If you installed tools such as XAMPP, you can use PHP that came along.": "Se você instalou ferramentas como XAMPP, pode utilizar o PHP que veio junto.",
+	"Once you are ready, click the button below to proceed.": "Quando estiver pronto, clique no botão abaixo para avançar.",
+	"Next": "Próximo",
+	"Choose mode": "Escolha o modo",
+	"PHP Assistant works in two ways: as a common application and as an application of the notification bar. You can change this later.": "O PHP Assistant funciona de duas maneiras: como uma aplicação comum e como uma aplicação da barra de notificações (tray). Você pode alterar essa opção depois.",
+	"Depending on the Linux distribution, status bar mode may not work.": "Dependendo da distribuição Linux, o modo em barra de notificações pode não funcionar.",
+	"Tray application": "Aplicação na tray",
+	"Start application": "Iniciar aplicação"
 }

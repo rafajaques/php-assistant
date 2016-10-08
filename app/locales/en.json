@@ -29,7 +29,6 @@
 	"Mode": "Mode",
 	"Regular application": "Regular application",
 	"Tray only": "Tray only",
-	"Regular + Tray": "Regular + Tray",
 	"Requires restart": "Requires restart",
 	"Edit": "Edit",
 	"Undo": "Undo",
@@ -94,5 +93,17 @@
 	"File": "File",
 	"Don't change": "Don't change",
 	"Updates": "Updates",
-	"Update presentation code as you type": "Update presentation code as you type"
+	"Update presentation code as you type": "Update presentation code as you type",
+	"Welcome": "Welcome",
+	"Welcome to PHP Assistant. Here are the usage instructions.": "Welcome to PHP Assistant. Here are the usage instructions.",
+	"This application comes with a bundled PHP version.": "This application comes with a bundled PHP version.",
+	"If you have any other version, the application will attempt to automatically discover where PHP is. If not possible, you should indicate where the PHP executable\/binary is located.": "If you have any other version, the application will attempt to automatically discover where PHP is. If not possible, you should indicate where the PHP executable\/binary is located.",
+	"If you installed tools such as XAMPP, you can use PHP that came along.": "If you installed tools such as XAMPP, you can use PHP that came along.",
+	"Once you are ready, click the button below to proceed.": "Once you are ready, click the button below to proceed.",
+	"Next": "Next",
+	"Choose mode": "Choose mode",
+	"PHP Assistant works in two ways: as a common application and as an application of the notification bar. You can change this later.": "PHP Assistant works in two ways: as a common application and as an application of the notification bar. You can change this later.",
+	"Depending on the Linux distribution, status bar mode may not work.": "Depending on the Linux distribution, status bar mode may not work.",
+	"Tray application": "Tray application",
+	"Start application": "Start application"
 }
