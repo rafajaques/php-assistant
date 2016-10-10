@@ -102,8 +102,8 @@
 	"Once you are ready, click the button below to proceed.": "Når du er klar, klik på knappen nedenunder for at fortsætte.",
 	"Next": "Næste",
 	"Choose mode": "Vælg mode",
-	"PHP Assistant works in two ways: as a common application and as an application of the notification bar. You can change this later.": "PHP Assistant works in two ways: as a common application and as an application of the notification bar. You can change this later.",
-	"Depending on the Linux distribution, status bar mode may not work.": "Depending on the Linux distribution, status bar mode may not work.",
+	"PHP Assistant works in two ways: as a common application and as an application of the notification bar. You can change this later.": "PHP Assistant virker på to måder: som et normalt program eller et program som kører i notikationsbaren. Du kan skifte dette senere.",
+	"Depending on the Linux distribution, status bar mode may not work.": "Afhængig af Linux distributionen virker status bar mode ikke.",
 	"Tray application": "Minimer application",
 	"Start application": "Start application"
 }
