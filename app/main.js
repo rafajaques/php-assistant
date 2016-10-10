@@ -33,10 +33,12 @@ let welcomeWindow;
 global.i18n = require('i18n');
 
 const locales = {
-  da: 'Danish',
+  da: 'Dansk',
   de: 'Deutsch',
   en: 'English',
+  es: 'Español',
   fr: 'Français',
+  pl: 'Polski',
   'pt-BR': 'Português (Brasil)',
   ru: 'Русский',
   uk: 'Українська',
