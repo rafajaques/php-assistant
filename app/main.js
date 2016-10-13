@@ -39,12 +39,13 @@ const locales = {
   en: 'English',
   es: 'Español',
   fr: 'Français',
+  hi: 'हिन्दी',
+  it: 'Italiano',
   pl: 'Polski',
   'pt-BR': 'Português (Brasil)',
   ru: 'Русский',
   tr: 'Türkçe',
-  uk: 'Українська',
-  it: 'Italiano'
+  uk: 'Українська'
 };
 
 /**
