@@ -43,6 +43,7 @@ const locales = {
   'pt-BR': 'Português (Brasil)',
   ru: 'Русский',
   uk: 'Українська',
+  it: 'Italiano'
 };
 
 /**
