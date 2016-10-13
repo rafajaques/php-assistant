@@ -44,6 +44,7 @@ const locales = {
   ru: 'Русский',
   tr: 'Türkçe',
   uk: 'Українська',
+  it: 'Italiano'
 };
 
 /**
