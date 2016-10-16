@@ -30,7 +30,7 @@
     "asar": false
   },
   "devDependencies": {
-    "electron-prebuilt": "^1.4.1",
+    "electron": "^1.4.1",
     "electron-builder": "^7.9.0",
     "eslint": "^3.7.1",
     "eslint-plugin-import": "^1.16.0",
