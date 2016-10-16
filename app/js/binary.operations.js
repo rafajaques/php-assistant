@@ -94,14 +94,14 @@ function binaryUpdateList() {
   let versions = conf.get('php.versions');
   const inUse = conf.get('php.default');
 
-  // Adds bundled version manually
-  if (!versions) versions = [];
-  versions.bundled = 'Integrated version';
-
   // Rewrites PHP versions list
   Object.keys(versions).forEach((v) => {
     $('#binary-list').append(binaryLineGetTemplate(v, versions[v], (inUse === v)));
   });
+
+  // Adds bundled version manually
+  let bundledVersion = binaryGetVersion(getBundledPhpPath(), false);
+  $('#binary-list').append(binaryLineGetTemplate(bundledVersion, 'Integrated version', (inUse === 'bundled')));
 }
 
 /**
