@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "configstore": "^2.1.0",
-    "i18n": "^0.8.3",
+    "i18n": "^0.8.2",
     "request": "^2.75.0"
   }
 }
