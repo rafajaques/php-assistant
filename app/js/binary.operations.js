@@ -85,6 +85,10 @@ function binaryLineGetTemplate(version, path, inUse) {
   ].join('\n');
 }
 
+function binaryGetBundledVersion() {
+  return binaryGetVersion(getBundledPhpPath(), false);
+}
+
 /**
  * Binary list functions
  */
@@ -100,8 +104,9 @@ function binaryUpdateList() {
   });
 
   // Adds bundled version manually
-  const bundledVersion = binaryGetVersion(getBundledPhpPath(), false);
-  $('#binary-list').append(binaryLineGetTemplate(bundledVersion, 'Integrated version', (inUse === 'bundled')));
+  const bundledVersion = binaryGetBundledVersion();
+  $('#binary-list').append(
+    binaryLineGetTemplate(bundledVersion, 'Integrated version', (inUse === bundledVersion)));
 }
 
 /**
@@ -120,7 +125,7 @@ function phpGetCurrVersion() {
 /* Updates binary path used by the runner */
 function updatePhpPath() {
   // Are we using bundled version?
-  if (conf.get('php.default') === 'bundled') {
+  if (conf.get('php.default') === binaryGetBundledVersion()) {
     phpPath = getBundledPhpPath();
   } else {
     phpPath = conf.get('php.versions.' + conf.get('php.default'));
