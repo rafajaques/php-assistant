@@ -17,5 +17,5 @@ install:
 build_script:
   - node --version
   - npm --version
-  - npm run publish:win
+  - npm run publish:win32
 test: off
