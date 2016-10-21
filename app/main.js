@@ -45,7 +45,7 @@ const locales = {
   pl: 'Polski',
   'pt-BR': 'Português (Brasil)',
   ru: 'Русский',
-  sv: 'Svenska',
+  'sv-SE': 'Svenska (Sverige)',
   tr: 'Türkçe',
   uk: 'Українська'
 };
