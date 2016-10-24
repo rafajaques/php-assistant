@@ -71,6 +71,8 @@ app.on('ready', () => {
 });
 
 function welcome() {
+  createWelcomeMenu();
+
   // Creates welcome window
   welcomeWindow = new BrowserWindow({
     title: appName,
@@ -533,6 +535,81 @@ function createMenu() {
       {
         label: i18n.__('About') + ' ' + appName,
         click: () => runOnApp('$("#about").modal("toggle");'),
+      }
+    );
+  }
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+}
+
+// Creates app menu
+function createWelcomeMenu() {
+  console.log(appName);
+  const template = [
+    {
+      label: 'File',
+      submenu: []
+    },
+  ];
+
+  // OSX specific menu
+  if (process.platform === 'darwin') {
+    template.unshift({
+      label: appName,
+      submenu: [
+        {
+          label: 'Services',
+          role: 'services',
+          submenu: []
+        },
+        {
+          type: 'separator'
+        },
+        {
+          label: 'Hide ' + appName,
+          accelerator: 'Command+H',
+          role: 'hide'
+        },
+        {
+          label: 'Hide Others',
+          accelerator: 'Command+Alt+H',
+          role: 'hideothers'
+        },
+        {
+          label: 'Show All',
+          role: 'unhide'
+        },
+        {
+          type: 'separator'
+        },
+        {
+          label: 'Quit',
+          accelerator: 'Command+Q',
+          click: () => app.quit(),
+        },
+      ]
+    });
+    // Window menu
+    template[1].submenu.push(
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Bring All to Front',
+        role: 'front'
+      }
+    );
+  } else {
+    // If this is not OSX, set missing menus somewhere else...
+    template[0].submenu.push(
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Quit',
+        accelerator: 'Ctrl+Q',
+        click: () => app.quit(),
       }
     );
   }
