@@ -545,7 +545,6 @@ function createMenu() {
 
 // Creates app menu
 function createWelcomeMenu() {
-  console.log(appName);
   const template = [
     {
       label: 'File',

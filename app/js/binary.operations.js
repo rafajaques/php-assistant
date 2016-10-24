@@ -31,6 +31,12 @@ function getBundledPhpPath() {
 
   return false;
 }
+
+/* Tells if this version is the bundled one */
+function isBundled(version) {
+  return /:/.test(version) === false;
+}
+
 /**
 * Gets version of a binary
 * @param {string} path - path to php binary
@@ -66,23 +72,34 @@ function binaryGetVersion(path, replaced) {
  * Generate an HTML template of a listing line
  */
 function binaryLineGetTemplate(version, path, inUse) {
-  return [
+  let output = [
     '<tr ' + (inUse ? 'class="info"' : '') + '>',
     '  <td>' + binaryConvertVersionToShow(version) + '</td>',
     '  <td>' + path + '</td>',
     '  <td class="text-right">',
     '    <div class="btn-group">',
-    '      <button class="btn btn-default btn-xs" onclick="makeDefaultVersion(\''
-            + version + '\')">',
+    '      <button class="btn btn-default btn-xs" onclick="makeDefaultVersion(\'' + version + '\')">',
     '        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>',
     '      </button>',
+  ];
+
+  // Show remove button only for non-bundled versions
+  if (!isBundled(version)) {
+    output = output.concat(
     '      <button class="btn btn-default btn-xs" onclick="removeVersion(\'' + version + '\')">',
     '        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>',
-    '      </button>',
+    '      </button>'
+    );
+  }
+
+  // Finishes output template
+  output = output.concat(
     '    </div>',
     '  </td>',
     '</tr>'
-  ].join('\n');
+  );
+
+  return output.join('\n');
 }
 
 function binaryGetBundledVersion() {
@@ -106,7 +123,7 @@ function binaryUpdateList() {
   // Adds bundled version manually
   const bundledVersion = binaryGetBundledVersion();
   $('#binary-list').append(
-    binaryLineGetTemplate(bundledVersion, 'Integrated version', (inUse === bundledVersion)));
+    binaryLineGetTemplate(bundledVersion, i18n.__('Bundled version'), (inUse === bundledVersion)));
 }
 
 /**
