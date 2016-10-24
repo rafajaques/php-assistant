@@ -33,7 +33,9 @@ $.each(i18n.fullLocaleList, (i, v) => {
 });
 
 // Try to figure out user's language
-$('#locales-list').val(app.getLocale() ? app.getLocale() : 'en');
+// $('#locales-list').val(app.getLocale() ? app.getLocale() : 'en');
+// Until other languages are added the only option is English
+$('#locales-list').val('en');
 
 /* Go button action */
 $('#go').click(() => {
@@ -98,3 +100,5 @@ $('#start-app').click(() => {
 $('#close-button button').click(() => {
   app.quit();
 });
+
+$('#go').click();
