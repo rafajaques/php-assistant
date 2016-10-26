@@ -33,6 +33,7 @@ let welcomeWindow;
 global.i18n = require('i18n');
 
 const locales = {
+  be: 'Беларускі',
   cs: 'Česky',
   da: 'Dansk',
   de: 'Deutsch',
