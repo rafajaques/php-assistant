@@ -45,7 +45,6 @@
     "tmpDir": true,
     "checkForUpdates": true,
     "setSearchingUpdate": true,
-    "document": true,
     "themesList": true
   },
   "rules": {
