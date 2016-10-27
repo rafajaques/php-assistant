@@ -74,8 +74,8 @@ app.on('ready', () => {
 function welcome() {
   createWelcomeMenu();
 
-  // Creates welcome window
-  welcomeWindow = new BrowserWindow({
+  // Configure browser window options
+  let browserOptions = {
     title: appName,
     height: 620,
     width: 680,
@@ -83,7 +83,15 @@ function welcome() {
     frame: false,
     resizable: false,
     icon: Path.join(__dirname, 'gfx', 'app-icon.png')
-  });
+  };
+
+  // Enable window transparency if compatible with host system
+  if (process.platform !== 'win32' || systemPreferences.isAeroGlassEnabled()) {
+    browserOptions.transparent = true;
+  }
+
+  // Creates welcome window
+  welcomeWindow = new BrowserWindow(browserOptions);
 
   welcomeWindow.loadURL('file://' + Path.join(__dirname, 'welcome.html'));
 }
