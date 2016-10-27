@@ -45,6 +45,7 @@
     "tmpDir": true,
     "checkForUpdates": true,
     "setSearchingUpdate": true,
+    "systemPreferences": true,
     "themesList": true
   },
   "rules": {
