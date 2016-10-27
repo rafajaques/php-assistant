@@ -228,6 +228,22 @@ function populateThemes(where) {
  * @param {refresh} boolean - render only stuff modified by settings
  */
 function renderApp(refresh) {
+  document.ondragover = document.ondrop = (ev) => {
+    ev.preventDefault()
+  }
+
+  document.body.ondrop = (ev) => {
+    setOutput('');
+    var extensions = ['php', 'phtml', 'tpl', 'ctp'];
+    var fileparts = ev.dataTransfer.files[0].path.split('.');
+    if (extensions.indexOf(fileparts[fileparts.length - 1]) >= 0) {
+      fs.readFile(ev.dataTransfer.files[0].path, 'utf8', importReady);
+    }
+    else {
+      setOutput(i18n.__('Drag & Drop file loading is only allowed for php files with one of the following extensions: .php, .phtml, .tpl, .ctp'));
+    }
+    ev.preventDefault()
+  }
   // Render editor
   editor.setTheme('ace/theme/' + conf.get('editor.theme')); // This is not a path
   editor.setShowPrintMargin(false);
