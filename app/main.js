@@ -82,7 +82,8 @@ function welcome() {
     center: true,
     frame: false,
     resizable: false,
-    icon: Path.join(__dirname, 'gfx', 'app-icon.png')
+    icon: Path.join(__dirname, 'gfx', 'app-icon.png'),
+    transparent: (process.platform !== 'win32' || systemPreferences.isAeroGlassEnabled())
   });
 
   welcomeWindow.loadURL('file://' + Path.join(__dirname, 'welcome.html'));
