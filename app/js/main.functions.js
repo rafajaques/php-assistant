@@ -167,6 +167,28 @@ function importReady(err, data) {
   return true;
 }
 
+/**
+ * Import file handler
+ */
+function importFile(file, charset = 'utf8') {
+  if (!file) {
+    dialog.showErrorBox(i18n.__('Error'), i18n.__('No file specified!'));
+    return;
+  }
+
+  const extensions = ['php', 'phtml', 'tpl', 'ctp'];
+  const fileparts = file.split('.');
+  if (extensions.indexOf(fileparts[fileparts.length - 1]) < 0) {
+    const msg = 'Drag & Drop file loading is only allowed for php files\n'
+              + ' with one of the following extensions:\n'
+              + ' .php, .phtml, .tpl, .ctp';
+    dialog.showErrorBox(i18n.__('Error'), i18n.__(msg));
+    return;
+  }
+
+  fs.readFile(file, charset, importReady);
+}
+
 /* Triggered when clicking "Import from file" button */
 function importFromFile() {
   const file = dialog.showOpenDialog({
@@ -178,7 +200,7 @@ function importFromFile() {
   });
 
   if (file) {
-    fs.readFile(file[0], 'utf8', importReady);
+    importFile(file[0]);
   }
 }
 
@@ -228,20 +250,15 @@ function populateThemes(where) {
  * @param {refresh} boolean - render only stuff modified by settings
  */
 function renderApp(refresh) {
+  // Handle drag/drop file import:
   document.ondragover = document.ondrop = (ev) => {
     ev.preventDefault();
   };
-
   document.body.ondrop = (ev) => {
-    const extensions = ['php', 'phtml', 'tpl', 'ctp'];
-    const fileparts = ev.dataTransfer.files[0].path.split('.');
-    if (extensions.indexOf(fileparts[fileparts.length - 1]) >= 0) {
-      fs.readFile(ev.dataTransfer.files[0].path, 'utf8', importReady);
-    } else {
-      setOutput(i18n.__('Drag & Drop file loading is only allowed for php files with one of the following extensions: .php, .phtml, .tpl, .ctp'));
-    }
+    importFile(ev.dataTransfer.files[0].path);
     ev.preventDefault();
   };
+
   // Render editor
   editor.setTheme('ace/theme/' + conf.get('editor.theme')); // This is not a path
   editor.setShowPrintMargin(false);
