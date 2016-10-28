@@ -27,7 +27,43 @@
     "appId": "br.rafajaques.phpassistant",
     "build.mac.category": "public.app-category.utilities",
     "iconUrl": "http://rafajaques.com.br/php-assistant/icon.ico",
-    "asar": false
+    "asar": false,
+    "mac": {
+      "files": [
+        "**/*",
+        "!**/node_modules/*/{README.md,README,readme.md,readme,test}",
+        "!**/node_modules/.bin",
+        "!**/*.{o,hprof,orig,pyc,pyo,rbc}",
+        "!**/._*",
+        "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,__pycache__,thumbs.db,.gitignore,.gitattributes,.editorconfig,.idea,appveyor.yml,.travis.yml,circle.yml}",
+        "!**/php/php.exe",
+        "!**/php/php7.dll"
+      ]
+    },
+    "win": {
+      "files": [
+        "**/*",
+        "!**/node_modules/*/{README.md,README,readme.md,readme,test}",
+        "!**/node_modules/.bin",
+        "!**/*.{o,hprof,orig,pyc,pyo,rbc}",
+        "!**/._*",
+        "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,__pycache__,thumbs.db,.gitignore,.gitattributes,.editorconfig,.idea,appveyor.yml,.travis.yml,circle.yml}",
+        "!**/php/osx"
+      ]
+    },
+    "linux": {
+      "files": [
+        "**/*",
+        "!**/node_modules/*/{README.md,README,readme.md,readme,test}",
+        "!**/node_modules/.bin",
+        "!**/*.{o,hprof,orig,pyc,pyo,rbc}",
+        "!**/._*",
+        "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,__pycache__,thumbs.db,.gitignore,.gitattributes,.editorconfig,.idea,appveyor.yml,.travis.yml,circle.yml}",
+        "!**/php/osx",
+        "!**/php/php.exe",
+        "!**/php/php7.dll"
+      ]
+    }
   },
   "devDependencies": {
     "electron": "^1.4.1",
