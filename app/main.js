@@ -50,6 +50,7 @@ const locales = {
   'sv-SE': 'Svenska (Sverige)',
   tr: 'Türkçe',
   uk: 'Українська'
+  ms: 'Malay'
 };
 
 /**
