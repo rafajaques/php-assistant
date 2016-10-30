@@ -43,6 +43,7 @@ const locales = {
   hi: 'हिन्दी',
   it: 'Italiano',
   id: 'Indonesia',
+  ms: 'Malay',
   nl: 'Nederlands',
   pl: 'Polski',
   'pt-BR': 'Português (Brasil)',
