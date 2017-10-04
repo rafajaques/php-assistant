@@ -66,12 +66,12 @@
     }
   },
   "devDependencies": {
-    "electron": "^1.4.1",
-    "electron-builder": "^7.9.0",
-    "eslint": "^3.7.1",
-    "eslint-plugin-import": "^1.16.0",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.3.0"
+    "electron": "^1.7.8",
+    "electron-builder": "^19.34.1",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0"
   }
 }
