@@ -251,7 +251,10 @@ function populateThemes(where) {
  */
 function renderApp(refresh) {
   // Handle drag/drop file import:
-  document.ondragover = document.ondrop = (ev) => {
+  document.ondragover = (ev) => {
+    ev.preventDefault();
+  };
+  document.ondrop = (ev) => {
     ev.preventDefault();
   };
   document.body.ondrop = (ev) => {

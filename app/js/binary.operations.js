@@ -55,7 +55,7 @@ function binaryGetVersion(path, replaced) {
   // Is this PHP?
   if (/^PHP/.test(response)) {
     // Get PHP version
-    const result = response.match(/^PHP ([0-9\.]+)/);
+    const result = response.match(/^PHP ([0-9.]+)/);
     if (result && result[1]) {
       if (replaced) {
         return binaryConvertVersionToSave(result[1]);
@@ -86,9 +86,9 @@ function binaryLineGetTemplate(version, path, inUse) {
   // Show remove button only for non-bundled versions
   if (!isBundled(version)) {
     output = output.concat(
-    '      <button class="btn btn-default btn-xs" onclick="removeVersion(\'' + version + '\')">',
-    '        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>',
-    '      </button>'
+      '      <button class="btn btn-default btn-xs" onclick="removeVersion(\'' + version + '\')">',
+      '        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>',
+      '      </button>'
     );
   }
 
@@ -252,8 +252,7 @@ function removeVersion(version) {
   const opt = dialog.showMessageBox({
     type: 'question',
     title: i18n.__('Are you sure?'),
-    message: i18n.__('Removing {{version}} version. Are you sure?',
-                    { version: binaryConvertVersionToShow(version) }),
+    message: i18n.__('Removing {{version}} version. Are you sure?', { version: binaryConvertVersionToShow(version) }),
     buttons: [i18n.__('Yes'), i18n.__('No')],
   });
 

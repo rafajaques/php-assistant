@@ -5,7 +5,7 @@
     "dev": "electron ./app --debug",
     "locale-sync": "/usr/bin/env php ./tools/locale-sync.php",
     "test": "eslint ./app/main.js ./app/js/*",
-    "postinstall": "install-app-deps",
+    "postinstall": "electron-builder install-app-deps",
     "pack": "build --target dir",
     "dist": "build --windows --linux --osx",
     "dist:osx": "build --osx",
