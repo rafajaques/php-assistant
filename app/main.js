@@ -37,6 +37,7 @@ const locales = {
   cs: 'Česky',
   da: 'Dansk',
   de: 'Deutsch',
+  el: 'Ελληνικά',
   en: 'English',
   es: 'Español',
   et: 'Eesti',
