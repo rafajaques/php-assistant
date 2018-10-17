@@ -116,14 +116,16 @@ function binaryUpdateList() {
   const inUse = conf.get('php.default');
 
   // Rewrites PHP versions list
-  Object.keys(versions).forEach((v) => {
-    $('#binary-list').append(binaryLineGetTemplate(v, versions[v], (inUse === v)));
-  });
+  if (versions) {
+    Object.keys(versions).forEach((v) => {
+      $('#binary-list').append(binaryLineGetTemplate(v, versions[v], (inUse === v)));
+    });
+  }
 
   // Adds bundled version manually
   const bundledVersion = binaryGetBundledVersion();
   $('#binary-list').append(
-    binaryLineGetTemplate(bundledVersion, i18n.__('Bundled version'), (inUse === bundledVersion)));
+    binaryLineGetTemplate(bundledVersion, i18n.__('Bundled version'), (inUse === "bundled")));
 }
 
 /**
@@ -133,7 +135,7 @@ function phpGetCurrVersion() {
   const curr = conf.get('php.default');
 
   if (curr) {
-    return binaryConvertVersionToShow(conf.get('php.default'));
+    return binaryConvertVersionToShow(curr === "bundled" ? binaryGetBundledVersion() : curr);
   }
 
   return false;
@@ -142,7 +144,7 @@ function phpGetCurrVersion() {
 /* Updates binary path used by the runner */
 function updatePhpPath() {
   // Are we using bundled version?
-  if (conf.get('php.default') === binaryGetBundledVersion()) {
+  if (conf.get('php.default') === "bundled") {
     phpPath = getBundledPhpPath();
   } else {
     phpPath = conf.get('php.versions.' + conf.get('php.default'));
