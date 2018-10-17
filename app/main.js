@@ -9,7 +9,7 @@ const electron = require('electron');
 const Path = require('path');
 const Configstore = require('configstore');
 
-const { app, Tray, Menu, BrowserWindow } = electron;
+const { app, Tray, Menu, BrowserWindow, systemPreferences } = electron;
 const ipc = electron.ipcMain;
 const dialog = electron.Dialog;
 
