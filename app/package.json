@@ -19,7 +19,7 @@
     "url": "https://github.com/rafajaques/php-assistant/issues"
   },
   "dependencies": {
-    "configstore": "^3.1.1",
+    "configstore": "^3.1.0",
     "i18n": "^0.8.3",
     "request": "^2.83.0"
   }
